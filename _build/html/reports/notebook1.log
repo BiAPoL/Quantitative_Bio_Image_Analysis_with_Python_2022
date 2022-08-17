@@ -22,7 +22,7 @@ import napari
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [1;32mIn [2][0m, in [0;36m<cell line: 1>[1;34m()[0m
+Input [1;32mIn [1][0m, in [0;36m<cell line: 1>[1;34m()[0m
 [1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnapari[39;00m
 
 [1;31mModuleNotFoundError[0m: No module named 'napari'
