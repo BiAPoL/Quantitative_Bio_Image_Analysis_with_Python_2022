@@ -4,13 +4,16 @@
 
 format: jb-book
 root: intro
+
 options:  # The options key will be applied to all chapters, but not sub-sections
   numbered: True
+
 chapters:
 - file: day1/Python_Basics
-sections:
+  sections:
   - file: day1/notebook1
   - file: day1/notebook2
 
-- file: day2/Napari_introduction
+- file: day2/Napari_Introduction
+  sections:
   - file: day2/notebook1
