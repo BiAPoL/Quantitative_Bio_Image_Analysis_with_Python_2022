@@ -1,8 +1,3 @@
-# Pytnon Basics
+# Bio-Image Analysis Introduction and Python Basics
 
-This part gives an introduction to Python and jupyter notebooks.
-
-(section-label)=
-## Here's my first section
-
-Here is a [reference to the intro](../intro.md). Here is a reference to [](section-label).
+This part explains how a typical Bio-Image Analysis workflow should look like and provides some tutorials for learning some basic aspects of Python programming.
