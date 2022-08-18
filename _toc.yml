@@ -9,11 +9,39 @@ options:  # The options key will be applied to all chapters, but not sub-section
   numbered: True
 
 chapters:
-- file: day1/Day1
+- file: day0/Readme
+- file: day1/Readme
   sections:
-  - file: day1/notebook1
-  - file: day1/notebook2
+  - file: day1/01_Python_syntax_and_variables
+  - file: day1/02_Simple_math_and_logic
+  - file: day1/03_Lists_and_arrays_(numpy)
+  - file: day1/04_Folder_structure
+  - file: day1/05_Loops_and_conditions
+  - file: day1/06_Working_with_images_(skimage_io_and_matplotlib)
 
-- file: day2/Day2
+- file: day2/Readme
   sections:
-  - file: day2/notebook1
+  - file: day2/01_Introduction_to_napari
+  - file: day2/02_napari_plugins
+  - file: day2/03_Image_filtering_(skimage_filters)
+  - file: day2/04_Background_subtraction
+  - file: day2/05_Thresholding
+  - file: day2/06_Morphological_operators_(skimage_morphology)
+  - file: day2/07_Instance_segmentation_(skimage_measure)
+  - file: day2/08_Feature_extraction_(dictionaries_and_pandas)
+
+- file: day3/Readme
+  sections:
+  - file: day3/01_Tidy_data
+  - file: day3/02_Descriptive_statistics_and_plotting_(seaborn_or_bokeh_or_matplotlib)
+  - file: day3/03_Correlation
+  - file: day3/04_Dimentionality_reduction_(clusters_plotter)
+  - file: day3/05_Clustering_(clusters_plotter)
+  - file: day3/06_Probability_distributions
+  - file: day3/07_Inferential_statistics_(bootstrap_maybe)
+
+- file: day4/Readme
+  sections:
+  - file: day4/01_Turning_a_function_into_a_napari_plugin
+  - file: day4/02_Adding_code_to_Github
+  - file: day4/Copyrights

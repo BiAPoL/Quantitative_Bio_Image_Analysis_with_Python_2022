@@ -1,11 +1,19 @@
-# Welcome to your Jupyter Book
+# Welcome the Bio-Image Analysis Course from BiA-PoL
+From the Bio-Image Analysis Technology Development group, DFG Cluster of Excellence “Physics of Life”, TU Dresden
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+## Aims of the course
 
-Check out the content pages bundled with this sample book to see more.
+To train life scientists to implement a complete workflow on image analysis: from learning basic programming skills in python, escalating to image processing and biostatistics, and achieving a functional napari plugin with reproducibe code.
 
+## Timetable
+
+The timetable of the course with the location of each section can be found [here]()
+
+## Contents
+
+This material is divided in 4 days (plus a day 0 for preparation of the programming environment).
 ```{tableofcontents}
+- Day 0:
 ```
+
+

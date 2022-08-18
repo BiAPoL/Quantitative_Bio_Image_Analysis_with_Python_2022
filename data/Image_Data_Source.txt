@@ -1,0 +1,7 @@
+Image Data source: Daniela Vorkel, Robert Haase, Myers lab, Max Planck Institute for Molecular Cell Biology and Genetics Dresden
+
+Resampled light sheet data of Tribolium castaneum embryo undergoing gastrulation
+Marker: nuclei-GFP, imaged with 488nm wavelength
+Voxel size: 1x1x1 micron
+
+Link to data: https://git.mpi-cbg.de/rhaase/clij2_example_data/-/blob/master/lund1051_resampled.tif
