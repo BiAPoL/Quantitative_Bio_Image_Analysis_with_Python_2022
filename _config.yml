@@ -11,7 +11,7 @@ bibtex_bibfiles:
 
   # Information about where the book exists on the web
 repository:
-  url: https://github.com/zoccoler/Bio-Image_Analysis_Course_with_napari  # Online location of your book
+  url: https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022  # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
