@@ -1,6 +1,6 @@
 # Setup for the course
 
-## 1. Downloading and installing Anaconda
+## 1. Downloading and installing Miniconda
 
 ## 2. Configuring a conda environment
 
