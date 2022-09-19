@@ -1,16 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Python Basics
+# # Correlation
 
-# In[1]:
-
-
-a = []
-
-
-# In[2]:
-
-
-type(a)
-
+# Ideas:
+# - Pearson and Spearman
+# - Displaying a correlation table
+# - Feature Selection: filtering out strongly correlated properties
