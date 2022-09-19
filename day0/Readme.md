@@ -6,12 +6,16 @@
 
 ## 3. Installing packages
 
-## 4. Creating a Github account
+## 4. Jupyter Lab
 
-## 5. Installing Github Desktop
+## 5. Python tutorials
 
-## 6. Cloning a Repository
+## 6. Creating a Github account
 
-## 7. Downloading data
+## 7. Installing Github Desktop
 
-## 8. Python tutorials
+## 8. Cloning a Repository
+
+## 9. Downloading data
+
+
