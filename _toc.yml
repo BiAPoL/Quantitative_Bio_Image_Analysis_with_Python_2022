@@ -33,7 +33,8 @@ chapters:
   - file: day3/02_Descriptive_statistics
   - file: day3/03_Correlation
   - file: day3/04_Data_exploration
-  - file: day3/05_Dimensionality_reduction
+  - file: day3/05_Dimensionality_reduction_1
+  - file: day3/05_Dimensionality_reduction_2
   - file: day3/06_Clustering_(clusters_plotter)
   - file: day3/07_Probability_distributions
   - file: day3/08_Inferential_statistics_(bootstrap_maybe)
