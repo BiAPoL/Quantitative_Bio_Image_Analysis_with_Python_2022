@@ -38,7 +38,11 @@ chapters:
     - file: day3/01_UMAP
     - file: day3/02_UMAP
     - file: day3/03_PCA
-  - file: day3/06_clustering/interactive_dim_reduction_and_clustering
+  - file: day3/06_clustering/Readme
+    sections:
+    - file: day3/01_kmeans
+    - file: day3/02_hdbscan
+    - file: day3/03_interactive_dim_reduction_and_clustering
   - file: day3/07_Probability_distributions
   - file: day3/08_Inferential_statistics_(bootstrap_maybe)
 
