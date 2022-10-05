@@ -56,3 +56,6 @@ chapters:
 - file: day5/Readme
   sections:
   - file: Readme
+    sections:
+    - file: day5/01_points_and_surfaces/01_creating_and_working_with_meshes
+    - file: day5/01_points_and_surfaces/02_advanced_surface_characteristics
