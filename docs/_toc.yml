@@ -33,8 +33,16 @@ chapters:
   - file: day3/02_Descriptive_statistics
   - file: day3/03_Correlation
   - file: day3/04_Data_exploration
-  - file: day3/05_Dimentionality_reduction
-  - file: day3/06_Clustering_(clusters_plotter)
+  - file: day3/05_Dimentionality_reduction/Readme
+    sections:
+    - file: day3/01_UMAP
+    - file: day3/02_UMAP
+    - file: day3/03_PCA
+  - file: day3/06_clustering/Readme
+    sections:
+    - file: day3/01_kmeans
+    - file: day3/02_hdbscan
+    - file: day3/03_interactive_dim_reduction_and_clustering
   - file: day3/07_Probability_distributions
   - file: day3/08_Inferential_statistics_(bootstrap_maybe)
 
