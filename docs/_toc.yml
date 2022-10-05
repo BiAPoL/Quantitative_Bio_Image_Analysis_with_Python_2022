@@ -33,7 +33,7 @@ chapters:
   - file: day3/02_Descriptive_statistics
   - file: day3/03_Correlation
   - file: day3/04_Data_exploration
-  - file: day3/05_Dimensionality_reduction/Readme
+  - file: day3/05_dimensionality_reduction/Readme
     sections:
     - file: day3/05_dimensionality_reduction/01_UMAP
     - file: day3/05_dimensionality_reduction/02_UMAP
