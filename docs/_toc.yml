@@ -53,4 +53,9 @@ chapters:
   - file: day4/03_Practical_Exchanging_code
   - file: day4/04_Stackview
   
-- file: day5/Analyze_data_together
+- file: day5/Readme
+  sections:
+  - file: Readme
+    sections:
+    - file: day5/01_points_and_surfaces/01_creating_and_working_with_meshes
+    - file: day5/01_points_and_surfaces/02_advanced_surface_characteristics
