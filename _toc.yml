@@ -53,4 +53,6 @@ chapters:
   - file: day4/03_Practical_Exchanging_code
   - file: day4/04_Stackview
   
-- file: day5/Analyze_data_together
+- file: day5/Readme
+  sections:
+  - file: Readme
