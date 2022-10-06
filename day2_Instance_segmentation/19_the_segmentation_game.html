@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Remove labels on image edges &#8212; Quantitative Bio-Image Analysis with Python Course Book</title>
+    <title>The Segmentation Game &#8212; Quantitative Bio-Image Analysis with Python Course Book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -390,35 +390,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2_Instance_segmentation/15_remove_labels_on_image_edges.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -458,7 +429,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2_Instance_segmentation/15_remove_labels_on_image_edges.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2_Instance_segmentation/19_the_segmentation_game.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -486,7 +457,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/day2_Instance_segmentation/15_remove_labels_on_image_edges.ipynb"
+        <a href="../_sources/day2_Instance_segmentation/19_the_segmentation_game.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -497,7 +468,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -523,23 +494,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-play">
+   How to play
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#play-the-game">
+   Play the game!
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Remove labels on image edges</h1>
+                <h1>The Segmentation Game</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-play">
+   How to play
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#play-the-game">
+   Play the game!
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -547,87 +565,45 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="remove-labels-on-image-edges">
-<h1>Remove labels on image edges<a class="headerlink" href="#remove-labels-on-image-edges" title="Permalink to this headline">#</a></h1>
-<p>When analysing image scientifically, it is often relevant that only object in the image are analyzed that are fully captured.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
-
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># initialize GPU</span>
-<span class="n">cle</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="s2">&quot;GTX&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2334</span><span class="o">/</span><span class="mf">1760153359.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pyclesperanto_prototype&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Our starting point shall be a label image; for example derived from blobs.tif through thresholding and connected component labeling:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../../data/blobs.tif&#39;</span><span class="p">)</span>
-
-<span class="c1"># process the image</span>
-<span class="n">blurred</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">gaussian_blur</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma_x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma_y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">binary</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">blurred</span><span class="p">)</span>
-<span class="n">labeled</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">connected_components_labeling_box</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
-
-<span class="c1"># show result</span>
-<span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">labeled</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># The maxmium intensity in a label image corresponds to the number of objects</span>
-<span class="n">num_labels</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">maximum_of_all_pixels</span><span class="p">(</span><span class="n">labeled</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of objects in the image: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_labels</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/15_remove_labels_on_image_edges_3_0.png" src="../_images/15_remove_labels_on_image_edges_3_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of objects in the image: 62.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>In case the size of the objects is relevant, one should exclude the object which were not fully imaged and thus, touch the image border.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exclude Labels On Edges</span>
-<span class="n">labels_excl_edges</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">exclude_labels_on_edges</span><span class="p">(</span><span class="n">labeled</span><span class="p">)</span>
-
-<span class="c1"># show result</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span> <span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span> <span class="p">(</span> <span class="mi">256</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">labels_excl_edges</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># The maxmium intensity in a label image corresponds to the number of objects</span>
-<span class="n">num_labels</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">maximum_of_all_pixels</span><span class="p">(</span><span class="n">labels_excl_edges</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of objects in the image: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_labels</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/15_remove_labels_on_image_edges_5_0.png" src="../_images/15_remove_labels_on_image_edges_5_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of objects in the image: 44.0
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-segmentation-game">
+<h1>The Segmentation Game<a class="headerlink" href="#the-segmentation-game" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://www.napari-hub.org/plugins/the-segmentation-game">The Segmentation Game</a> is a napari plugin for determining segmentation quality.
+It is interactive and thus, you can beat each other in segmenting objects with high quality and collect your results in a highscore table.</p>
+<p>Goal of playing this game is to give your some feeling for what it means if the quality of a segmentation algorithm is e.g. 80%.</p>
+<section id="how-to-play">
+<h2>How to play<a class="headerlink" href="#how-to-play" title="Permalink to this headline">#</a></h2>
+<p>Start napari, add a new labels layer and draw a large circle. Rename the layer to “Reference”.
+This is your reference annotation.</p>
+<p><img alt="img_1.png" src="../_images/img_1.png" /></p>
+<p>Add another labels layer, randomize its colours and start drawing another circle,
+partially overlapping with the first one. Rename that second layer to “test”
+Make sure you are drawing on the second layer.</p>
+<p><img alt="img.png" src="../_images/img.png" /></p>
+<p>Start the game by clicking the menu <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">&gt;</span> <span class="pre">Games</span> <span class="pre">&gt;</span> <span class="pre">The</span> <span class="pre">Segmentation</span> <span class="pre">Game</span></code>.
+Select the “Reference” image and “Test” as segmentation result.
+Choose the metric “metrics.Jaccard_index_sparse”. Enter your name.
+At this point, you will see that the overlap of the two drawn labels is small:</p>
+<p><img alt="img_2.png" src="../_images/img_2.png" /></p>
+<p>If you continue drawing the second label so that it overlaps more, the Jaccard Index will increase:</p>
+<p><img alt="img_3.png" src="../_images/img_3.png" /></p>
+<p>If you draw too much of label 2, the Jaccard Index will decrease again.</p>
+<p><img alt="img_4.png" src="../_images/img_4.png" /></p>
+</section>
+<section id="play-the-game">
+<h2>Play the game!<a class="headerlink" href="#play-the-game" title="Permalink to this headline">#</a></h2>
+<p>Close all layers in napari and open the image <code class="docutils literal notranslate"><span class="pre">data/BBBC007_batch/A9</span> <span class="pre">p7d.tif</span></code> and the corresponding
+label image <code class="docutils literal notranslate"><span class="pre">data/BBBC007_sparse_instance_annotation/A9</span> <span class="pre">p7d.tif</span></code>.
+Add another labels layer.
+Zoom into where the labels were drawn.
+Configure The Segmentation Game like shown here:</p>
+<p><img alt="img_5.png" src="../_images/img_5.png" /></p>
+<p>Hide the ground truth annotation layer (don’t cheat!) and start drawing labels on the nuclei.
+Try to achieve a good segmentation result. Time limit: 2 minutes!</p>
+<p><img alt="img_7.png" src="../_images/img_7.png" /></p>
+<p>Afterwards, save your result to the Highscore table.
+Exchange the seat with your neighbor and annotate on their computer.</p>
+<p>Who has the highest Jaccard index?</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

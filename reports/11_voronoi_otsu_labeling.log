@@ -25,7 +25,7 @@ import napari_segment_blobs_and_things_with_membranes as nsbatwm
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2260/984881501.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2274/984881501.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mfrom[0m [0mskimage[0m[0;34m.[0m[0mio[0m [0;32mimport[0m [0mimread[0m[0;34m,[0m [0mimshow[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0;32mimport[0m [0mpyclesperanto_prototype[0m [0;32mas[0m [0mcle[0m[0;34m[0m[0;34m[0m[0m
