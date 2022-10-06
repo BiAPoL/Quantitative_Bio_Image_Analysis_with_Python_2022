@@ -22,8 +22,8 @@ chapters:
 - file: day2/Readme
   sections:
   - file: day2/01_Background_subtraction
-  - file: day2/01_Thresholding
-  - file: day2/02_Mask_refinement
+  - file: day2/02_Thresholding
+  - file: day2/03_Mask_refinement
   - file: day2/04_Instance_segmentation
   - file: day2/05_Feature_extraction
   - file: day2/06_MNIST_in_torch
