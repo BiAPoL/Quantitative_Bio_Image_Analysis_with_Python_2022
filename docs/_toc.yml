@@ -33,7 +33,12 @@ chapters:
   sections:
   - file: day3/01_Tidy_data
   - file: day3/02_Descriptive_statistics
-  - file: day3/03_Correlation
+  - file: day3/03_statistics_and_tests/Readme
+    sections:
+    - file: day3/03_statistics_and_tests/01_Bland_altman_analysis
+    - file: day3/03_statistics_and_tests/02_correlation
+    - file: day3/03_statistics_and_tests/03_correlation_matrix
+    - file: day3/03_statistics_and_tests/04_hypothesis_testing
   - file: day3/04_Data_exploration
   - file: day3/05_dimensionality_reduction/Readme
     sections:
