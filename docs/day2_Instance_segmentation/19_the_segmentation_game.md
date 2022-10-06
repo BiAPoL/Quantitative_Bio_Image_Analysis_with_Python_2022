@@ -5,6 +5,8 @@ It is interactive and thus, you can beat each other in segmenting objects with h
 
 Goal of playing this game is to give your some feeling for what it means if the quality of a segmentation algorithm is e.g. 80%.
 
+![](jaccard_index.gif)
+
 ## How to play
 Start napari, add a new labels layer and draw a large circle. Rename the layer to "Reference". 
 This is your reference annotation.
