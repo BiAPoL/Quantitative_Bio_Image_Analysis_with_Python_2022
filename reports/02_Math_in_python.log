@@ -22,7 +22,7 @@ a / 0
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mZeroDivisionError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1918/1979898162.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2033/1979898162.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0ma[0m [0;34m/[0m [0;36m0[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mZeroDivisionError[0m: division by zero
