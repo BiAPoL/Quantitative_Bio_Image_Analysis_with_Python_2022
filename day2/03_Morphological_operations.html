@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Morphological Image Processing &#8212; Quantitative Bio-Image Analysis with Python Course Book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Instance Segmentation" href="04_Instance_segmentation.html" />
+    <link rel="prev" title="Thresholding" href="02_Thresholding.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Quantitative Bio-Image Analysis with Python Course Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome the Bio-Image Analysis Course from BiA-PoL
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day0/Readme.html">
+   Setup for the course
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day1/Readme.html">
+   Bio-Image Analysis Introduction and Python Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/01_Introduction_to_Bio_Image_Analysis.html">
+     Introduction to Bio-Image Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/02_Working_with_images.html">
+     Working with images in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/03_Folder_structure.html">
+     Folder structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/04_Image_visualization_with_napari.html">
+     Image Visualization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/05_Image_processing_Filters.html">
+     Image Processing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1/06_Image_processing_3D.html">
+     Image Processing (3D Data)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Readme.html">
+   Image Processing and napari
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_Background_subtraction.html">
+     Thresholding and noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_Thresholding.html">
+     Thresholding
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Morphological Image Processing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_Instance_segmentation.html">
+     Instance Segmentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_Feature_extraction.html">
+     Feature extraction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_MNIST_in_torch.html">
+     Building a simple neural-network with Pytorch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_stardist2d_in_python.html">
+     Stardist in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day3/Readme.html">
+   Biostatistics and Data Science
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/01_Tidy_data.html">
+     Tidy-Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/02_Descriptive_statistics.html">
+     Descriptive Statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/03_Correlation.html">
+     Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/04_Data_exploration.html">
+     Napari-clusters-plotter
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/05_dimensionality_reduction/Readme.html">
+     Dimensionality reduction
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/01_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/02_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/03_PCA.html">
+       PCA and UMAP
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/06_clustering/Readme.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/01_kmeans.html">
+       K-means clustering
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/02_hdbscan.html">
+       HDBSCAN
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/03_interactive_dim_reduction_and_clustering.html">
+       Interactive dimensioanlity reduction and clustering
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/07_Probability_distributions.html">
+     Probability Distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day3/08_Inferential_statistics_%28bootstrap_maybe%29.html">
+     Inferential Statistics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day4/Readme.html">
+   napari Plugins and Reproducible Code
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
+     Turning a function into a napari plugin
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
+     Use Github Desktop to do commit, PR and merges to your repository
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
+     Send your repo to a friend and ask them to run your code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day4/04_Stackview.html">
+     Stackview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day5/Analyze_data_together.html">
+   Analyze data together Day
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2/03_Morphological_operations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2/03_Morphological_operations.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/day2/03_Morphological_operations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Morphological Image Processing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strutcutal-element">
+     Strutcutal element
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-morphology">
+     Binary morphology
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#erosion-and-dilation">
+       Erosion and Dilation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#openning-and-closing">
+       Openning and Closing
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Morphological Image Processing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Morphological Image Processing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strutcutal-element">
+     Strutcutal element
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-morphology">
+     Binary morphology
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#erosion-and-dilation">
+       Erosion and Dilation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#openning-and-closing">
+       Openning and Closing
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="morphological-image-processing">
+<h1>Morphological Image Processing<a class="headerlink" href="#morphological-image-processing" title="Permalink to this headline">#</a></h1>
+<p>Morphological operations transform images based on shape. They can be seen as non-linear spatial filters in which the kernel/footprint shape and size have a strong impact in the results. In this context, the kernel is also called structural element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2169</span><span class="o">/</span><span class="mf">1781591898.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;skimage&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="strutcutal-element">
+<h2>Strutcutal element<a class="headerlink" href="#strutcutal-element" title="Permalink to this headline">#</a></h2>
+<p>The structural element (SE) is a probe that runs through the image, modifying each pixel depending on how well its shape matches the surroundings. This is best explained with some examples.</p>
+<p>Let’s create 3 different SE: a square and a disk. Scikit-image has built-in functions to generate those.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># creates a disk of 1 with radius = 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;disk = </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># creates a square with edges = 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;square = </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>disk = 
+ [[0 0 0 1 0 0 0]
+ [0 1 1 1 1 1 0]
+ [0 1 1 1 1 1 0]
+ [1 1 1 1 1 1 1]
+ [0 1 1 1 1 1 0]
+ [0 1 1 1 1 1 0]
+ [0 0 0 1 0 0 0]]
+square = 
+ [[1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s perform some morphological operations with them on an image.</p>
+</section>
+<section id="binary-morphology">
+<h2>Binary morphology<a class="headerlink" href="#binary-morphology" title="Permalink to this headline">#</a></h2>
+<p>The changes in shape are more pronounced in binary images. So, let’s start with a binary cells image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s1">&#39;../data/mitosis_mod.tif&#39;</span>
+<span class="n">image_cells</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">image_cells_binary</span> <span class="o">=</span> <span class="n">image_cells</span> <span class="o">&gt;</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183e8f0070&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_10_1.png" src="../_images/03_Morphological_operations_10_1.png" />
+</div>
+</div>
+<section id="erosion-and-dilation">
+<h3>Erosion and Dilation<a class="headerlink" href="#erosion-and-dilation" title="Permalink to this headline">#</a></h3>
+<p>The erosion is a spatial minimum filter. This means that, for every pixel, it gets the surronding pixels that underlie the SE shape and returns the minimal value.</p>
+<p>In the binary case, this means that, if a pixel has any 0-valued neighbouring pixel around it that lies beneath the SE, it will recevie 0.</p>
+<p>Overall, this gives the impression that the white (positive value) structures are getting consumed/eroded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_eroded_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_eroded_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_eroded_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;erosion disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_eroded_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;erosion square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;erosion square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_14_1.png" src="../_images/03_Morphological_operations_14_1.png" />
+</div>
+</div>
+<p>In both cases, the elements got consumed. However, the disk was more effective at this for 2 reasons:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. The structures in the image are roundish, resembling more the disk SE;
+
+2. The disk SE is bigger than the square;
+</pre></div>
+</div>
+<p>Dilation is exactly the opposite, i.e., it is a spatial maximum filter and the overall impression is that structures are growing/dilating.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_dilated_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_dilated_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_dilated_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;dilation disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_dilated_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;dilation square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;dilation square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_18_1.png" src="../_images/03_Morphological_operations_18_1.png" />
+</div>
+</div>
+</section>
+<section id="openning-and-closing">
+<h3>Openning and Closing<a class="headerlink" href="#openning-and-closing" title="Permalink to this headline">#</a></h3>
+<p>The morphological <strong>opening</strong> on an image is defined as an <strong>erosion followed by a dilation</strong>, while <strong>closing</strong> is a <strong>dilation followed by an erosion</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_opening_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_opening_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_opening_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;opening disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_opening_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;opening square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;opening square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_22_1.png" src="../_images/03_Morphological_operations_22_1.png" />
+</div>
+</div>
+<p>Opening tends to disconnect/separate white (high intensity) structures that are weakly connected. Because it perfoems erosion first, it may also erase isolated small white structures.</p>
+<p>On the other hand, closing tends to connect strucutres that are in close proximity. Because it does dilation first, it may also close small holes (low intensity regions) inside white (high intensity) structures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_closing_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_closing_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_closing_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;closing disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_closing_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;closing square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;closing square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_25_1.png" src="../_images/03_Morphological_operations_25_1.png" />
+</div>
+</div>
+<p>Opening and closing are usually prefered over plain erosion and dilation because they tend to better preserve structures size.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-1">
+<h1>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h1>
+<p>Below, we have applied dilation (with a big disk SE) to the grayscale cells image. Apply the other operations (erosion, opening and closing) and show the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">big_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dilated_image</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">dilation</span><span class="p">(</span><span class="n">image_cells</span><span class="p">,</span> <span class="n">big_disk</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dilated_image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183ee62a30&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_30_1.png" src="../_images/03_Morphological_operations_30_1.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-2">
+<h1>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h1>
+<p>Subtract each result from Exercise 1 from the original image, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subtracted_dilated</span> <span class="o">=</span> <span class="n">image_cells</span> <span class="o">-</span> <span class="n">dilated_image</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>and display the results as well as the original image again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">subtracted_dilated</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183eec3310&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_35_1.png" src="../_images/03_Morphological_operations_35_1.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-3">
+<h1>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">#</a></h1>
+<p>Apply the <code class="docutils literal notranslate"><span class="pre">white_tophat</span></code> function from scikit-image on the original image and display the result.</p>
+<p>Use the same SE (<code class="docutils literal notranslate"><span class="pre">big_disk</span></code>) from Exercise 2. Compare this result with the results from Exercise 2.</p>
+<p>What can you conclude?</p>
+<p>*Hint: the <code class="docutils literal notranslate"><span class="pre">big_disk</span></code> should be given as the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">white_tophat</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">big_disk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183ef2ee50&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_38_1.png" src="../_images/03_Morphological_operations_38_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>morphology.white_tophat<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Red">Signature:</span> morphology<span class=" -Color -Color-Bold -Color-Bold-Yellow">.</span>white_tophat<span class=" -Color -Color-Bold -Color-Bold-Yellow">(</span>image<span class=" -Color -Color-Bold -Color-Bold-Yellow">,</span> footprint<span class=" -Color -Color-Bold -Color-Bold-Yellow">=</span><span class=" -Color -Color-Bold -Color-Bold-Green">None</span><span class=" -Color -Color-Bold -Color-Bold-Yellow">,</span> out<span class=" -Color -Color-Bold -Color-Bold-Yellow">=</span><span class=" -Color -Color-Bold -Color-Bold-Green">None</span><span class=" -Color -Color-Bold -Color-Bold-Yellow">)</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Docstring:</span>
+Return white top hat of an image.
+
+
+The white top hat of an image is defined as the image minus its
+morphological opening. This operation returns the bright spots of the image
+that are smaller than the footprint.
+
+Parameters
+----------
+image : ndarray
+    Image array.
+footprint : ndarray, optional
+    The neighborhood expressed as an array of 1&#39;s and 0&#39;s.
+    If None, use cross-shaped footprint (connectivity=1).
+out : ndarray, optional
+    The array to store the result of the morphology. If None
+    is passed, a new array will be allocated.
+
+Returns
+-------
+out : array, same shape and type as `image`
+    The result of the morphological white top hat.
+
+Other Parameters
+----------------
+selem : DEPRECATED
+    Deprecated in favor of `footprint`.
+
+    .. deprecated:: 0.19
+
+See Also
+--------
+
+:func:`black_tophat`
+    ..
+
+References
+----------
+.. [1] https://en.wikipedia.org/wiki/Top-hat_transform
+
+Examples
+--------
+&gt;&gt;&gt; # Subtract gray background from bright peak
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from skimage.morphology import square
+&gt;&gt;&gt; bright_on_gray = np.array([[2, 3, 3, 3, 2],
+...                            [3, 4, 5, 4, 3],
+...                            [3, 5, 9, 5, 3],
+...                            [3, 4, 5, 4, 3],
+...                            [2, 3, 3, 3, 2]], dtype=np.uint8)
+&gt;&gt;&gt; white_tophat(bright_on_gray, square(3))
+array([[0, 0, 0, 0, 0],
+       [0, 0, 1, 0, 0],
+       [0, 1, 5, 1, 0],
+       [0, 0, 1, 0, 0],
+       [0, 0, 0, 0, 0]], dtype=uint8)
+<span class=" -Color -Color-Bold -Color-Bold-Red">File:</span>      c:\miniconda\envs\dev-env\lib\site-packages\skimage\morphology\gray.py
+<span class=" -Color -Color-Bold -Color-Bold-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./day2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02_Thresholding.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Thresholding</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04_Instance_segmentation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Instance Segmentation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Bio-Image Analysis Technology Development Group - Physics of Life<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

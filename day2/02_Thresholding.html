@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Thresholding/ / Semantic Segmentation &#8212; Quantitative Bio-Image Analysis with Python Course Book</title>
+    <title>Thresholding &#8212; Quantitative Bio-Image Analysis with Python Course Book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mask Refinement" href="02_Mask_refinement.html" />
-    <link rel="prev" title="Image Processing and napari" href="Readme.html" />
+    <link rel="next" title="Morphological Image Processing" href="03_Morphological_operations.html" />
+    <link rel="prev" title="Thresholding and noise" href="01_Background_subtraction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -171,19 +171,19 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_Background_subtraction.html">
+     Thresholding and noise
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Thresholding/ /  Semantic Segmentation
+     Thresholding
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_Mask_refinement.html">
-     Mask Refinement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_Background_subtraction.html">
-     Background Subtraction
+    <a class="reference internal" href="03_Morphological_operations.html">
+     Morphological Image Processing
     </a>
    </li>
    <li class="toctree-l2">
@@ -400,7 +400,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2/01_Thresholding.ipynb"
+        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2/02_Thresholding.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -460,7 +460,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2/01_Thresholding.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2/02_Thresholding.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -488,7 +488,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/day2/01_Thresholding.ipynb"
+        <a href="../_sources/day2/02_Thresholding.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -525,23 +525,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap">
+   Recap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization-in-napari">
+   Visualization in Napari
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Thresholding/ /  Semantic Segmentation</h1>
+                <h1>Thresholding</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap">
+   Recap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization-in-napari">
+   Visualization in Napari
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -549,8 +596,99 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="thresholding-semantic-segmentation">
-<h1>Thresholding/ /  Semantic Segmentation<a class="headerlink" href="#thresholding-semantic-segmentation" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="thresholding">
+<h1>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this headline">#</a></h1>
+<p>In this exercise, we will try out different threshold methods and see how they perform on the same data and create a label image from the binarized image data.</p>
+<section id="recap">
+<h2>Recap<a class="headerlink" href="#recap" title="Permalink to this headline">#</a></h2>
+<p><strong>Segmentation</strong> is the process of separating single pixels into different categories that may or may not have specific meaning attached to that. <strong>Thresholding</strong> is a simple, yet often effecte segmentation technique. In thresholding, pixels are separated into two categories - the background and the foreground of an image - by comparing the intensities of each image to a single value, the threshold value. Finding a “good” threshold value is therefore of key importance.</p>
+<p>The output of a thresholding operation is a binary image, consiting of 0s and 1s - which is equivalent to <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> in terms of boolean values.</p>
+<p><strong>Vocabulary:</strong> Thresholding is a type of segmentation. Separating the image into two types of pixels (background and foreground) is a type of semantic segmentation, and is - since only two types of pixels exist in the output - referred to as a binarization operation.</p>
+<p><strong>How to code:</strong> Remember - in Python you can compare objects (single numbers or images) to threshold values simply by using the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> operator - make sure to put the output into a new variable!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">measure</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">napari</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2150</span><span class="o">/</span><span class="mf">3051421439.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">measure</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">napari</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;skimage&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">human_mitosis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x232307465e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/02_Thresholding_2_1.png" src="../_images/02_Thresholding_2_1.png" />
+</div>
+</div>
+<p>Now, apply several of the thresholds from <code class="docutils literal notranslate"><span class="pre">skimage</span></code> to the image data! Choose one that you think is suitable.
+Hint: You can find them under <code class="docutils literal notranslate"><span class="pre">filters.threshold_...</span></code> - use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> key or the <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.filters.html?highlight=filters#module-skimage.filters">documentation</a> to find out how to use the implemented threshold functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_image</span> <span class="o">=</span> <span class="c1"># code goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, use <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> to visualize the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we would like to perform connected-component analysis. Use the appropriate function from skimage (<code class="docutils literal notranslate"><span class="pre">measure.label()</span></code>) for this task!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_image</span> <span class="o">=</span> <span class="c1"># code goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-in-napari">
+<h2>Visualization in Napari<a class="headerlink" href="#visualization-in-napari" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: DirectWrite: CreateFontFaceFromHDC() failed (Indicates an error in an input file such as a font file.) for QFontDef(Family=&quot;8514oem&quot;, pointsize=12, pixelsize=20, styleHint=5, weight=50, stretch=100, hintingPreference=0) LOGFONT(&quot;8514oem&quot;, lfWidth=0, lfHeight=-20) dpi=240
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">add_image()</span></code> and the <code class="docutils literal notranslate"><span class="pre">add_labels()</span></code> function to add <code class="docutils literal notranslate"><span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">binary_image</span></code> and <code class="docutils literal notranslate"><span class="pre">label_image</span></code> to the viewer and create screenshot of the viewer with the <code class="docutils literal notranslate"><span class="pre">napari.utils.nbscreenshot()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -580,17 +718,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Readme.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01_Background_subtraction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Image Processing and napari</p>
+            <p class="prev-next-title">Thresholding and noise</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_Mask_refinement.html" title="next page">
+    <a class='right-next' id="next-link" href="03_Morphological_operations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mask Refinement</p>
+        <p class="prev-next-title">Morphological Image Processing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
