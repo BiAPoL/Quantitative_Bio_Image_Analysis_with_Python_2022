@@ -26,6 +26,8 @@ chapters:
   - file: day2/03_Background_subtraction
   - file: day2/04_Instance_segmentation
   - file: day2/05_Feature_extraction
+  - file: day2/06_MNIST_in_torch
+  - file: day2/07_stardist2d_in_python
 
 - file: day3/Readme
   sections:
@@ -53,9 +55,4 @@ chapters:
   - file: day4/03_Practical_Exchanging_code
   - file: day4/04_Stackview
   
-- file: day5/Readme
-  sections:
-  - file: Readme
-    sections:
-    - file: day5/01_points_and_surfaces/01_creating_and_working_with_meshes
-    - file: day5/01_points_and_surfaces/02_advanced_surface_characteristics
+- file: day5/Analyze_data_together
