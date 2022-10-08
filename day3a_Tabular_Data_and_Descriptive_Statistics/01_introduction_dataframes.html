@@ -1,0 +1,2659 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to working with DataFrames &#8212; Quantitative Bio-image Analysis with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basic descriptive statistics" href="02_basic_descriptive_statistics.html" />
+    <link rel="prev" title="Working with tabular data" href="readme.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Quantitative Bio-image Analysis with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Quantitative Bio-Image Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day0/Readme.html">
+   Course preparation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day1/readme.html">
+   Day 1: Introduction to Python and Bio-image Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1a_Python_Introduction/readme.html">
+     Introduction to Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/01_our_first_juptyer_notebook.html">
+       Python code in Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/02_Math_in_python.html">
+       Basic math in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/03_Dont_try_this_at_home.html">
+       Pitfalls when working with Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/04_Basic_types.html">
+       Basic types in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05_lists_tuples.html">
+       Lists and tuples
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05a_cropping_lists.html">
+       Cropping lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05b_sorting_lists.html">
+       Sorting lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05c_masking.html">
+       Masking numpy arrays
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/06_Dictionaries_and_tables.html">
+       Dictionaries
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/07_Conditions.html">
+       Conditions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/08_loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/09_custom_functions.html">
+       Functions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1b_Introduction_Bio-image_Analysis/readme.html">
+     Introduction to Bio-image Analysis
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1w_Working_with_Images/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/01_Working_with_images.html">
+       Working with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/02_Matplotlib_subplots_introduction.html">
+       Subplots with matplotlib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/03_Multi_channel_image_data.html">
+       Multi-channel image data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/04_Image_file_formats.html">
+       Image file formats
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1x_Folder_Structures/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1x_Folder_Structures/05_Folder_structures.html">
+       Folder Structures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1y_Napari_Introduction/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction.html">
+       Using Napari to visualize and interact with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/08_my_segmentation_workflow_trailer.html">
+       Segmentation Workflow Example with 3D Data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1z_Image_Filters/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/09_Image_Filters.html">
+       Image Filters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/10_Filters_in_3D_Isotropic_Data.html">
+       3D Image Filters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day2/Readme.html">
+   Day 2: Image Filtering, Segmentation and Feature Extraction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2a_image_filtering/readme.html">
+     Image Filtering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/01_Background_subtraction.html">
+       Thresholding and noise
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2b_image_segmentation/readme.html">
+     Image segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/02_Thresholding.html">
+       Thresholding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/03_Morphological_operations.html">
+       Morphological Image Processing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/04_Instance_segmentation.html">
+       Instance Segmentation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2c_instance_segmentation/readme.html">
+     Day 2: Instance Segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/09_connected_component_labeling.html">
+       Label images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/10_touching_objects_labeling.html">
+       Touching objects labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/11_voronoi_otsu_labeling.html">
+       Voronoi-Otsu-labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/12_Segmentation_3D.html">
+       3D Image Segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/14_segmentation_2d_membranes.html">
+       Seeded watershed for membrane-based cell segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/15_remove_labels_on_image_edges.html">
+       Remove labels on image edges
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/16_open_close_labels.html">
+       Label image refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/19_the_segmentation_game.html">
+       The Segmentation Game
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/20_Segmentation_quality_estimation.html">
+       Image segmentation quality measurements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2d_machine_learning_apoc/readme.html">
+     Machine learning for object segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/01_supervised_machine_learning.html">
+       Supervised machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/02_exercise_apoc.html">
+       Exercise: Interactive pixel and object classification
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/04_demo_object_segmenter.html">
+       Object segmentation on OpenCL-compatible GPUs
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/05_train_on_folders.html">
+       Training classifiers from folders of images
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2e_deep_learning_segmentation/readme.html">
+     Deep Learning for image segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/07_stardist2d_in_python.html">
+       Stardist in Python
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day2/05_Feature_extraction.html">
+     Feature extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../day3/Readme.html">
+   Day 3: Biostatistics and Data Science
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="readme.html">
+     Working with tabular data
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Introduction to working with DataFrames
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02_basic_descriptive_statistics.html">
+       Basic descriptive statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03_descriptive_statistics_label_images.html">
+       Descriptive statistics of labeled images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04_append_tables.html">
+       Appending tables
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="05_handling_NaNs.html">
+       Handling NaN values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="06_tidy_data.html">
+       Tidy-Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="07_split_apply_combine.html">
+       Split-Apply-Combine
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3b_Plotting/readme.html">
+     Plotting Data with Seaborn
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/01_Plotting_Data_with_Python.html">
+       Plotting Data with Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/02_Introduction_to_Seaborn.html">
+       Introduction to Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/03_Plotting_distributions.html">
+       Plotting Distributions with Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/04_Multivariate_views.html">
+       Multivariate views
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/03_statistics_and_tests/Readme.html">
+     Descriptive statistics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/01_Bland_altman_analysis.html">
+       Method comparison and Bland-Altman Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/02_correlation.html">
+       Correlation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/03_correlation_matrix.html">
+       Correlation matrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/04_hypothesis_testing.html">
+       Nonparametric testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/05_dimensionality_reduction/Readme.html">
+     Dimensionality reduction
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/01_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/02_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/03_PCA.html">
+       PCA and UMAP
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/06_clustering/Readme.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/01_kmeans.html">
+       K-means clustering
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/02_hdbscan.html">
+       HDBSCAN
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/03_interactive_dim_reduction_and_clustering.html">
+       Interactive dimensioanlity reduction and clustering
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day4/Readme.html">
+   Day 4: Reproducible code and Napari plugins
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4b_writing_readable_code/readme.html">
+     Writing readable code
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/05_readable_code.html">
+       Writing good code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/07_magic_numbers.html">
+       Prevent magic numbers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/08_divide_and_rule.html">
+       Divide and rule
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/09_custom_modules.html">
+       Custom modules
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/10_reading_exercise.html">
+       Reading exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/11_exercise_modules.html">
+       Modularization exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/12_keep_it_short_and_simple.html">
+       Keep it short and simple
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/14_stackview.html">
+       Stackview
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4c_crafting_napari_plugins/readme.html">
+     Make your own napari plugin
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
+       Turning a function into a napari plugin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
+       Use Github Desktop to do commit, PR and merges to your repository
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
+       Send your repo to a friend and ask them to run your code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day5/Analyze_data_together.html">
+   Day 5: Work on your own data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-a-dictionary-of-lists">
+   Creating DataFrames from a dictionary of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-data-frames">
+   Saving data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-lists-of-lists">
+   Creating DataFrames from lists of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data-frames">
+   Loading data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-rows-and-columns">
+   Selecting rows and columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-indexing-of-data-frames">
+   Boolean indexing of data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-new-columns">
+   Adding new columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to working with DataFrames</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-a-dictionary-of-lists">
+   Creating DataFrames from a dictionary of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-data-frames">
+   Saving data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-lists-of-lists">
+   Creating DataFrames from lists of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data-frames">
+   Loading data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-rows-and-columns">
+   Selecting rows and columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-indexing-of-data-frames">
+   Boolean indexing of data frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-new-columns">
+   Adding new columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-working-with-dataframes">
+<h1>Introduction to working with DataFrames<a class="headerlink" href="#introduction-to-working-with-dataframes" title="Permalink to this headline">#</a></h1>
+<p>In basic python, we often use dictionaries containing our measurements as vectors. While these basic structures are handy for collecting data, they are suboptimal for further data processing. For that, we introduce <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">panda DataFrames</a>, the primary tool in the Python ecosystem for handling data. Its primary object, the “DataFrame” is extremely useful in wrangling data. which are more handy in the next steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creating-dataframes-from-a-dictionary-of-lists">
+<h2>Creating DataFrames from a dictionary of lists<a class="headerlink" href="#creating-dataframes-from-a-dictionary-of-lists" title="Permalink to this headline">#</a></h2>
+<p>Assume we did some image processing and have some results available in a dictionary that contains lists of numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;labels&quot;</span><span class="p">:</span>      <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;area&quot;</span><span class="p">:</span>       <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">68</span><span class="p">],</span>
+    <span class="s2">&quot;minor_axis&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s2">&quot;major_axis&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This data structure can be nicely visualized using a DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>labels</th>
+      <th>area</th>
+      <th>minor_axis</th>
+      <th>major_axis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>45</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>23</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>68</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Using these DataFrames, data modification is straighforward. For example one can append a new column and compute its values from existing columns. This is done elementwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;aspect_ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;major_axis&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;minor_axis&quot;</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>labels</th>
+      <th>area</th>
+      <th>minor_axis</th>
+      <th>major_axis</th>
+      <th>aspect_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>45</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>23</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>68</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="saving-data-frames">
+<h2>Saving data frames<a class="headerlink" href="#saving-data-frames" title="Permalink to this headline">#</a></h2>
+<p>We can also save this table for continuing to work with it. We chose to save it as a CSV file, where CSV stands for comma-separated value. This is a text file that is easily read into data structures in many programming languages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../data/short_table.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should generally always store your data in such a format, not necessarily CSV, but a format that is open, has a well-defined specification, and is readable in many contexts. Excel files do not meet these criteria. Neither do .mat files.</p>
+</section>
+<section id="creating-dataframes-from-lists-of-lists">
+<h2>Creating DataFrames from lists of lists<a class="headerlink" href="#creating-dataframes-from-lists-of-lists" title="Permalink to this headline">#</a></h2>
+<p>Sometimes, we are confronted to data in form of lists of lists. To make pandas understand that form of data correctly, we also need to provide the headers in the same order as the lists</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;minor_axis&#39;</span><span class="p">,</span> <span class="s1">&#39;major_axis&#39;</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">68</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="p">]</span>
+          
+<span class="c1"># convert the data and header arrays in a pandas data frame</span>
+<span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+<span class="c1"># show it</span>
+<span class="n">data_frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>labels</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>area</th>
+      <td>45</td>
+      <td>23</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>minor_axis</th>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>major_axis</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As you can see, this tabls is <em>rotated</em>. We can bring it in the usual form like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rotate/flip it</span>
+<span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="c1"># show it</span>
+<span class="n">data_frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>labels</th>
+      <th>area</th>
+      <th>minor_axis</th>
+      <th>major_axis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>45</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>23</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>68</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="loading-data-frames">
+<h2>Loading data frames<a class="headerlink" href="#loading-data-frames" title="Permalink to this headline">#</a></h2>
+<p>Tables can be read from CSV files with <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html?highlight=read_csv#pandas.read_csv">pd.read_csv</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../data/blobs_statistics.csv&#39;</span><span class="p">)</span>
+<span class="n">df_csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>area</th>
+      <th>mean_intensity</th>
+      <th>minor_axis_length</th>
+      <th>major_axis_length</th>
+      <th>eccentricity</th>
+      <th>extent</th>
+      <th>feret_diameter_max</th>
+      <th>equivalent_diameter_area</th>
+      <th>bbox-0</th>
+      <th>bbox-1</th>
+      <th>bbox-2</th>
+      <th>bbox-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>422</td>
+      <td>192.379147</td>
+      <td>16.488550</td>
+      <td>34.566789</td>
+      <td>0.878900</td>
+      <td>0.586111</td>
+      <td>35.227830</td>
+      <td>23.179885</td>
+      <td>0</td>
+      <td>11</td>
+      <td>30</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>182</td>
+      <td>180.131868</td>
+      <td>11.736074</td>
+      <td>20.802697</td>
+      <td>0.825665</td>
+      <td>0.787879</td>
+      <td>21.377558</td>
+      <td>15.222667</td>
+      <td>0</td>
+      <td>53</td>
+      <td>11</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>661</td>
+      <td>205.216339</td>
+      <td>28.409502</td>
+      <td>30.208433</td>
+      <td>0.339934</td>
+      <td>0.874339</td>
+      <td>32.756679</td>
+      <td>29.010538</td>
+      <td>0</td>
+      <td>95</td>
+      <td>28</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>437</td>
+      <td>216.585812</td>
+      <td>23.143996</td>
+      <td>24.606130</td>
+      <td>0.339576</td>
+      <td>0.826087</td>
+      <td>26.925824</td>
+      <td>23.588253</td>
+      <td>0</td>
+      <td>144</td>
+      <td>23</td>
+      <td>167</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>476</td>
+      <td>212.302521</td>
+      <td>19.852882</td>
+      <td>31.075106</td>
+      <td>0.769317</td>
+      <td>0.863884</td>
+      <td>31.384710</td>
+      <td>24.618327</td>
+      <td>0</td>
+      <td>237</td>
+      <td>29</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>56</td>
+      <td>211</td>
+      <td>185.061611</td>
+      <td>14.522762</td>
+      <td>18.489138</td>
+      <td>0.618893</td>
+      <td>0.781481</td>
+      <td>18.973666</td>
+      <td>16.390654</td>
+      <td>232</td>
+      <td>39</td>
+      <td>250</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>57</td>
+      <td>78</td>
+      <td>185.230769</td>
+      <td>6.028638</td>
+      <td>17.579799</td>
+      <td>0.939361</td>
+      <td>0.722222</td>
+      <td>18.027756</td>
+      <td>9.965575</td>
+      <td>248</td>
+      <td>170</td>
+      <td>254</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>58</td>
+      <td>86</td>
+      <td>183.720930</td>
+      <td>5.426871</td>
+      <td>21.261427</td>
+      <td>0.966876</td>
+      <td>0.781818</td>
+      <td>22.000000</td>
+      <td>10.464158</td>
+      <td>249</td>
+      <td>117</td>
+      <td>254</td>
+      <td>139</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>59</td>
+      <td>51</td>
+      <td>190.431373</td>
+      <td>5.032414</td>
+      <td>13.742079</td>
+      <td>0.930534</td>
+      <td>0.728571</td>
+      <td>14.035669</td>
+      <td>8.058239</td>
+      <td>249</td>
+      <td>228</td>
+      <td>254</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>60</td>
+      <td>46</td>
+      <td>175.304348</td>
+      <td>3.803982</td>
+      <td>15.948714</td>
+      <td>0.971139</td>
+      <td>0.766667</td>
+      <td>15.033296</td>
+      <td>7.653040</td>
+      <td>250</td>
+      <td>67</td>
+      <td>254</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 13 columns</p>
+</div></div></div>
+</div>
+<p>That’s a bit too much information. We can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method of data frames to look at the first few rows (or the <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> to check the last rows).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>area</th>
+      <th>mean_intensity</th>
+      <th>minor_axis_length</th>
+      <th>major_axis_length</th>
+      <th>eccentricity</th>
+      <th>extent</th>
+      <th>feret_diameter_max</th>
+      <th>equivalent_diameter_area</th>
+      <th>bbox-0</th>
+      <th>bbox-1</th>
+      <th>bbox-2</th>
+      <th>bbox-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>422</td>
+      <td>192.379147</td>
+      <td>16.488550</td>
+      <td>34.566789</td>
+      <td>0.878900</td>
+      <td>0.586111</td>
+      <td>35.227830</td>
+      <td>23.179885</td>
+      <td>0</td>
+      <td>11</td>
+      <td>30</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>182</td>
+      <td>180.131868</td>
+      <td>11.736074</td>
+      <td>20.802697</td>
+      <td>0.825665</td>
+      <td>0.787879</td>
+      <td>21.377558</td>
+      <td>15.222667</td>
+      <td>0</td>
+      <td>53</td>
+      <td>11</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>661</td>
+      <td>205.216339</td>
+      <td>28.409502</td>
+      <td>30.208433</td>
+      <td>0.339934</td>
+      <td>0.874339</td>
+      <td>32.756679</td>
+      <td>29.010538</td>
+      <td>0</td>
+      <td>95</td>
+      <td>28</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>437</td>
+      <td>216.585812</td>
+      <td>23.143996</td>
+      <td>24.606130</td>
+      <td>0.339576</td>
+      <td>0.826087</td>
+      <td>26.925824</td>
+      <td>23.588253</td>
+      <td>0</td>
+      <td>144</td>
+      <td>23</td>
+      <td>167</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>476</td>
+      <td>212.302521</td>
+      <td>19.852882</td>
+      <td>31.075106</td>
+      <td>0.769317</td>
+      <td>0.863884</td>
+      <td>31.384710</td>
+      <td>24.618327</td>
+      <td>0</td>
+      <td>237</td>
+      <td>29</td>
+      <td>256</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>area</th>
+      <th>mean_intensity</th>
+      <th>minor_axis_length</th>
+      <th>major_axis_length</th>
+      <th>eccentricity</th>
+      <th>extent</th>
+      <th>feret_diameter_max</th>
+      <th>equivalent_diameter_area</th>
+      <th>bbox-0</th>
+      <th>bbox-1</th>
+      <th>bbox-2</th>
+      <th>bbox-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>56</td>
+      <td>211</td>
+      <td>185.061611</td>
+      <td>14.522762</td>
+      <td>18.489138</td>
+      <td>0.618893</td>
+      <td>0.781481</td>
+      <td>18.973666</td>
+      <td>16.390654</td>
+      <td>232</td>
+      <td>39</td>
+      <td>250</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>57</td>
+      <td>78</td>
+      <td>185.230769</td>
+      <td>6.028638</td>
+      <td>17.579799</td>
+      <td>0.939361</td>
+      <td>0.722222</td>
+      <td>18.027756</td>
+      <td>9.965575</td>
+      <td>248</td>
+      <td>170</td>
+      <td>254</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>58</td>
+      <td>86</td>
+      <td>183.720930</td>
+      <td>5.426871</td>
+      <td>21.261427</td>
+      <td>0.966876</td>
+      <td>0.781818</td>
+      <td>22.000000</td>
+      <td>10.464158</td>
+      <td>249</td>
+      <td>117</td>
+      <td>254</td>
+      <td>139</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>59</td>
+      <td>51</td>
+      <td>190.431373</td>
+      <td>5.032414</td>
+      <td>13.742079</td>
+      <td>0.930534</td>
+      <td>0.728571</td>
+      <td>14.035669</td>
+      <td>8.058239</td>
+      <td>249</td>
+      <td>228</td>
+      <td>254</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>60</td>
+      <td>46</td>
+      <td>175.304348</td>
+      <td>3.803982</td>
+      <td>15.948714</td>
+      <td>0.971139</td>
+      <td>0.766667</td>
+      <td>15.033296</td>
+      <td>7.653040</td>
+      <td>250</td>
+      <td>67</td>
+      <td>254</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can also get column names with the DataFrame attribute <code class="docutils literal notranslate"><span class="pre">columns</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Unnamed: 0&#39;, &#39;area&#39;, &#39;mean_intensity&#39;, &#39;minor_axis_length&#39;,
+       &#39;major_axis_length&#39;, &#39;eccentricity&#39;, &#39;extent&#39;, &#39;feret_diameter_max&#39;,
+       &#39;equivalent_diameter_area&#39;, &#39;bbox-0&#39;, &#39;bbox-1&#39;, &#39;bbox-2&#39;, &#39;bbox-3&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-rows-and-columns">
+<h2>Selecting rows and columns<a class="headerlink" href="#selecting-rows-and-columns" title="Permalink to this headline">#</a></h2>
+<p>Ok, let’s get the dataframe first row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\anaconda3\envs\devbio-napari-env\lib\site-packages\pandas\core\indexes\base.py:3800,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3799</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3800</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File ~\anaconda3\envs\devbio-napari-env\lib\site-packages\pandas\_libs\index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File ~\anaconda3\envs\devbio-napari-env\lib\site-packages\pandas\_libs\index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5753,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_csv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\envs\devbio-napari-env\lib\site-packages\pandas\core\frame.py:3805,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3805</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\envs\devbio-napari-env\lib\site-packages\pandas\core\indexes\base.py:3802,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3800</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3802</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ooops… We got a big error. That’s because <strong>we index dataframes by columns</strong>.</p>
+<p>We can then copy&amp;paste the colum names we’re interested in and create a new data frame. This is recommended especially when tables are overwhelmingly large.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     422
+1     182
+2     661
+3     437
+4     476
+     ... 
+56    211
+57     78
+58     86
+59     51
+60     46
+Name: area, Length: 61, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that when it was printed, the index of the rows came along with it. That’s beacuse a Pandas DataFrame with one column is a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html?highlight=series#pandas.Series">Pandas Series</a>.</p>
+<p>We can get more columns by passing their names as a list. Furthermore, we can store this “sub-dataframe” in a new variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_analysis</span> <span class="o">=</span> <span class="n">df_csv</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_intensity&#39;</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">df_analysis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>mean_intensity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>422</td>
+      <td>192.379147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>182</td>
+      <td>180.131868</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>661</td>
+      <td>205.216339</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>437</td>
+      <td>216.585812</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>476</td>
+      <td>212.302521</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>211</td>
+      <td>185.061611</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>78</td>
+      <td>185.230769</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>86</td>
+      <td>183.720930</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>51</td>
+      <td>190.431373</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>46</td>
+      <td>175.304348</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_analysis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>mean_intensity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>422</td>
+      <td>192.379147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>182</td>
+      <td>180.131868</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>661</td>
+      <td>205.216339</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>437</td>
+      <td>216.585812</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>476</td>
+      <td>212.302521</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>211</td>
+      <td>185.061611</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>78</td>
+      <td>185.230769</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>86</td>
+      <td>183.720930</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>51</td>
+      <td>190.431373</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>46</td>
+      <td>175.304348</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>This gave us the area measurements we were after.</p>
+<p>If we want to get a single row, the proper way of doing that is to use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_intensity&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area              661.000000
+mean_intensity    205.216339
+Name: 2, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that following <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, we have the index by row then column, separated by a comma, in brackets. It is also important to note that row indices need not be integers. And you should not count on them being integers.</p>
+<p>In case you really want to access elements in a dataframe by integer indices, like in a numpy array, you can use the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>mean_intensity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>661</td>
+      <td>205.216339</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>437</td>
+      <td>216.585812</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The downside is that the code becomes less explicit when column names are absent.</p>
+<p>In practice you will almost never use row indices, but rather use Boolean indexing or Masking.</p>
+</section>
+<section id="boolean-indexing-of-data-frames">
+<h2>Boolean indexing of data frames<a class="headerlink" href="#boolean-indexing-of-data-frames" title="Permalink to this headline">#</a></h2>
+<p>In case we want to focus our further analysis on cells that have a certain minimum area, we can do this by passing boolean indices to the rows. This process is also sometimes call masking.</p>
+<p>Suppose we want the rows for which <code class="docutils literal notranslate"><span class="pre">df_analysis[&quot;area&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50</span></code>. We can essentially plug this syntax directly when using <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_analysis_filtered</span>  <span class="o">=</span> <span class="n">df_analysis</span><span class="p">[</span> <span class="n">df_analysis</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">df_analysis_filtered</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>mean_intensity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>55</th>
+      <td>280</td>
+      <td>189.800000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>211</td>
+      <td>185.061611</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>78</td>
+      <td>185.230769</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>86</td>
+      <td>183.720930</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>51</td>
+      <td>190.431373</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="adding-new-columns">
+<h2>Adding new columns<a class="headerlink" href="#adding-new-columns" title="Permalink to this headline">#</a></h2>
+<p>In Pandas, it is very easy to generate new columns from existing columns. We just pass some operation between other columns to a new column name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_analysis</span><span class="p">[</span><span class="s1">&#39;total_intensity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_analysis</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_analysis</span><span class="p">[</span><span class="s1">&#39;mean_intensity&#39;</span><span class="p">]</span>
+<span class="n">df_analysis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Marcelo_Researcher\AppData\Local\Temp\ipykernel_19228\206920941.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_analysis[&#39;total_intensity&#39;] = df_analysis[&#39;area&#39;] * df_analysis[&#39;mean_intensity&#39;]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>mean_intensity</th>
+      <th>total_intensity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>422</td>
+      <td>192.379147</td>
+      <td>81184.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>182</td>
+      <td>180.131868</td>
+      <td>32784.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>661</td>
+      <td>205.216339</td>
+      <td>135648.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>437</td>
+      <td>216.585812</td>
+      <td>94648.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>476</td>
+      <td>212.302521</td>
+      <td>101056.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>211</td>
+      <td>185.061611</td>
+      <td>39048.0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>78</td>
+      <td>185.230769</td>
+      <td>14448.0</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>86</td>
+      <td>183.720930</td>
+      <td>15800.0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>51</td>
+      <td>190.431373</td>
+      <td>9712.0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>46</td>
+      <td>175.304348</td>
+      <td>8064.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>From the loaded CSV file, create a table that only contains these columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">minor_axis_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">major_axis_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shape</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../data/blobs_statistics.csv&#39;</span><span class="p">)</span>
+<span class="n">df_shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>area</th>
+      <th>mean_intensity</th>
+      <th>minor_axis_length</th>
+      <th>major_axis_length</th>
+      <th>eccentricity</th>
+      <th>extent</th>
+      <th>feret_diameter_max</th>
+      <th>equivalent_diameter_area</th>
+      <th>bbox-0</th>
+      <th>bbox-1</th>
+      <th>bbox-2</th>
+      <th>bbox-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>422</td>
+      <td>192.379147</td>
+      <td>16.488550</td>
+      <td>34.566789</td>
+      <td>0.878900</td>
+      <td>0.586111</td>
+      <td>35.227830</td>
+      <td>23.179885</td>
+      <td>0</td>
+      <td>11</td>
+      <td>30</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>182</td>
+      <td>180.131868</td>
+      <td>11.736074</td>
+      <td>20.802697</td>
+      <td>0.825665</td>
+      <td>0.787879</td>
+      <td>21.377558</td>
+      <td>15.222667</td>
+      <td>0</td>
+      <td>53</td>
+      <td>11</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>661</td>
+      <td>205.216339</td>
+      <td>28.409502</td>
+      <td>30.208433</td>
+      <td>0.339934</td>
+      <td>0.874339</td>
+      <td>32.756679</td>
+      <td>29.010538</td>
+      <td>0</td>
+      <td>95</td>
+      <td>28</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>437</td>
+      <td>216.585812</td>
+      <td>23.143996</td>
+      <td>24.606130</td>
+      <td>0.339576</td>
+      <td>0.826087</td>
+      <td>26.925824</td>
+      <td>23.588253</td>
+      <td>0</td>
+      <td>144</td>
+      <td>23</td>
+      <td>167</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>476</td>
+      <td>212.302521</td>
+      <td>19.852882</td>
+      <td>31.075106</td>
+      <td>0.769317</td>
+      <td>0.863884</td>
+      <td>31.384710</td>
+      <td>24.618327</td>
+      <td>0</td>
+      <td>237</td>
+      <td>29</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>56</td>
+      <td>211</td>
+      <td>185.061611</td>
+      <td>14.522762</td>
+      <td>18.489138</td>
+      <td>0.618893</td>
+      <td>0.781481</td>
+      <td>18.973666</td>
+      <td>16.390654</td>
+      <td>232</td>
+      <td>39</td>
+      <td>250</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>57</td>
+      <td>78</td>
+      <td>185.230769</td>
+      <td>6.028638</td>
+      <td>17.579799</td>
+      <td>0.939361</td>
+      <td>0.722222</td>
+      <td>18.027756</td>
+      <td>9.965575</td>
+      <td>248</td>
+      <td>170</td>
+      <td>254</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>58</td>
+      <td>86</td>
+      <td>183.720930</td>
+      <td>5.426871</td>
+      <td>21.261427</td>
+      <td>0.966876</td>
+      <td>0.781818</td>
+      <td>22.000000</td>
+      <td>10.464158</td>
+      <td>249</td>
+      <td>117</td>
+      <td>254</td>
+      <td>139</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>59</td>
+      <td>51</td>
+      <td>190.431373</td>
+      <td>5.032414</td>
+      <td>13.742079</td>
+      <td>0.930534</td>
+      <td>0.728571</td>
+      <td>14.035669</td>
+      <td>8.058239</td>
+      <td>249</td>
+      <td>228</td>
+      <td>254</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>60</td>
+      <td>46</td>
+      <td>175.304348</td>
+      <td>3.803982</td>
+      <td>15.948714</td>
+      <td>0.971139</td>
+      <td>0.766667</td>
+      <td>15.033296</td>
+      <td>7.653040</td>
+      <td>250</td>
+      <td>67</td>
+      <td>254</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 13 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./day3a_Tabular_Data_and_Descriptive_Statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="readme.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Working with tabular data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02_basic_descriptive_statistics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Basic descriptive statistics</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
