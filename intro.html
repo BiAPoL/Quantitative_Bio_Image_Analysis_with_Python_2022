@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome the Bio-Image Analysis Course from BiA-PoL &#8212; Quantitative Bio-image Analysis with Python and Napari</title>
+    <title>Quantitative Bio-Image Analysis using Python &#8212; Quantitative Bio-image Analysis with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -96,7 +96,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/biapol_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Quantitative Bio-image Analysis with Python and Napari</h1>
+      <h1 class="site-logo" id="site-title">Quantitative Bio-image Analysis with Python</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome the Bio-Image Analysis Course from BiA-PoL
+                    Quantitative Bio-Image Analysis using Python
                 </a>
             </li>
         </ul>
@@ -719,18 +719,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aims-of-the-course">
-   Aims of the course
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#timetable">
    Timetable
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
+  <a class="reference internal nav-link" href="#how-to-use-this-material">
+   How to use this material
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-and-support">
+   Feedback and support
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
   </a>
  </li>
 </ul>
@@ -742,7 +747,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome the Bio-Image Analysis Course from BiA-PoL</h1>
+                <h1>Quantitative Bio-Image Analysis using Python</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -753,18 +758,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aims-of-the-course">
-   Aims of the course
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#timetable">
    Timetable
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contents">
-   Contents
+  <a class="reference internal nav-link" href="#how-to-use-this-material">
+   How to use this material
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-and-support">
+   Feedback and support
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
   </a>
  </li>
 </ul>
@@ -777,20 +787,35 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-the-bio-image-analysis-course-from-bia-pol">
-<h1>Welcome the Bio-Image Analysis Course from BiA-PoL<a class="headerlink" href="#welcome-the-bio-image-analysis-course-from-bia-pol" title="Permalink to this headline">#</a></h1>
-<p>From the Bio-Image Analysis Technology Development group, DFG Cluster of Excellence “Physics of Life”, TU Dresden</p>
-<section id="aims-of-the-course">
-<h2>Aims of the course<a class="headerlink" href="#aims-of-the-course" title="Permalink to this headline">#</a></h2>
-<p>To train life scientists to implement a complete workflow on image analysis: from learning basic programming skills in python, escalating to image processing and biostatistics, and achieving a functional napari plugin with reproducibe code.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="quantitative-bio-image-analysis-using-python">
+<h1>Quantitative Bio-Image Analysis using Python<a class="headerlink" href="#quantitative-bio-image-analysis-using-python" title="Permalink to this headline">#</a></h1>
+<p>This <a class="reference external" href="https://jupyterbook.org/">Jupyter book</a> contains training resources for scientists who want to dive into image processing with Python.
+It specifically aims for students and scientists working with microscopy images in the life sciences.
+We presume the attendees have some basic programming and image analysis knowledge.
+To get everyone on the same level, we start with Python programming basics, and image analysis basics,
+we then dive into descriptive statistics for working with measurements and <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> for plotting results.
+We will process images using <a class="reference external" href="https://numpy.org">numpy</a>, <a class="reference external" href="https://www.scipy.org/">scipy</a>, <a class="reference external" href="https://scikit-image.org/">scikit-image</a> and <a class="reference external" href="https://github.com/clEsperanto/pyclesperanto_prototype">clEsperanto</a>.
+We will explore <a class="reference external" href="https://napari.org">Napari</a> for interactive image data analysis.
+Finally, we will use <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> and <a class="reference external" href="https://github.com/stardist/stardist">StarDist</a> to process images using machine learning and deep learning techniques.</p>
 <section id="timetable">
 <h2>Timetable<a class="headerlink" href="#timetable" title="Permalink to this headline">#</a></h2>
-<p>The timetable of the course with the location of each section can be found <span class="xref myst">here</span></p>
+<p><img alt="img.png" src="_images/timetable.png" /></p>
 </section>
-<section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
-<p>This material is divided in 4 days (plus a day 0 for preparation of the programming environment).</p>
+<section id="how-to-use-this-material">
+<h2>How to use this material<a class="headerlink" href="#how-to-use-this-material" title="Permalink to this headline">#</a></h2>
+<p>For following the course, we recommend downloading <a class="reference external" href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022">the repository from which this book is made</a>.
+All Jupyter Notebooks are executable so that attendees can reproduce all demos and exercises.</p>
+<p><img alt="img.png" src="_images/how_to_download.png" /></p>
+</section>
+<section id="feedback-and-support">
+<h2>Feedback and support<a class="headerlink" href="#feedback-and-support" title="Permalink to this headline">#</a></h2>
+<p>If you have any questions, please use the anonymous etherpad (see email) or create a <a class="reference external" href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues">github issue</a>.
+Alternatively, open a thread on <a class="reference external" href="https://image.sc">image.sc</a>, put a link to the lesson or exercise you want to ask a question about and tag &#64;haesleinhuepf.</p>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>We would like to thank all the people who shared teaching materials we are reusing here, in particular Anna Poetsch, <a class="reference external" href="https://tu-dresden.de/cmcb/biotec/forschungsgruppen/poetsch">Biotec Dresden</a> and Benoit Lombardot, MPI-CBG Dresden.
+We acknowledge support by the Deutsche Forschungsgemeinschaft under Germany’s Excellence Strategy—EXC2068–Cluster of Excellence Physics of Life of TU Dresden.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
