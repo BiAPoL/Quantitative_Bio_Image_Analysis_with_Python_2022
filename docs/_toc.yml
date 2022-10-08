@@ -61,11 +61,11 @@ chapters:
 
 - file: day2_Machine_learning_APOC/readme
   sections:
-    - day2_Machine_learning_APOC/01_supervised_machine_learning
-    - day2_Machine_learning_APOC/02_exercise_apoc.md
-    - day2_Machine_learning_APOC/02_scikit_learn_random_forest_pixel_classifier.
-    - day2_Machine_learning_APOC/04_demo_object_segmenter
-    - day2_Machine_learning_APOC/05_train_on_folders
+    - file: day2_Machine_learning_APOC/01_supervised_machine_learning
+    - file: day2_Machine_learning_APOC/02_exercise_apoc.md
+    - file: day2_Machine_learning_APOC/02_scikit_learn_random_forest_pixel_classifier.
+    - file: day2_Machine_learning_APOC/04_demo_object_segmenter
+    - file: day2_Machine_learning_APOC/05_train_on_folders
 
 - file: day2_Deep_learning_segmentation/readme
   sections:
