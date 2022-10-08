@@ -10,7 +10,7 @@ options:  # The options key will be applied to all chapters, but not sub-section
 
 chapters:
 - file: day0/Readme
-- file: day1/Readme
+- file: day1/readme
   sections:
   - file: day1a_Python_Introduction/readme
     sections:
@@ -43,35 +43,42 @@ chapters:
     
 - file: day2/Readme
   sections:
-  - file: day2/01_Background_subtraction
-  - file: day2/02_Thresholding
-  - file: day2/03_Morphological_operations
-  - file: day2/04_Instance_segmentation
+  - file: day2a_image_filtering/readme
+    sections:
+    - file: day2/01_Background_subtraction
+
+  - file: day2b_image_segmentation/readme
+    - sections
+    - file: day2/02_Thresholding
+    - file: day2/03_Morphological_operations
+    - file: day2/04_Instance_segmentation
+
+  - file: day2c_instance_segmentation/readme
+    sections:
+    - file: day2c_instance_segmentation/09_connected_component_labeling
+    - file: day2c_instance_segmentation/10_touching_objects_labeling
+    - file: day2c_instance_segmentation/11_voronoi_otsu_labeling
+    - file: day2c_instance_segmentation/12_Segmentation_3D
+    - file: day2c_instance_segmentation/14_segmentation_2d_membranes
+    - file: day2c_instance_segmentation/15_remove_labels_on_image_edges
+    - file: day2c_instance_segmentation/16_open_close_labels
+    - file: day2c_instance_segmentation/19_the_segmentation_game.md
+    - file: day2c_instance_segmentation/20_Segmentation_quality_estimation
+
+  - file: day2d_machine_learning_apoc/readme
+    sections:
+      - file: day2d_machine_learning_apoc/01_supervised_machine_learning
+      - file: day2d_machine_learning_apoc/02_exercise_apoc.md
+      - file: day2d_machine_learning_apoc/02_scikit_learn_random_forest_pixel_classifier.
+      - file: day2d_machine_learning_apoc/04_demo_object_segmenter
+      - file: day2d_machine_learning_apoc/05_train_on_folders
+
+  - file: day2e_deep_learning_segmentation/readme
+    sections:
+    - file: day2/07_stardist2d_in_python
+
   - file: day2/05_Feature_extraction
 
-- file: day2c_instance_segmentation/readme
-  sections:
-  - file: day2c_instance_segmentation/09_connected_component_labeling
-  - file: day2c_instance_segmentation/10_touching_objects_labeling
-  - file: day2c_instance_segmentation/11_voronoi_otsu_labeling
-  - file: day2c_instance_segmentation/12_Segmentation_3D
-  - file: day2c_instance_segmentation/14_segmentation_2d_membranes
-  - file: day2c_instance_segmentation/15_remove_labels_on_image_edges
-  - file: day2c_instance_segmentation/16_open_close_labels
-  - file: day2c_instance_segmentation/19_the_segmentation_game.md
-  - file: day2c_instance_segmentation/20_Segmentation_quality_estimation
-
-- file: day2d_machine_learning_apoc/readme
-  sections:
-    - file: day2d_machine_learning_apoc/01_supervised_machine_learning
-    - file: day2d_machine_learning_apoc/02_exercise_apoc.md
-    - file: day2d_machine_learning_apoc/02_scikit_learn_random_forest_pixel_classifier.
-    - file: day2d_machine_learning_apoc/04_demo_object_segmenter
-    - file: day2d_machine_learning_apoc/05_train_on_folders
-
-- file: day2e_deep_learning_segmentation/readme
-  sections:
-  - file: day2/07_stardist2d_in_python
 
 - file: day3/Readme
   sections:
