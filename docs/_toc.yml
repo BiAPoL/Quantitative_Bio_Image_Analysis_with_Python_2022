@@ -116,12 +116,13 @@ chapters:
     - file: day4b_writing_readable_code/10_reading_exercise
     - file: day4b_writing_readable_code/11_exercise_modules
     - file: day4b_writing_readable_code/12_keep_it_short_and_simple
+    - file: day4b_writing_readable_code/14_stackview
 
   - file: day4c_crafting_napari_plugins/readme
     sections:
     - file: day4/01_Turning_a_function_into_a_napari_plugin
     - file: day4/02_Adding_code_to_Github
     - file: day4/03_Practical_Exchanging_code
-    - file: day4/04_Stackview
+
   
 - file: day5/Analyze_data_together
