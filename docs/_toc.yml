@@ -68,6 +68,7 @@ chapters:
     - day2_Machine_learning_APOC/05_train_on_folders
 
 - file: day2_Deep_learning_segmentation/readme
+  sections:
   - file: day2/07_stardist2d_in_python
 
 - file: day3/Readme
