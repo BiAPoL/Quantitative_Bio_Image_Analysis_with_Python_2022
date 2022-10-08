@@ -1,6 +1,6 @@
 # In _config.yml
-title: Quantitative Bio-Image Analysis with Python Course Book
-author: Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase
+title: Quantitative Bio-image Analysis with Python and Napari
+author: Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden
 logo: biapol_logo.png
 execute:
   execute_notebooks: off
