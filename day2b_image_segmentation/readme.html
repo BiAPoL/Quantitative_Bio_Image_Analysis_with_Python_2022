@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Python code in Jupyter notebooks &#8212; Quantitative Bio-image Analysis with Python and Napari</title>
+    <title>Image segmentation &#8212; Quantitative Bio-image Analysis with Python and Napari</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basic math in python" href="02_Math_in_python.html" />
-    <link rel="prev" title="Introduction to Python" href="readme.html" />
+    <link rel="next" title="Thresholding" href="../day2/02_Thresholding.html" />
+    <link rel="prev" title="Thresholding and noise" href="../day2/01_Background_subtraction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,83 +119,83 @@ const thebe_selector_output = ".output, .cell_output"
    Course preparation
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../day1/readme.html">
    Introduction to Python and Bio-image Analysis
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="readme.html">
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1a_Python_Introduction/readme.html">
      Introduction to Python
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/01_our_first_juptyer_notebook.html">
        Python code in Jupyter notebooks
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="02_Math_in_python.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/02_Math_in_python.html">
        Basic math in python
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="03_Dont_try_this_at_home.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/03_Dont_try_this_at_home.html">
        Pitfalls when working with Jupyter notebooks
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="04_Basic_types.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/04_Basic_types.html">
        Basic types in python
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05_lists_tuples.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05_lists_tuples.html">
        Lists and tuples
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05a_cropping_lists.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05a_cropping_lists.html">
        Cropping lists
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05b_sorting_lists.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05b_sorting_lists.html">
        Sorting lists
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05c_masking.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05c_masking.html">
        Masking numpy arrays
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="06_Dictionaries_and_tables.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/06_Dictionaries_and_tables.html">
        Dictionaries
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="07_Conditions.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/07_Conditions.html">
        Conditions
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="08_loops.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/08_loops.html">
        Loops
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="09_custom_functions.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/09_custom_functions.html">
        Functions
       </a>
      </li>
@@ -215,16 +215,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../day2/Readme.html">
    Day 2: Image Filtering, Segmentation and Feature Extraction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../day2a_image_filtering/readme.html">
      Image Filtering
@@ -242,11 +242,11 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../day2b_image_segmentation/readme.html">
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
      Image segmentation
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
     <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
@@ -593,35 +593,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day1a_Python_Introduction/01_our_first_juptyer_notebook.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -661,7 +632,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday1a_Python_Introduction/01_our_first_juptyer_notebook.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2b_image_segmentation/readme.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -689,7 +660,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/day1a_Python_Introduction/01_our_first_juptyer_notebook.ipynb"
+        <a href="../_sources/day2b_image_segmentation/readme.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -700,7 +671,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -726,84 +697,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Python code in Jupyter notebooks
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markdown-documentation-in-jupyter-notebooks">
-     Markdown documentation in Jupyter notebooks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Python code in Jupyter notebooks</h1>
+                <h1>Image segmentation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Python code in Jupyter notebooks
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markdown-documentation-in-jupyter-notebooks">
-     Markdown documentation in Jupyter notebooks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -811,58 +721,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="python-code-in-jupyter-notebooks">
-<h1>Python code in Jupyter notebooks<a class="headerlink" href="#python-code-in-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
-<p>Python code can be written in “.py” files, which can be executed from command line. Furthermore, for academic purposes, <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter notebooks</a> are often used to document what code does and add additional explanations and links to resources.</p>
-<p>See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3">Python 3 documentation</a></p></li>
-<li><p><a class="reference external" href="https://swcarpentry.github.io/python-novice-inflammation/">Python fundamentals by the Carpentries</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PLZsOBAyNTZwYHBIlu_PUO19M7aHMgwBJr">Python tutorials for image processing and machine learning by Digital Sreeni</a></p></li>
-</ul>
-<p>To write our first small python program, we type in the Jupyter notebook code cell below. You can double click in this cell, change the code and execute it by hitting SHIFT+ENTER:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="image-segmentation">
+<h1>Image segmentation<a class="headerlink" href="#image-segmentation" title="Permalink to this headline">#</a></h1>
+<div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>When working with Jupyter notebooks, obviously SHIFT-ENTER is <strong>the</strong> short cut people use all the time.</p></li>
-<li><p>If you want to “leave” a cell without executing it, you can also hit ESCAPE.</p></li>
-<li><p>You can add a new cell <strong>a</strong>bove the current cell by hitting A and <strong>b</strong>elow by hitting B.</p></li>
-<li><p>You can delete cells by hitting D.</p></li>
-</ul>
-<p>There are more shortcuts. You can see them all in the menu above Help &gt; Keyboard shortcuts or by hitting H.</p>
-<p>Try it out!</p>
-<section id="markdown-documentation-in-jupyter-notebooks">
-<h2>Markdown documentation in Jupyter notebooks<a class="headerlink" href="#markdown-documentation-in-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
-<p>Markdown is a coding language for describing the <strong>formating</strong> ~of~ <em>text</em>. In order to see the markdown code which describes this text, double click this cell in your Jupyter notebook. Hit SHIFT+ENTER to return to the viewing mode.</p>
-<ul class="simple">
-<li><p>Bullet point</p></li>
-<li><p>More bullet points</p>
-<ul>
-<li><p>Deeper bullet points</p></li>
-</ul>
-</li>
-</ul>
-<ol class="simple">
-<li><p>List entry</p></li>
-<li><p>Another list entry</p></li>
-<li><p>More list entries</p></li>
-<li><p><a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown cheatsheet</a></p></li>
-</ol>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h1>
-<p>Add a new python code cell below and use the <code class="docutils literal notranslate"><span class="pre">print</span></code> command to print your name.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -878,7 +740,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./day1a_Python_Introduction"
+            path: "./day2b_image_segmentation"
         },
         predefinedOutput: true
     }
@@ -892,17 +754,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="readme.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../day2/01_Background_subtraction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Python</p>
+            <p class="prev-next-title">Thresholding and noise</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_Math_in_python.html" title="next page">
+    <a class='right-next' id="next-link" href="../day2/02_Thresholding.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Basic math in python</p>
+        <p class="prev-next-title">Thresholding</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
