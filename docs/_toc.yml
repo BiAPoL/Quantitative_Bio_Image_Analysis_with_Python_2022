@@ -10,34 +10,36 @@ options:  # The options key will be applied to all chapters, but not sub-section
 
 chapters:
 - file: day0/Readme
-- file: day1a_Python_Introduction/readme
+- file: day1/Readme
   sections:
-  - file: day1a_Python_Introduction/01_our_first_juptyer_notebook
-  - file: day1a_Python_Introduction/02_Math_in_python
-  - file: day1a_Python_Introduction/03_Dont_try_this_at_home
-  - file: day1a_Python_Introduction/04_Basic_types
-  - file: day1a_Python_Introduction/05_lists_tuples
-  - file: day1a_Python_Introduction/05a_cropping_lists
-  - file: day1a_Python_Introduction/05b_sorting_lists
-  - file: day1a_Python_Introduction/05c_masking
-  - file: day1a_Python_Introduction/06_Dictionaries_and_tables
-  - file: day1a_Python_Introduction/07_Conditions
-  - file: day1a_Python_Introduction/08_loops
-  - file: day1a_Python_Introduction/09_custom_functions
+  `- file: day1a_Python_Introduction/readme
+    sections:
+    - file: day1a_Python_Introduction/01_our_first_juptyer_notebook
+    - file: day1a_Python_Introduction/02_Math_in_python
+    - file: day1a_Python_Introduction/03_Dont_try_this_at_home
+    - file: day1a_Python_Introduction/04_Basic_types
+    - file: day1a_Python_Introduction/05_lists_tuples
+    - file: day1a_Python_Introduction/05a_cropping_lists
+    - file: day1a_Python_Introduction/05b_sorting_lists
+    - file: day1a_Python_Introduction/05c_masking
+    - file: day1a_Python_Introduction/06_Dictionaries_and_tables
+    - file: day1a_Python_Introduction/07_Conditions
+    - file: day1a_Python_Introduction/08_loops
+    - file: day1a_Python_Introduction/09_custom_functions
 
-- file: day1b_Introduction_Bio-image_Analysis/readme.md
-  sections:
-  - file: day1_z_Afternoon/readme
-  - file: day1_z_Afternoon/01_Working_with_images
-  - file: day1_z_Afternoon/02_Matplotlib_subplots_introduction
-  - file: day1_z_Afternoon/03_Multi_channel_image_data
-  - file: day1_z_Afternoon/04_Image_file_formats
-  - file: day1_z_Afternoon/05_Folder_structures
-  - file: day1_z_Afternoon/06_Folder_structures2
-  - file: day1_z_Afternoon/07_Napari_from_Jupyter_introduction
-  - file: day1_z_Afternoon/08_my_segmentation_workflow_trailer
-  - file: day1_z_Afternoon/09_Image_Filters
-  - file: day1_z_Afternoon/10_Filters_in_3D_Isotropic_Data
+  - file: day1b_Introduction_Bio-image_Analysis/readme.md
+    sections:
+    - file: day1_z_Afternoon/readme
+    - file: day1_z_Afternoon/01_Working_with_images
+    - file: day1_z_Afternoon/02_Matplotlib_subplots_introduction
+    - file: day1_z_Afternoon/03_Multi_channel_image_data
+    - file: day1_z_Afternoon/04_Image_file_formats
+    - file: day1_z_Afternoon/05_Folder_structures
+    - file: day1_z_Afternoon/06_Folder_structures2
+    - file: day1_z_Afternoon/07_Napari_from_Jupyter_introduction
+    - file: day1_z_Afternoon/08_my_segmentation_workflow_trailer
+    - file: day1_z_Afternoon/09_Image_Filters
+    - file: day1_z_Afternoon/10_Filters_in_3D_Isotropic_Data`
     
 - file: day2/Readme
   sections:

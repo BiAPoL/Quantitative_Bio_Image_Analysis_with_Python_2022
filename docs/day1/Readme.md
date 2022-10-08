@@ -1,3 +1,3 @@
-# Bio-Image Analysis Introduction and Python Basics
+# Day 1: Introduction to Python Basics and Bio-image Analysis
 
-This part explains how a typical Bio-Image Analysis workflow should look like and provides some tutorials for learning some basic aspects of Python programming.
+On day 1 we will go through an introduction of Python and Bio-image Analysis.

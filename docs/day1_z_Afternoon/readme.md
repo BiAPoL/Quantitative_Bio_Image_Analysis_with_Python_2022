@@ -1,20 +1,7 @@
 # Image analysis basics
 
-This chapter covers image processing and image analysis basics. We will introduce what images are and how we can process them. 
-
-## Installation of required libraries
-
-We will be mostly using the [numpy library](https://numpy.org), [scipy](https://scipy.org/), [scikit-image](https://scikit-image.org) and [pooch](https://pypi.org/project/pooch/). For visualization, we will make use of [matplotlib](https://matplotlib.org/). You can install them using preferably using conda:
-
-```
-conda install numpy scipy scikit-image matplotlib pooch
-```
-
-Alternatively, installation via pip also works:
-
-```
-pip install numpy scipy scikit-image matplotlib pooch
-```
+This chapter covers image processing and image analysis basics. 
+We will introduce what images are and how we can process them. 
 
 ### See also
 
