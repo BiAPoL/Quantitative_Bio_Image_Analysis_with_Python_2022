@@ -515,25 +515,37 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
-     Turning a function into a napari plugin
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4c_crafting_napari_plugins/readme.html">
+     Make your own napari plugin
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
-     Use Github Desktop to do commit, PR and merges to your repository
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
-     Send your repo to a friend and ask them to run your code
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/04_Stackview.html">
-     Stackview
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
+       Turning a function into a napari plugin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
+       Use Github Desktop to do commit, PR and merges to your repository
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
+       Send your repo to a friend and ask them to run your code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/04_Stackview.html">
+       Stackview
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -809,7 +821,7 @@ We will use the napari plugins <a class="reference external" href="https://www.n
 <section id="pixel-classification-and-object-segmentation-in-napari">
 <h2>Pixel classification and Object Segmentation in Napari<a class="headerlink" href="#pixel-classification-and-object-segmentation-in-napari" title="Permalink to this headline">#</a></h2>
 <p>For segmenting objects, we can use the Object Segmentation tool in APOC. Under the hood it uses a pixel classifier and <a class="reference external" href="https://en.wikipedia.org/wiki/Connected-component_labeling">connected component labeling</a>.
-The following procedure is also shown in <span class="xref myst">this video</span>.</p>
+The following procedure is also shown in <a class="reference external" href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day2d_machine_learning_apoc/apoc_object_segmentation.mp4">this video</a>.</p>
 <p>Start the object segmentation from the <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">&gt;</span> <span class="pre">Segmentation</span> <span class="pre">/</span> <span class="pre">Labeling</span> <span class="pre">&gt;</span> <span class="pre">Object</span> <span class="pre">Segmentation</span> <span class="pre">(APOC)</span></code> menu.</p>
 <p><img alt="" src="../_images/apoc2.png" /></p>
 <p>Add a new labels layer by clicking on this button:
@@ -836,7 +848,7 @@ The following procedure is also shown in <span class="xref myst">this video</spa
 <section id="object-classification">
 <h2>Object classification<a class="headerlink" href="#object-classification" title="Permalink to this headline">#</a></h2>
 <p>Objects can also be classified according to their propeties such as size, intensity and shape.
-The following procedure is also shown in <span class="xref myst">this video</span>.</p>
+The following procedure is also shown in <a class="reference external" href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day2d_machine_learning_apoc/apoc_object_classification.mp4">this video</a>.</p>
 <p>Add another label image.
 <img alt="" src="../_images/apoc21.png" /></p>
 <p>Rename the label image e.g. to <code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">class</span> <span class="pre">annotation</span></code> to not mix it up with the other.

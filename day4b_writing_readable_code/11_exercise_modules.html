@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Custom libraries &#8212; Quantitative Bio-image Analysis with Python</title>
+    <title>Modularization exercise &#8212; Quantitative Bio-image Analysis with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -513,25 +513,37 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
-     Turning a function into a napari plugin
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4c_crafting_napari_plugins/readme.html">
+     Make your own napari plugin
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
-     Use Github Desktop to do commit, PR and merges to your repository
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
-     Send your repo to a friend and ask them to run your code
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../day4/04_Stackview.html">
-     Stackview
-    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
+       Turning a function into a napari plugin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
+       Use Github Desktop to do commit, PR and merges to your repository
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
+       Send your repo to a friend and ask them to run your code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/04_Stackview.html">
+       Stackview
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -591,35 +603,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day4c_Python_modules/custom_libraries.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -659,7 +642,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday4c_Python_modules/custom_libraries.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday4b_writing_readable_code/11_exercise_modules.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -687,7 +670,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/day4c_Python_modules/custom_libraries.ipynb"
+        <a href="../_sources/day4b_writing_readable_code/11_exercise_modules.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -698,7 +681,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -724,84 +707,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Custom libraries
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modifying-code-in-custom-libraries">
-     Modifying code in custom libraries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Custom libraries</h1>
+                <h1>Modularization exercise</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Custom libraries
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modifying-code-in-custom-libraries">
-     Modifying code in custom libraries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -809,97 +731,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="custom-libraries">
-<h1>Custom libraries<a class="headerlink" href="#custom-libraries" title="Permalink to this headline">#</a></h1>
-<p>When programming python for some time, you may be using again and again the same code. You could copy&amp;paste it from jupyter notebook to jupyter notebook. However, notebooks are not meant to hold many functions. Notebooks are meant to show short and concise examples of code. Thus, in order to organize our code, we can put function we use more often into a python file, a custom library, and then import the functions.</p>
-<p>See also:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="modularization-exercise">
+<h1>Modularization exercise<a class="headerlink" href="#modularization-exercise" title="Permalink to this headline">#</a></h1>
+<p>Go through the code from yesterday and identify a workflow that worked well and contained these steps:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/import.html">The import system</a></p></li>
+<li><p>Image preprocessing</p></li>
+<li><p>Image segmentation</p></li>
+<li><p>Feature extraction</p></li>
 </ul>
-<p>Within the same folder, there exists a <span class="xref myst">my_library.py</span> file. It contains two functions. Let’s import them and use them:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_library</span> <span class="kn">import</span> <span class="n">square</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_library</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wuzzle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.449489742783178
-</pre></div>
-</div>
-</div>
-</div>
-<p>When maintaining your own library of functions, make sure that the functions have reasonable names and useful docstrings. You may otherwise be confused about your own code later on.</p>
-<p>This is a good example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Squares a number by multiplying it with itself  and returns its result.
-    
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is a bad example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wuzzle</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    The wuzzle function manipulates a number in a magic way and returns the result.
-    
-</pre></div>
-</div>
-</div>
-</div>
-<section id="modifying-code-in-custom-libraries">
-<h2>Modifying code in custom libraries<a class="headerlink" href="#modifying-code-in-custom-libraries" title="Permalink to this headline">#</a></h2>
-<p>If you modify code in a python library file side-by-side with the code in a notebook, you may have restart your notebook after modifying the library file. You can do this in the menu <code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">&amp;</span> <span class="pre">Run</span> <span class="pre">All</span></code>.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h1>
-<p>Create an own library and write a function that can compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> between two points. The point coordinates are given as tuples. Hint: You will need a for-loop in this function that iterates pair-wise over the two coordinates:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Copy &amp; paste code from the notebooks you worked with yesterday into a new custom module <code class="docutils literal notranslate"><span class="pre">my_analysis.py</span></code>. Write a new notebook that demonstrates how to use the functions of your <code class="docutils literal notranslate"><span class="pre">my_analysis</span> <span class="pre">module</span></code>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -915,7 +755,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./day4c_Python_modules"
+            path: "./day4b_writing_readable_code"
         },
         predefinedOutput: true
     }
