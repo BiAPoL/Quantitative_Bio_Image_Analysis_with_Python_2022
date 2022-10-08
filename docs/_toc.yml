@@ -12,7 +12,7 @@ chapters:
 - file: day0/Readme
 - file: day1/Readme
   sections:
-  `- file: day1a_Python_Introduction/readme
+  - file: day1a_Python_Introduction/readme
     sections:
     - file: day1a_Python_Introduction/01_our_first_juptyer_notebook
     - file: day1a_Python_Introduction/02_Math_in_python
