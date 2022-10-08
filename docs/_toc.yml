@@ -106,9 +106,8 @@ chapters:
 
 - file: day4/Readme
   sections:
-  - file: day4b_writing_readable_code/Readme
+  - file: day4b_writing_readable_code/readme
     sections:
-
     - file: day4b_writing_readable_code/05_readable_code
     - file: day4b_writing_readable_code/07_magic_numbers
     - file: day4b_writing_readable_code/08_divide_and_rule
