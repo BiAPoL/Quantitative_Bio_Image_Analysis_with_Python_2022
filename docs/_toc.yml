@@ -91,8 +91,24 @@ chapters:
 
 - file: day3/Readme
   sections:
-  - file: day3/01_Tidy_data
-  - file: day3/02_Descriptive_statistics
+  # Day 3 Morning Part
+  - file: day3a_Tabular_Data_and_Descriptive_Statistics/readme
+    sections:
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/02_basic_descriptive_statistics
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/03_descriptive_statistics_label_images
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/04_append_tables
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/05_handling_NaNs
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/06_tidy_data
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/07_split_apply_combine
+  - file: day3b_Plotting/readme
+    sections:
+    - file: day3b_Plotting/01_Plotting_Data_with_Python
+    - file: day3b_Plotting/02_Introduction_to_Seaborn
+    - file: day3b_Plotting/03_Plotting_distributions
+    - file: day3b_Plotting/04_Multivariate_views
+    
+  # Day 3 Afternoon Part
   - file: day3/03_statistics_and_tests/Readme
     sections:
     - file: day3/03_statistics_and_tests/01_Bland_altman_analysis
@@ -110,8 +126,6 @@ chapters:
     - file: day3/06_clustering/01_kmeans
     - file: day3/06_clustering/02_hdbscan
     - file: day3/06_clustering/03_interactive_dim_reduction_and_clustering
-  - file: day3/07_Probability_distributions
-  - file: day3/08_Inferential_statistics_(bootstrap_maybe)
 
 - file: day4/Readme
   sections:
