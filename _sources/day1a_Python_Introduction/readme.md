@@ -1,4 +1,4 @@
-# Day 1: Introduction to Python
+# Introduction to Python
 
 This first chapter serves getting us all on the same page. We will not go through everything in detail and focus on community needs. Depending on which of these four items the people are most curious about, we will focus on these specific topics during the first session:
 
