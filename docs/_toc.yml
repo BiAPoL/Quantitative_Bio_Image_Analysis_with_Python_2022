@@ -12,6 +12,7 @@ chapters:
 - file: day0/Readme
 - file: day1/readme
   sections:
+  # Day1 Morning Part
   - file: day1a_Python_Introduction/readme
     sections:
     - file: day1a_Python_Introduction/01_our_first_juptyer_notebook
@@ -27,22 +28,30 @@ chapters:
     - file: day1a_Python_Introduction/08_loops
     - file: day1a_Python_Introduction/09_custom_functions
 
-  - file: day1b_Introduction_Bio-image_Analysis/readme.md
+  - file: day1b_Introduction_Bio-image_Analysis/readme
+  # Day1 Afternoon Part
+  - file: day1w_Working_with_Images/readme
     sections:
-    - file: day1_z_Afternoon/readme
-    - file: day1_z_Afternoon/01_Working_with_images
-    - file: day1_z_Afternoon/02_Matplotlib_subplots_introduction
-    - file: day1_z_Afternoon/03_Multi_channel_image_data
-    - file: day1_z_Afternoon/04_Image_file_formats
-    - file: day1_z_Afternoon/05_Folder_structures
-    - file: day1_z_Afternoon/06_Folder_structures2
-    - file: day1_z_Afternoon/07_Napari_from_Jupyter_introduction
-    - file: day1_z_Afternoon/08_my_segmentation_workflow_trailer
-    - file: day1_z_Afternoon/09_Image_Filters
-    - file: day1_z_Afternoon/10_Filters_in_3D_Isotropic_Data`
-    
+    - file: day1w_Working_with_Images/01_Working_with_images
+    - file: day1w_Working_with_Images/02_Matplotlib_subplots_introduction
+    - file: day1w_Working_with_Images/03_Multi_channel_image_data
+    - file: day1w_Working_with_Images/04_Image_file_formats
+  - file: day1x_Folder_Structures/readme
+    sections:
+    - file: day1x_Folder_Structures/05_Folder_structures
+    - file: day1x_Folder_Structures/05_Folder_structures2
+  - file: day1y_Napari_Introduction/readme
+    sections:
+    - file: day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction
+    - file: day1y_Napari_Introduction/08_my_segmentation_workflow_trailer
+  - file: day1z_Image_Filters/readme
+    sections:
+    - file: day1z_Image_Filters/09_Image_Filters
+    - file: day1z_Image_Filters/10_Filters_in_3D_Isotropic_Data
+  
 - file: day2/Readme
   sections:
+  # Day2 Morning Part
   - file: day2a_image_filtering/readme
     sections:
     - file: day2/01_Background_subtraction
@@ -64,7 +73,7 @@ chapters:
     - file: day2c_instance_segmentation/16_open_close_labels
     - file: day2c_instance_segmentation/19_the_segmentation_game.md
     - file: day2c_instance_segmentation/20_Segmentation_quality_estimation
-
+  # Day2 Afternoon Part
   - file: day2d_machine_learning_apoc/readme
     sections:
       - file: day2d_machine_learning_apoc/01_supervised_machine_learning
@@ -82,8 +91,24 @@ chapters:
 
 - file: day3/Readme
   sections:
-  - file: day3/01_Tidy_data
-  - file: day3/02_Descriptive_statistics
+  # Day 3 Morning Part
+  - file: day3a_Tabular_Data_and_Descriptive_Statistics/readme
+    sections:
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/02_basic_descriptive_statistics
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/03_descriptive_statistics_label_images
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/04_append_tables
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/05_handling_NaNs
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/06_tidy_data
+    - file: day3a_Tabular_Data_and_Descriptive_Statistics/07_split_apply_combine
+  - file: day3b_Plotting/readme
+    sections:
+    - file: day3b_Plotting/01_Plotting_Data_with_Python
+    - file: day3b_Plotting/02_Introduction_to_Seaborn
+    - file: day3b_Plotting/03_Plotting_distributions
+    - file: day3b_Plotting/04_Multivariate_views
+    
+  # Day 3 Afternoon Part
   - file: day3/03_statistics_and_tests/Readme
     sections:
     - file: day3/03_statistics_and_tests/01_Bland_altman_analysis
@@ -101,8 +126,6 @@ chapters:
     - file: day3/06_clustering/01_kmeans
     - file: day3/06_clustering/02_hdbscan
     - file: day3/06_clustering/03_interactive_dim_reduction_and_clustering
-  - file: day3/07_Probability_distributions
-  - file: day3/08_Inferential_statistics_(bootstrap_maybe)
 
 - file: day4/Readme
   sections:
