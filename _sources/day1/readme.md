@@ -1,1 +1,1 @@
-# Introduction to Python and Bio-image Analysis
+# Day 1: Introduction to Python and Bio-image Analysis
