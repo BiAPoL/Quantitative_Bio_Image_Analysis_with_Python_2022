@@ -2,7 +2,7 @@
 
 In this section we will learn more about how to write, document and share code.
 
-Download [Slides](Good_Scientific_Practice.pdf)
+Download [Slides](https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day4a_Best_practices_scientific_programming/Good_Scientific_Practice.pdf)
 
 ## Exercise: Judging software quality indicators
 
@@ -24,5 +24,5 @@ We will go through the procedure demonstrated there and create a [github reposit
 
 This includes topics such as version control, licensing and copyright.
 
-Download [Slides](Sharing_Licensing.pdf)
+Download [Slides](https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day4a_Best_practices_scientific_programming/Sharing_Licensing.pdf)
 
