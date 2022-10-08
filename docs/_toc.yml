@@ -10,15 +10,35 @@ options:  # The options key will be applied to all chapters, but not sub-section
 
 chapters:
 - file: day0/Readme
-- file: day1/Readme
+- file: day1a_Python_Introduction/readme
   sections:
-  - file: day1/01_Introduction_to_Bio_Image_Analysis
-  - file: day1/02_Working_with_images
-  - file: day1/03_Folder_structure
-  - file: day1/04_Image_visualization_with_napari
-  - file: day1/05_Image_processing_Filters
-  - file: day1/06_Image_processing_3D
+  - file: day1a_Python_Introduction/01_our_first_juptyer_notebook
+  - file: day1a_Python_Introduction/02_Math_in_python
+  - file: day1a_Python_Introduction/03_Dont_try_this_at_home
+  - file: day1a_Python_Introduction/04_Basic_types
+  - file: day1a_Python_Introduction/05_lists_tuples
+  - file: day1a_Python_Introduction/05a_cropping_lists
+  - file: day1a_Python_Introduction/05b_sorting_lists
+  - file: day1a_Python_Introduction/05c_masking
+  - file: day1a_Python_Introduction/06_Dictionaries_and_tables
+  - file: day1a_Python_Introduction/07_Conditions
+  - file: day1a_Python_Introduction/08_loops
+  - file: day1a_Python_Introduction/09_custom_functions
 
+- file: day1b_Introduction_Bio-image_Analysis/readme.md
+  sections:
+  - file: day1_z_Afternoon/readme
+  - file: day1_z_Afternoon/01_Working_with_images
+  - file: day1_z_Afternoon/02_Matplotlib_subplots_introduction
+  - file: day1_z_Afternoon/03_Multi_channel_image_data
+  - file: day1_z_Afternoon/04_Image_file_formats
+  - file: day1_z_Afternoon/05_Folder_structures
+  - file: day1_z_Afternoon/06_Folder_structures2
+  - file: day1_z_Afternoon/07_Napari_from_Jupyter_introduction
+  - file: day1_z_Afternoon/08_my_segmentation_workflow_trailer
+  - file: day1_z_Afternoon/09_Image_Filters
+  - file: day1_z_Afternoon/10_Filters_in_3D_Isotropic_Data
+    
 - file: day2/Readme
   sections:
   - file: day2/01_Background_subtraction
@@ -26,7 +46,28 @@ chapters:
   - file: day2/03_Morphological_operations
   - file: day2/04_Instance_segmentation
   - file: day2/05_Feature_extraction
-  - file: day2/06_MNIST_in_torch
+
+- file: day2_Instance_segmentation/readme
+  sections:
+  - file: day2_Instance_segmentation/09_connected_component_labeling
+  - file: day2_Instance_segmentation/10_touching_objects_labeling
+  - file: day2_Instance_segmentation/11_voronoi_otsu_labeling
+  - file: day2_Instance_segmentation/12_Segmentation_3D
+  - file: day2_Instance_segmentation/14_segmentation_2d_membranes
+  - file: day2_Instance_segmentation/15_remove_labels_on_image_edges
+  - file: day2_Instance_segmentation/16_open_close_labels
+  - file: day2_Instance_segmentation/19_the_segmentation_game.md
+  - file: day2_Instance_segmentation/20_Segmentation_quality_estimation
+
+- file: day2_Machine_learning_APOC/readme
+  sections:
+    - day2_Machine_learning_APOC/01_supervised_machine_learning.ipynb
+    - day2_Machine_learning_APOC/02_exercise_apoc.md
+    - day2_Machine_learning_APOC/02_scikit_learn_random_forest_pixel_classifier.ipynb
+    - day2_Machine_learning_APOC/04_demo_object_segmenter.ipynb
+    - day2_Machine_learning_APOC/05_train_on_folders.ipynb
+
+- file: day2_Deep_learning_segmentation
   - file: day2/07_stardist2d_in_python
 
 - file: day3/Readme
