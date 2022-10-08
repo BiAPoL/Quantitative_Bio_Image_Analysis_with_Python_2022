@@ -1,1 +1,0 @@
-# Day 2: Deep Learning for image segmentation

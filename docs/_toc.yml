@@ -49,27 +49,27 @@ chapters:
   - file: day2/04_Instance_segmentation
   - file: day2/05_Feature_extraction
 
-- file: day2_Instance_segmentation/readme
+- file: day2c_instance_segmentation/readme
   sections:
-  - file: day2_Instance_segmentation/09_connected_component_labeling
-  - file: day2_Instance_segmentation/10_touching_objects_labeling
-  - file: day2_Instance_segmentation/11_voronoi_otsu_labeling
-  - file: day2_Instance_segmentation/12_Segmentation_3D
-  - file: day2_Instance_segmentation/14_segmentation_2d_membranes
-  - file: day2_Instance_segmentation/15_remove_labels_on_image_edges
-  - file: day2_Instance_segmentation/16_open_close_labels
-  - file: day2_Instance_segmentation/19_the_segmentation_game.md
-  - file: day2_Instance_segmentation/20_Segmentation_quality_estimation
+  - file: day2c_instance_segmentation/09_connected_component_labeling
+  - file: day2c_instance_segmentation/10_touching_objects_labeling
+  - file: day2c_instance_segmentation/11_voronoi_otsu_labeling
+  - file: day2c_instance_segmentation/12_Segmentation_3D
+  - file: day2c_instance_segmentation/14_segmentation_2d_membranes
+  - file: day2c_instance_segmentation/15_remove_labels_on_image_edges
+  - file: day2c_instance_segmentation/16_open_close_labels
+  - file: day2c_instance_segmentation/19_the_segmentation_game.md
+  - file: day2c_instance_segmentation/20_Segmentation_quality_estimation
 
-- file: day2_Machine_learning_APOC/readme
+- file: day2d_machine_learning_apoc/readme
   sections:
-    - file: day2_Machine_learning_APOC/01_supervised_machine_learning
-    - file: day2_Machine_learning_APOC/02_exercise_apoc.md
-    - file: day2_Machine_learning_APOC/02_scikit_learn_random_forest_pixel_classifier.
-    - file: day2_Machine_learning_APOC/04_demo_object_segmenter
-    - file: day2_Machine_learning_APOC/05_train_on_folders
+    - file: day2d_machine_learning_apoc/01_supervised_machine_learning
+    - file: day2d_machine_learning_apoc/02_exercise_apoc.md
+    - file: day2d_machine_learning_apoc/02_scikit_learn_random_forest_pixel_classifier.
+    - file: day2d_machine_learning_apoc/04_demo_object_segmenter
+    - file: day2d_machine_learning_apoc/05_train_on_folders
 
-- file: day2_Deep_learning_segmentation/readme
+- file: day2e_deep_learning_segmentation/readme
   sections:
   - file: day2/07_stardist2d_in_python
 
