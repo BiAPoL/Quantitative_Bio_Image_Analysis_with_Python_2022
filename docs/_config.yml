@@ -1,9 +1,9 @@
 # In _config.yml
-title: Quantitative Bio-Image Analysis with Python Course Book
-author: Bio-Image Analysis Technology Development Group - Physics of Life
+title: Quantitative Bio-image Analysis with Python
+author: Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden
 logo: biapol_logo.png
 execute:
-  execute_notebooks: force
+  execute_notebooks: off
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
