@@ -1,0 +1,1354 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Creating a plugin from a template using the cookiecutter &#8212; Quantitative Bio-image Analysis with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Quantitative Bio-image Analysis with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Quantitative Bio-Image Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day0/Readme.html">
+   Course preparation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day1/readme.html">
+   Day 1: Introduction to Python and Bio-image Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1a_Python_Introduction/readme.html">
+     Introduction to Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/01_our_first_juptyer_notebook.html">
+       Python code in Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/02_Math_in_python.html">
+       Basic math in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/03_Dont_try_this_at_home.html">
+       Pitfalls when working with Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/04_Basic_types.html">
+       Basic types in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05_lists_tuples.html">
+       Lists and tuples
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05a_cropping_lists.html">
+       Cropping lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05b_sorting_lists.html">
+       Sorting lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05c_masking.html">
+       Masking numpy arrays
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/06_Dictionaries_and_tables.html">
+       Dictionaries
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/07_Conditions.html">
+       Conditions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/08_loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/09_custom_functions.html">
+       Functions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1b_Introduction_Bio-image_Analysis/readme.html">
+     Introduction to Bio-image Analysis
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1w_Working_with_Images/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/01_Working_with_images.html">
+       Working with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/02_Matplotlib_subplots_introduction.html">
+       Subplots with matplotlib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/03_Multi_channel_image_data.html">
+       Multi-channel image data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/04_Image_file_formats.html">
+       Image file formats
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1x_Folder_Structures/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1x_Folder_Structures/05_Folder_structures.html">
+       Folder Structures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1y_Napari_Introduction/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction.html">
+       Using Napari to visualize and interact with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/08_my_segmentation_workflow_trailer.html">
+       Segmentation Workflow Example with 3D Data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1z_Image_Filters/readme.html">
+     Image analysis basics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/09_Image_Filters.html">
+       Image Filters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/10_Filters_in_3D_Isotropic_Data.html">
+       3D Image Filters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day2/Readme.html">
+   Day 2: Image Filtering, Segmentation and Feature Extraction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2a_image_filtering/readme.html">
+     Image Filtering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/01_Background_subtraction.html">
+       Thresholding and noise
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2b_image_segmentation/readme.html">
+     Image segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/02_Thresholding.html">
+       Thresholding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/03_Morphological_operations.html">
+       Morphological Image Processing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/04_Instance_segmentation.html">
+       Instance Segmentation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2c_instance_segmentation/readme.html">
+     Day 2: Instance Segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/09_connected_component_labeling.html">
+       Label images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/10_touching_objects_labeling.html">
+       Touching objects labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/11_voronoi_otsu_labeling.html">
+       Voronoi-Otsu-labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/12_Segmentation_3D.html">
+       3D Image Segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/14_segmentation_2d_membranes.html">
+       Seeded watershed for membrane-based cell segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/15_remove_labels_on_image_edges.html">
+       Remove labels on image edges
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/16_open_close_labels.html">
+       Label image refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/19_the_segmentation_game.html">
+       The Segmentation Game
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/20_Segmentation_quality_estimation.html">
+       Image segmentation quality measurements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2d_machine_learning_apoc/readme.html">
+     Machine learning for object segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/01_supervised_machine_learning.html">
+       Supervised machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/02_exercise_apoc.html">
+       Exercise: Interactive pixel and object classification
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/04_demo_object_segmenter.html">
+       Object segmentation on OpenCL-compatible GPUs
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/05_train_on_folders.html">
+       Training classifiers from folders of images
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2e_deep_learning_segmentation/readme.html">
+     Deep Learning for image segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2/07_stardist2d_in_python.html">
+       Stardist in Python
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day2/05_Feature_extraction.html">
+     Feature extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day3/Readme.html">
+   Day 3: Biostatistics and Data Science
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/readme.html">
+     Working with tabular data
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+    <label for="toctree-checkbox-14">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes.html">
+       Introduction to working with DataFrames
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/02_basic_descriptive_statistics.html">
+       Basic descriptive statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/03_descriptive_statistics_label_images.html">
+       Descriptive statistics of labeled images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/04_append_tables.html">
+       Appending tables
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/05_handling_NaNs.html">
+       Handling NaN values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/06_tidy_data.html">
+       Tidy-Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/07_split_apply_combine.html">
+       Split-Apply-Combine
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3b_Plotting/readme.html">
+     Plotting Data with Seaborn
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/01_Plotting_Data_with_Python.html">
+       Plotting Data with Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/02_Introduction_to_Seaborn.html">
+       Introduction to Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/03_Plotting_distributions.html">
+       Plotting Distributions with Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/04_Multivariate_views.html">
+       Multivariate views
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/03_statistics_and_tests/Readme.html">
+     Descriptive statistics
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/01_Bland_altman_analysis.html">
+       Method comparison and Bland-Altman Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/02_correlation.html">
+       Correlation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/03_correlation_matrix.html">
+       Correlation matrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/03_statistics_and_tests/04_hypothesis_testing.html">
+       Nonparametric testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/05_dimensionality_reduction/Readme.html">
+     Dimensionality reduction
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/01_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/02_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/05_dimensionality_reduction/03_PCA.html">
+       PCA and UMAP
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3/06_clustering/Readme.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/01_kmeans.html">
+       K-means clustering
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/02_hdbscan.html">
+       HDBSCAN
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3/06_clustering/03_interactive_dim_reduction_and_clustering.html">
+       Interactive dimensioanlity reduction and clustering
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day4/Readme.html">
+   Day 4: Reproducible code and Napari plugins
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4b_writing_readable_code/readme.html">
+     Writing readable code
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+    <label for="toctree-checkbox-20">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/05_readable_code.html">
+       Writing good code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/07_magic_numbers.html">
+       Prevent magic numbers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/08_divide_and_rule.html">
+       Divide and rule
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/09_custom_modules.html">
+       Custom modules
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/10_reading_exercise.html">
+       Reading exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/11_exercise_modules.html">
+       Modularization exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/12_keep_it_short_and_simple.html">
+       Keep it short and simple
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/14_stackview.html">
+       Stackview
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="readme.html">
+     Make your own napari plugin
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
+       Turning a function into a napari plugin
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
+       Use Github Desktop to do commit, PR and merges to your repository
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
+       Send your repo to a friend and ask them to run your code
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day5/Analyze_data_together.html">
+   Day 5: Work on your own data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday4c_crafting_napari_plugins/napari_cookiecutter.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/day4c_crafting_napari_plugins/napari_cookiecutter.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Creating a plugin from a template using the cookiecutter
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-your-local-repository-to-github">
+   Adding your local repository to Github
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-your-gui-into-the-template">
+   Putting your GUI into the template
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-github-repository">
+   Updating Github repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publishing-your-plugin">
+   Publishing your plugin
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versioning">
+     Versioning
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-source-files">
+     Create source files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Creating a plugin from a template using the cookiecutter</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Creating a plugin from a template using the cookiecutter
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-your-local-repository-to-github">
+   Adding your local repository to Github
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-your-gui-into-the-template">
+   Putting your GUI into the template
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-github-repository">
+   Updating Github repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#publishing-your-plugin">
+   Publishing your plugin
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versioning">
+     Versioning
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-source-files">
+     Create source files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="creating-a-plugin-from-a-template-using-the-cookiecutter">
+<h1>Creating a plugin from a template using the cookiecutter<a class="headerlink" href="#creating-a-plugin-from-a-template-using-the-cookiecutter" title="Permalink to this headline">#</a></h1>
+<p>Well, first things first: <a class="reference external" href="https://biapol.github.io/blog/johannes_mueller/entry_user_interf2/Readme.md#creating-your-environment">create a new conda environment</a>. (“Another one?” 😩) Yes, better safe than sorry 😉. Don’t forget to activate it.</p>
+<p>The napari website has a complete <a class="reference external" href="https://napari.org/plugins/stable/for_plugin_developers.html">tutorial</a> for creating plugins, and I would say the easiest way is by using <a class="reference external" href="https://napari.org/plugins/stable/for_plugin_developers.html#cookiecutter-template">cookiecutter</a>.</p>
+<p>So, let’s install and run the cookiecutter as suggested in the <a class="reference external" href="https://github.com/napari/cookiecutter-napari-plugin">template readme</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cookiecutter</span>
+<span class="n">cookiecutter</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">napari</span><span class="o">/</span><span class="n">cookiecutter</span><span class="o">-</span><span class="n">napari</span><span class="o">-</span><span class="n">plugin</span>
+</pre></div>
+</div>
+<p>(<code class="docutils literal notranslate"><span class="pre">'pip'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">recognized</span> <span class="pre">as</span> <span class="pre">...</span></code> ?? 🙀 -&gt; <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pip</span></code> 😸)</p>
+<p>(<code class="docutils literal notranslate"><span class="pre">'git'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">installed.</span></code> ?? 🙀 -&gt; <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span></code> 😸)</p>
+<p>The cookiecutter will then start asking you questions about your project. We will answer them one by one, but here is an overview of all of them:</p>
+<p>⚠️Spoiler alert⚠️
+<img alt="" src="day4c_crafting_napari_plugins/images/cookiecutter_questions1.png" /></p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">full_name</span> <span class="pre">[Napari</span> <span class="pre">Developer]:</span></code> <em><strong>type your name</strong></em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">email</span> <span class="pre">[yourname&#64;example.com]:</span></code> <em><strong>type your email</strong>, so that people can reach you to talk about your new plugin</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">github_username_or_organization</span> <span class="pre">[githubuser]:</span></code> <em><strong>type your github username</strong> (if you don’t have a Github account, you should <a class="reference external" href="https://github.com/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F&amp;source=header-home">create one now</a>)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span> <span class="pre">[napari-foobar]:</span></code> <em><strong>type your plugin name</strong> ex: ‘flood-napari’</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">github_repository_url:</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">https://github.com/your_github_username/your_plugin_name</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">provide</span> <span class="pre">later</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">from</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">[1]:</span></code>  <em><strong>type ‘1’</strong>, even if you did not create your repository yet, we’ll do that later</em><br />
+<em>Obs: values or words inside square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code> are the default option if you just hit ‘Enter’</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module_name</span> <span class="pre">[flood_napari]:</span></code> <em><strong>type your plugin module name</strong> (our plugin has a single module, ex: ‘flood_napari’)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">short_description</span> <span class="pre">[A</span> <span class="pre">simple</span> <span class="pre">plugin</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">with</span> <span class="pre">napari]:</span></code> <em><strong>type a brief description of your plugin</strong></em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_reader_plugin</span> <span class="pre">[y]:</span></code> <em><strong>type ‘n’</strong>, because our example plugin is not a plugin for reading certain image file types</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_writer_plugin</span> <span class="pre">[y]:</span></code> <em><strong>type ‘n’</strong>, because our example plugin does not write anything</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_dock_widget_plugin</span> <span class="pre">[y]:</span></code> <em><strong>type ‘y’ or just hit ‘Enter’</strong>, because we want to dock our plugin to napari framework</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_function_plugin</span> <span class="pre">[y]:</span></code> <em><strong>type ‘n’ for this example</strong>, however it could be useful to organize functions into separate files</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_git_tags_for_versioning</span> <span class="pre">[n]:</span></code> <em><strong>hit ‘Enter’</strong></em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">docs_tool:</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">mkdocs</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">sphinx</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">-</span> <span class="pre">none</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">from</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span> <span class="pre">[1]:</span></code> <em><strong>type ‘2’ for this example</strong>, check <a class="reference external" href="https://biapol.github.io/blog/johannes_mueller/entry_sphinx/">this post</a> to learn more about sphinx</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">license:</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">BSD-3</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">MIT</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">-</span> <span class="pre">Mozilla</span> <span class="pre">Public</span> <span class="pre">License</span> <span class="pre">2.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">-</span> <span class="pre">Apache</span> <span class="pre">Software</span> <span class="pre">License</span> <span class="pre">2.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">-</span> <span class="pre">GNU</span> <span class="pre">LGPL</span> <span class="pre">v3.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">-</span> <span class="pre">GNU</span> <span class="pre">GPL</span> <span class="pre">v3.0</span></code><br />
+<code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">from</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6</span> <span class="pre">[1]:</span></code> <em><strong>we like to use ‘1’</strong>, you can also change this later if you want, check options <a class="reference external" href="https://ufal.github.io/public-license-selector/">here</a></em></p></li>
+</ol>
+<p>Done! You will see the screen below with further instructions.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/cookiecutter_questions2.png" /></p>
+<p>We will just do instruction number 1 to install this default napari plugin locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">flood</span><span class="o">-</span><span class="n">napari</span>    <span class="c1"># replace &#39;flood-napari&#39; by your plugin name to go to the right directory</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>   <span class="c1"># install your plugin locally</span>
+</pre></div>
+</div>
+<p>Install napari in your environment (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">napari[all]</span></code>) and run napari with <code class="docutils literal notranslate"><span class="pre">napari</span></code>.
+When you go to the ‘Plugins’ menu now, you will see your plugin name there. Don’t worry now with the sub-menus, we will edit them afterwards.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/napari_plugin1.png" /></p>
+</section>
+<section id="adding-your-local-repository-to-github">
+<h1>Adding your local repository to Github<a class="headerlink" href="#adding-your-local-repository-to-github" title="Permalink to this headline">#</a></h1>
+<p>We will use <a class="reference external" href="https://desktop.github.com/">Github Desktop</a> to publish our local repository into the Github page. It has a great user interface and integration. So first <a class="reference external" href="https://desktop.github.com/">download</a> and install Github Desktop. It should be a straight-forward <a class="reference external" href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop">installation procedure</a>. If this is your first time using it, you will need to authenticate your account as explained <a class="reference external" href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github">here</a>.</p>
+<p>Now open it and let’s add your local repository by clicking on ‘File -&gt; Add local repository…’.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/github_desktop1.png" /></p>
+<p>After that, you have to specify your local plugin address. It should be a directory located where you were when you typed cookiecutter commands (typically ‘C:/Users/Your_user_name’ for Windows). It has the plugin name and the following contents:</p>
+<img alt="directory_items" id="directory_items" src="images/directory_items.png" />
+<p>Find it and click on ‘Add repository’. You will see that it now appears as the current repository and you will add it to <a class="reference external" href="http://Github.com">Github.com</a> by clicking on ‘Publish repository’.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/github_desktop1b.png" /></p>
+<p>Then a small window should pop-up. Specify the name of your repository (same name of your plugin, cookiecutter question 4) and click on ‘Publish Repository’.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/github_desktop1c.png" /></p>
+<p>Now, if you log in into your Github account through the browser and look at your repositories, you should see your new repository there, like this:</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/github_repo_page.png" /></p>
+<p>Notice how the contents are the same as <a class="reference external" href="#directory_items">the ones in your local folder</a>. Your template is online!</p>
+</section>
+<section id="putting-your-gui-into-the-template">
+<h1>Putting your GUI into the template<a class="headerlink" href="#putting-your-gui-into-the-template" title="Permalink to this headline">#</a></h1>
+<p>Now we will modify the code to add our widgets. In Github Desktop, let’s create a separate branch for your modifications. Click on the current branch, type a new branch name and click on ‘Create new branch’:</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/new_branch.png" /></p>
+<p>Good, now all modifications will go into your new branch!</p>
+<p>First, in order for our ‘qt designer version’ to work (see <a class="reference external" href="https://biapol.github.io/blog/marcelo_zoccoler/entry_user_interf3#importing-your-fancy-gui-to-napari">previous post</a>), we have to copy its interface (<code class="docutils literal notranslate"><span class="pre">flood_tool.py</span></code>, found <a class="reference external" href="https://github.com/BiAPoL/blog/blob/master/marcelo_zoccoler/entry_user_interf3/scripts/flood_tool.py">here</a>) to your local repository address (look for where you created your local version, something like <code class="docutils literal notranslate"><span class="pre">C:/Users/Your_user_name/flood-napari/src/flood_napari</span></code>).</p>
+<p>Then, let’s replace the default <code class="docutils literal notranslate"><span class="pre">Example</span> <span class="pre">Q</span> <span class="pre">Widget</span></code> and <code class="docutils literal notranslate"><span class="pre">example_magic_widget</span></code> by your GUI. With your favorite editor, open the file <code class="docutils literal notranslate"><span class="pre">_dock_widget.py</span></code> located in your local repository address. It should contain this code:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module is an example of a barebones QWidget plugin for napari</span>
+
+<span class="sd">It implements the ``napari_experimental_provide_dock_widget`` hook specification.</span>
+<span class="sd">see: https://napari.org/docs/dev/plugins/hook_specifications.html</span>
+
+<span class="sd">Replace code below according to your needs.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QPushButton</span>
+<span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magic_factory</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleQWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="c1"># your QWidget.__init__ can optionally request the napari viewer instance</span>
+    <span class="c1"># in one of two ways:</span>
+    <span class="c1"># 1. use a parameter called `napari_viewer`, as done here</span>
+    <span class="c1"># 2. use a type annotation of &#39;napari.viewer.Viewer&#39; for any parameter</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
+
+        <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Click me!&quot;</span><span class="p">)</span>
+        <span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_click</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QHBoxLayout</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_on_click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;napari has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">),</span> <span class="s2">&quot;layers&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@magic_factory</span>
+<span class="k">def</span> <span class="nf">example_magic_widget</span><span class="p">(</span><span class="n">img_layer</span><span class="p">:</span> <span class="s2">&quot;napari.layers.Image&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;you have selected </span><span class="si">{</span><span class="n">img_layer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@napari_hook_implementation</span>
+<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+    <span class="c1"># you can return either a single widget, or a sequence of widgets</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">ExampleQWidget</span><span class="p">,</span> <span class="n">example_magic_widget</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We will delete the <code class="docutils literal notranslate"><span class="pre">ExampleQWidget</span></code> and the <code class="docutils literal notranslate"><span class="pre">example_magic_widget</span></code> (I will also delete initial comments for clarity). We are left with this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QPushButton</span>
+<span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magic_factory</span>
+
+<span class="nd">@napari_hook_implementation</span>
+<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+    <span class="c1"># you can return either a single widget, or a sequence of widgets</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">ExampleQWidget</span><span class="p">,</span> <span class="n">example_magic_widget</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The function decorated with <code class="docutils literal notranslate"><span class="pre">&#64;napari_hook_implementation</span></code> appends its outputs to your plugin menu in napari. So, let’s add all 3 GUI versions of our flood widget before it. Although they all refer to the same function, for clarity, we will rename our <code class="docutils literal notranslate"><span class="pre">flood</span></code> function to 3 different versions: <code class="docutils literal notranslate"><span class="pre">flood_qt</span></code>, <code class="docutils literal notranslate"><span class="pre">flood_magic_factory</span></code> and <code class="docutils literal notranslate"><span class="pre">flood_fgui</span></code>. Also, we will rename the Qt class from <code class="docutils literal notranslate"><span class="pre">MainWindow</span></code> to <code class="docutils literal notranslate"><span class="pre">Qt_Designer_flood</span></code> and the <code class="docutils literal notranslate"><span class="pre">FunctionGui</span></code> class from <code class="docutils literal notranslate"><span class="pre">MyGui</span></code> to <code class="docutils literal notranslate"><span class="pre">FunctionGui_flood</span></code>.</p>
+<p>Once we add them to the code (along with importing necessary libraries), it becomes like this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QPushButton</span>
+<span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magic_factory</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Qt Designer version</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QMainWindow</span>
+<span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">flood_qt</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+    <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">label_image</span><span class="p">,</span> <span class="n">new_level</span><span class="p">)</span>
+
+<span class="c1"># Define the main window class</span>
+<span class="k">class</span> <span class="nc">Qt_Designer_flood</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">,</span>  <span class="n">Ui_MainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>          <span class="c1"># include napari_viewer as argument (it has to have this name)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">UI_FILE</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;flood_tool.ui&quot;</span><span class="p">)</span>  <span class="c1"># path to .ui file</span>
+        <span class="n">uic</span><span class="o">.</span><span class="n">loadUi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">UI_FILE</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>           <span class="c1"># load QtDesigner .ui file</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="o">=</span> <span class="kc">None</span>                <span class="c1"># stored label layer variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_apply_delta</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">_apply_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s1">&#39;napari_island&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>    <span class="c1"># We use the layer name to find the correct image layer</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doubleSpinBox</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+        <span class="n">label</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">flood_qt</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontalSlider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+        
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">magicgui version</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magicgui</span>
+<span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
+<span class="nd">@magic_factory</span><span class="p">(</span><span class="n">delta</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Temperature Increase (Δ°C):&#39;</span><span class="p">,</span> 
+                                           <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+               <span class="n">new_level</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;Sea Level (dm):&#39;</span><span class="p">,</span> <span class="s1">&#39;widget_type&#39;</span><span class="p">:</span><span class="s1">&#39;Slider&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+               <span class="n">auto_call</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">flood_magic_factory</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span> 
+    <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">label_image</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">FunctionGui version</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">magicgui.widgets</span> <span class="kn">import</span> <span class="n">FunctionGui</span>
+<span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">LayerDataTuple</span>
+<span class="k">def</span> <span class="nf">flood_fgui</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_level</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span> 
+    <span class="n">new_level</span> <span class="o">=</span> <span class="n">delta</span><span class="o">*</span><span class="mi">85</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&lt;=</span> <span class="n">new_level</span>
+    <span class="n">label_image</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">*</span><span class="mi">13</span> <span class="c1"># label 13 is blue in napari</span>
+    <span class="k">return</span><span class="p">((</span><span class="n">label_image</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;flood result&#39;</span><span class="p">,</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;new_level&#39;</span><span class="p">:</span><span class="n">new_level</span><span class="p">}}))</span>
+
+<span class="k">class</span> <span class="nc">FunctionGui_flood</span><span class="p">(</span><span class="n">FunctionGui</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+          <span class="n">flood_fgui</span><span class="p">,</span>
+          <span class="n">call_button</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">auto_call</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">layout</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span>
+          <span class="n">param_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;delta&#39;</span><span class="p">:</span>
+                             <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Temperature Increase (Δ°C):&#39;</span><span class="p">,</span> 
+                              <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+                        <span class="s1">&#39;new_level&#39;</span><span class="p">:</span>
+                            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;Sea Level (dm):&#39;</span><span class="p">,</span> <span class="s1">&#39;widget_type&#39;</span><span class="p">:</span><span class="s1">&#39;Slider&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;enabled&#39;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">}}</span>
+        <span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">label_image</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">()</span>
+        <span class="n">new_level</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">label_image</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;new_level&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">new_level</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">new_level</span>
+
+<span class="nd">@napari_hook_implementation</span>
+<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+    <span class="c1"># you can return either a single widget, or a sequence of widgets</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">ExampleQWidget</span><span class="p">,</span> <span class="n">example_magic_widget</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Last thing is to replace <code class="docutils literal notranslate"><span class="pre">napari_experimental_provide_dock_widget</span></code> outputs by your own. In our case, it should look like this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nd">@napari_hook_implementation</span>
+<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+    <span class="c1"># you can return either a single widget, or a sequence of widgets</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">Qt_Designer_flood</span><span class="p">,</span> <span class="n">flood_magic_factory</span><span class="p">,</span> <span class="n">FunctionGui_flood</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you now start <code class="docutils literal notranslate"><span class="pre">napari</span></code> from the terminal again, your plugin, along with each of the 3 sub-menu versions, should be available and working!</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/flood_plugin_v1.png" /></p>
+<p>Reminder: we wrote our qt_designer version to work with a specific layer name (<code class="docutils literal notranslate"><span class="pre">napari_island</span></code>). There are other ways of selecting the appropriated layer, like by order, type, etc, which will not be considered in this tutorial. You can have access to available layers through the viewer instance <code class="docutils literal notranslate"><span class="pre">viewer.layers</span></code>.</p>
+</section>
+<section id="updating-github-repository">
+<h1>Updating Github repository<a class="headerlink" href="#updating-github-repository" title="Permalink to this headline">#</a></h1>
+<p>You have your updates locally in your separate branch. Let’s push them into your Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes (step 1.), click on ‘commit to ‘branch name’’ (step 2.), and then publish your new branch (step 3.):</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/flood_plugin_commit.png" /></p>
+<p>After that, click on the ‘Create Pull Request’ button, and you will be prompted to a browser tab with your github online repository. There, click on ‘Create Pull Request’.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/flood_plugin_PR.png" /></p>
+<p>After the page updates itself, click on ‘Merge Pull Request’ and confirm it if required.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/flood_plugin_merge.png" /></p>
+<p>At the end, you should see the image below, which means your online repository is now updated with your new code!</p>
+<p><img alt="merge_done" src="https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png" /></p>
+</section>
+<section id="publishing-your-plugin">
+<h1>Publishing your plugin<a class="headerlink" href="#publishing-your-plugin" title="Permalink to this headline">#</a></h1>
+<p>After you developed your plugin to a point where you think it’s ready to share it with the world, it’s time so submit it to the python package index (PyPI).
+Publishing the plugin on <a class="reference external" href="https://pypi.org/">PyPi</a> may sound like a big ordeal, but is, in fact, very simple. To do so, first create an account on <a class="reference external" href="https://pypi.org/account/register/">PyPi</a>.</p>
+<section id="versioning">
+<h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">#</a></h2>
+<p>Let’s report the package’s version. We will update two files for that:</p>
+<ol class="simple">
+<li><p>Go to your project repository and open the <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> file. On this file, at around the third line, you should find something like <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">==</span> <span class="pre">0.0.1</span></code>. If you are releasing a newer version, replace <code class="docutils literal notranslate"><span class="pre">0.0.1</span></code> by your new version number. To know more about versioning standards, check <a class="reference external" href="https://py-pkgs.org/07-releasing-versioning.html#version-numbering">this post</a>.</p></li>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">__inti__.py</span></code> located in the same folder where your plugin code resides - which in this example is flood-napari/src/flood_napari - update the version inside this file as well and save it. If you prefer, there are ways to <a class="reference external" href="https://py-pkgs.org/07-releasing-versioning.html#automatic-version-bumping">automate version bumping</a>.</p></li>
+</ol>
+<p>Now, remember to <a class="reference external" href="#updating-github-repository">update your Github repository</a> again (commit changes, push/publish branch, create Pull request, merge).</p>
+<p>The last step of versioning is to provide a version tag. On the Github repository’s main page, at the right side, on Releases, click on “Create a new release” and the following page should load.</p>
+<p><img alt="" src="day4c_crafting_napari_plugins/images/github_release.png" /></p>
+<p>Fill the fields highlighted by green boxes and click on “Publish Release”.</p>
+</section>
+<section id="create-source-files">
+<h2>Create source files<a class="headerlink" href="#create-source-files" title="Permalink to this headline">#</a></h2>
+<p>After this is done, open an anaconda command prompt and <code class="docutils literal notranslate"><span class="pre">cd</span></code> into your project repository.</p>
+<p>Next, you need to create the necessary packaging information from your sourcefiles. You can do so by either creating a <em>source distribution</em> of your package with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py sdist
+</pre></div>
+</div>
+<p>or a <em>wheel</em> using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py bdist_wheel
+</pre></div>
+</div>
+<p>The difference between both is, in short, that the source distribution provides, as the name suggests, the source files that can be downloaded and have to be compiled upon installation of the package. Python wheels, on the contrary, come pre-built, which leads to faster installation. This can be convenient for large packages. For a more in-depth on the advantages of either strategy, see <a class="reference external" href="https://medium.com/ochrona/understanding-python-package-distribution-types-25d53308a9a">this blog</a>. For simple projects, there is no damage in simply providing both, like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span> <span class="pre">bdist_wheel</span> </code></p>
+<p>A new folder should appear in your repository, called <code class="docutils literal notranslate"><span class="pre">dist</span></code>, with a couple files inside. Before uploading to PyPi, check if this folder contains only files related to the latest version. If files named after previous versions are present, you can manually delete them.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./day4c_crafting_napari_plugins"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
