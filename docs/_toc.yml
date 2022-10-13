@@ -109,23 +109,24 @@ chapters:
     - file: day3b_Plotting/04_Multivariate_views
     
   # Day 3 Afternoon Part
-  - file: day3/03_statistics_and_tests/Readme
-  - file: day3c/01_Bland_altman_analysis
-  - file: day3c/02_correlation
-  - file: day3c/03_correlation_matrix
-  - file: day3c/04_multiple_testing
-  - file: day3c/05_hypothesis_testing
+  - file: day3c_statistics_and_tests/Readme
+    section:
+    - file: day3c_statistics_and_tests/01_Bland_altman_analysis
+    - file: day3c_statistics_and_tests/02_correlation
+    - file: day3c_statistics_and_tests/03_correlation_matrix
+    - file: day3c_statistics_and_tests/04_multiple_testing
+    - file: day3c_statistics_and_tests/05_hypothesis_testing
   - file: day3/04_Data_exploration
-  - file: day3/05_dimensionality_reduction/Readme
+  - file: day3e_dimensionality_reduction/Readme
     sections:
-    - file: day3/05_dimensionality_reduction/01_UMAP
-    - file: day3/05_dimensionality_reduction/02_UMAP
-    - file: day3/05_dimensionality_reduction/03_PCA
-  - file: day3/06_clustering/Readme
+    - file: day3e_dimensionality_reduction/01_UMAP
+    - file: day3e_dimensionality_reduction/02_UMAP
+    - file: day3e_dimensionality_reduction/03_PCA
+  - file: day3f_clustering/Readme
     sections:
-    - file: day3/06_clustering/01_kmeans
-    - file: day3/06_clustering/02_hdbscan
-    - file: day3/06_clustering/03_interactive_dim_reduction_and_clustering
+    - file: day3f_clustering/01_kmeans
+    - file: day3f_clustering/02_hdbscan
+    - file: day3f_clustering/03_interactive_dim_reduction_and_clustering
 
 - file: day4/Readme
   sections:
