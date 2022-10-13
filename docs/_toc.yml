@@ -110,7 +110,7 @@ chapters:
     
   # Day 3 Afternoon Part
   - file: day3c_statistics_and_tests/Readme
-    section:
+    sections:
     - file: day3c_statistics_and_tests/01_Bland_altman_analysis
     - file: day3c_statistics_and_tests/02_correlation
     - file: day3c_statistics_and_tests/03_correlation_matrix
