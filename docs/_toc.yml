@@ -117,11 +117,11 @@ chapters:
     - file: day3c_statistics_and_tests/04_multiple_testing
     - file: day3c_statistics_and_tests/05_hypothesis_testing
   - file: day3/04_Data_exploration
-  - file: day3/05_dimensionality_reduction/Readme
+  - file: day3e_dimensionality_reduction/Readme
     sections:
-    - file: day3/05_dimensionality_reduction/01_UMAP
-    - file: day3/05_dimensionality_reduction/02_UMAP
-    - file: day3/05_dimensionality_reduction/03_PCA
+    - file: day3e_dimensionality_reduction/01_UMAP
+    - file: day3e_dimensionality_reduction/02_UMAP
+    - file: day3e_dimensionality_reduction/03_PCA
   - file: day3/06_clustering/Readme
     sections:
     - file: day3/06_clustering/01_kmeans
