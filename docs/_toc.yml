@@ -122,11 +122,11 @@ chapters:
     - file: day3e_dimensionality_reduction/01_UMAP
     - file: day3e_dimensionality_reduction/02_UMAP
     - file: day3e_dimensionality_reduction/03_PCA
-  - file: day3/06_clustering/Readme
+  - file: day3f_clustering/Readme
     sections:
-    - file: day3/06_clustering/01_kmeans
-    - file: day3/06_clustering/02_hdbscan
-    - file: day3/06_clustering/03_interactive_dim_reduction_and_clustering
+    - file: day3f_clustering/01_kmeans
+    - file: day3f_clustering/02_hdbscan
+    - file: day3f_clustering/03_interactive_dim_reduction_and_clustering
 
 - file: day4/Readme
   sections:
