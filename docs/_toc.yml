@@ -148,4 +148,10 @@ chapters:
     - file: day4/03_Practical_Exchanging_code
 
   
-- file: day5/Analyze_data_together
+- file: day5/Readme
+  sections:
+  - file: day5/Analyze_data_together
+  - file:  day5a_points_and_surfaces/Readme
+    sections:
+    - file: day5a_points_and_surfaces/01_creating_and_working_with_meshes
+    - file: day5a_points_and_surfaces/02_advanced_surface_characteristics
