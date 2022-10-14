@@ -1,11 +1,6 @@
-# Image analysis basics
+# Folder Structures
 
-This chapter covers image processing and image analysis basics. 
-We will introduce what images are and how we can process them. 
+In this section, we will show a few folder structure examples and how to navigate through them via code. this is important when planning batch processing and/or when running machine learning algorithms. It is also good data management practice to have a simple folder structure to store images for sharing.
 
-### See also
+There are other structures possible not covered here, that may make more sense to your project. We show a few representative examples. Always consult a data management expert in advance to know the best option for you.
 
-* [Christian Tischer's Bioimage Analysis Introduction](https://www.youtube.com/watch?v=0PP38Z0CNMI)
-* [iBiology's Bioimage Analysis 1: The Basics: Getting Started](https://www.youtube.com/watch?v=1xo4vi6Ub4I)
-* [Nicolas Condon's Introduction to image analysis](https://www.youtube.com/watch?v=qkgADgd7xu0)
-* [Robert Haase's Introduction to bio-image analysis](https://youtu.be/e-2DbkUwKk4)

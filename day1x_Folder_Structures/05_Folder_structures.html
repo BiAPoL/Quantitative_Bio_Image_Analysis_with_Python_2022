@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Image analysis basics" href="../day1y_Napari_Introduction/readme.html" />
-    <link rel="prev" title="Image analysis basics" href="readme.html" />
+    <link rel="next" title="napari from Jupyter notebooks" href="../day1y_Napari_Introduction/readme.html" />
+    <link rel="prev" title="Folder Structures" href="readme.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -208,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../day1w_Working_with_Images/readme.html">
-     Image analysis basics
+     Opening and Displaying with Images in Python
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
     <label for="toctree-checkbox-3">
@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="readme.html">
-     Image analysis basics
+     Folder Structures
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
     <label for="toctree-checkbox-4">
@@ -257,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../day1y_Napari_Introduction/readme.html">
-     Image analysis basics
+     napari from Jupyter notebooks
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
     <label for="toctree-checkbox-5">
@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../day1z_Image_Filters/readme.html">
-     Image analysis basics
+     Image Filters
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
     <label for="toctree-checkbox-6">
@@ -740,18 +740,23 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../day4/01_Turning_a_function_into_a_napari_plugin.html">
-       Turning a function into a napari plugin
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/01_creating_widgets_from_functions.html">
+       Creating Widgets from Functions
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../day4/02_Adding_code_to_Github.html">
-       Use Github Desktop to do commit, PR and merges to your repository
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/02_creating_widgets_from_functions_part2.html">
+       Creating Widgets from Functions - Part 2
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../day4/03_Practical_Exchanging_code.html">
-       Send your repo to a friend and ask them to run your code
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/03_creating_widgets_from_qtpy.html">
+       Importing your fancy GUI to napari
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/04_napari_cookiecutter.html">
+       Creating a plugin from a template using the cookiecutter
       </a>
      </li>
     </ul>
@@ -1059,7 +1064,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="folder-structures">
 <h1>Folder Structures<a class="headerlink" href="#folder-structures" title="Permalink to this headline">#</a></h1>
 <p>We saw how we can open individual images by providing an absolute path to each of them. Soon enough, when you have established a workflow, you will want to do batch processing and, by then, manually providing paths to images becomes impractical to say the least. Besides that, having your images organized in a standardized folder strucutre is necessary for machine/deep learning workflows and for sharing your data with the scientific community.</p>
-<p>In this notebook, we show the simplest structure to introduce you how to read multiple images from a folder. In the following notebook, we show a couple other more organized folder structure examples that you could use or build upon. Other structures not demonstrated here may make more sense to your project. Always consult a data management expert in advance to know the best option for you.</p>
+<p>In this notebook, we show the simplest structure to introduce you how to read multiple images from a folder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imsave</span>
@@ -1230,13 +1235,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Image analysis basics</p>
+            <p class="prev-next-title">Folder Structures</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../day1y_Napari_Introduction/readme.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Image analysis basics</p>
+        <p class="prev-next-title">napari from Jupyter notebooks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
