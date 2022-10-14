@@ -60,7 +60,6 @@ chapters:
   - file: day2b_image_segmentation/readme
     sections:
     - file: day2b_image_segmentation/01_Thresholding
-    - file: day2b_image_segmentation/02_thresholding_and_noise
     - file: day2b_image_segmentation/03_Morphological_operations
     - file: day2b_image_segmentation/04_Otsu_threshold
 
