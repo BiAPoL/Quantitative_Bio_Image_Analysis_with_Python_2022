@@ -148,10 +148,10 @@ chapters:
 
   - file: day4c_crafting_napari_plugins/readme
     sections:
-    - file: day4/01_Turning_a_function_into_a_napari_plugin
-    - file: day4/02_Adding_code_to_Github
-    - file: day4/03_Practical_Exchanging_code
-
+    - file: day4c_crafting_napari_plugins/01_creating_widgets_from_functions
+    - file: day4c_crafting_napari_plugins/02_creating_widgets_from_functions_part2
+    - file: day4c_crafting_napari_plugins/03_creating_widgets_from_qtpy
+    - file: day4c_crafting_napari_plugins/04_napari_cookiecutter
   
 - file: day5/Readme
   sections:
