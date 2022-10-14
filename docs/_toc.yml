@@ -52,15 +52,17 @@ chapters:
 - file: day2/Readme
   sections:
   # Day2 Morning Part
-  - file: day2a_image_filtering/readme
+  #- file: day2a_image_filtering/readme
+  - file: day2a_background_subtraction/readme
     sections:
-    - file: day2/01_Background_subtraction
+    - file: day2a_background_subtraction/01_Background_subtraction
 
   - file: day2b_image_segmentation/readme
     sections:
-    - file: day2/02_Thresholding
-    - file: day2/03_Morphological_operations
-    - file: day2/04_Instance_segmentation
+    - file: day2b_image_segmentation/01_Thresholding
+    - file: day2b_image_segmentation/02_thresholding_and_noise
+    - file: day2b_image_segmentation/03_Morphological_operations
+    - file: day2b_image_segmentation/04_Otsu_threshold
 
   - file: day2c_instance_segmentation/readme
     sections:
@@ -84,9 +86,13 @@ chapters:
 
   - file: day2e_deep_learning_segmentation/readme
     sections:
-    - file: day2/07_stardist2d_in_python
+    - file: day2e_deep_learning_segmentation/01_stardist2d_in_python
+    - file: day2e_deep_learning_segmentation/02_MNIST_in_torch
 
-  - file: day2/05_Feature_extraction
+  - file: day2f_feature_extraction/readme
+    sections:
+    - file: day2f_feature_extraction/01_Feature_extraction
+    
 
 
 - file: day3/Readme
