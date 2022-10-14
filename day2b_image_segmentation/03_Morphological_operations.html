@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Loops &#8212; Quantitative Bio-image Analysis with Python</title>
+    <title>Morphological Image Processing &#8212; Quantitative Bio-image Analysis with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Functions" href="09_custom_functions.html" />
-    <link rel="prev" title="Conditions" href="07_Conditions.html" />
+    <link rel="next" title="Otsu’s threshold method (optional)" href="04_Otsu_threshold.html" />
+    <link rel="prev" title="Thresholding" href="01_Thresholding.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,83 +119,83 @@ const thebe_selector_output = ".output, .cell_output"
    Course preparation
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../day1/readme.html">
    Day 1: Introduction to Python and Bio-image Analysis
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="readme.html">
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1a_Python_Introduction/readme.html">
      Introduction to Python
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
+    <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="01_our_first_juptyer_notebook.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/01_our_first_juptyer_notebook.html">
        Python code in Jupyter notebooks
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="02_Math_in_python.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/02_Math_in_python.html">
        Basic math in python
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="03_Dont_try_this_at_home.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/03_Dont_try_this_at_home.html">
        Pitfalls when working with Jupyter notebooks
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="04_Basic_types.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/04_Basic_types.html">
        Basic types in python
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05_lists_tuples.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05_lists_tuples.html">
        Lists and tuples
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05a_cropping_lists.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05a_cropping_lists.html">
        Cropping lists
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05b_sorting_lists.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05b_sorting_lists.html">
        Sorting lists
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="05c_masking.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/05c_masking.html">
        Masking numpy arrays
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="06_Dictionaries_and_tables.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/06_Dictionaries_and_tables.html">
        Dictionaries
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="07_Conditions.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/07_Conditions.html">
        Conditions
       </a>
      </li>
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/08_loops.html">
        Loops
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="09_custom_functions.html">
+      <a class="reference internal" href="../day1a_Python_Introduction/09_custom_functions.html">
        Functions
       </a>
      </li>
@@ -301,16 +301,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../day2/Readme.html">
    Day 2: Image Filtering, Segmentation and Feature Extraction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../day2a_background_subtraction/readme.html">
      Image Filtering
@@ -328,28 +328,28 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../day2b_image_segmentation/readme.html">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="readme.html">
      Image segmentation
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
     <label for="toctree-checkbox-9">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3">
-      <a class="reference internal" href="../day2b_image_segmentation/01_Thresholding.html">
+      <a class="reference internal" href="01_Thresholding.html">
        Thresholding
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../day2b_image_segmentation/03_Morphological_operations.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Morphological Image Processing
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../day2b_image_segmentation/04_Otsu_threshold.html">
+      <a class="reference internal" href="04_Otsu_threshold.html">
        Otsu’s threshold method (optional)
       </a>
      </li>
@@ -856,7 +856,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day1a_Python_Introduction/08_loops.ipynb"
+        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2b_image_segmentation/03_Morphological_operations.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -916,7 +916,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday1a_Python_Introduction/08_loops.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2b_image_segmentation/03_Morphological_operations.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -944,7 +944,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/day1a_Python_Introduction/08_loops.ipynb"
+        <a href="../_sources/day2b_image_segmentation/03_Morphological_operations.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1003,39 +1003,48 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#for-loops">
-   For loops
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Morphological Image Processing
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strutcutal-element">
+     Strutcutal element
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-morphology">
+     Binary morphology
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#erosion-and-dilation">
+       Erosion and Dilation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#openning-and-closing">
+       Openning and Closing
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generating-lists-in-loops">
-   Generating lists in loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#while-loops">
-   While loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interrupting-loops">
-   Interrupting loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#skipping-iterations-in-loops">
-   Skipping iterations in loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1">
    Exercise 1
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
    Exercise 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
   </a>
  </li>
 </ul>
@@ -1047,7 +1056,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Loops</h1>
+                <h1>Morphological Image Processing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1057,39 +1066,48 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#for-loops">
-   For loops
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Morphological Image Processing
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strutcutal-element">
+     Strutcutal element
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-morphology">
+     Binary morphology
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#erosion-and-dilation">
+       Erosion and Dilation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#openning-and-closing">
+       Openning and Closing
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generating-lists-in-loops">
-   Generating lists in loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#while-loops">
-   While loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interrupting-loops">
-   Interrupting loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#skipping-iterations-in-loops">
-   Skipping iterations in loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1">
    Exercise 1
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
    Exercise 2
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3">
+   Exercise 3
   </a>
  </li>
 </ul>
@@ -1102,319 +1120,365 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="loops">
-<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">#</a></h1>
-<p>If you want code to be executed repeatedly, you can make use of loops.</p>
-<p>See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=4dN4Cn4u2M0">Python loops Tutorial</a></p></li>
-<li><p><a class="reference external" href="https://www.w3schools.com/python/python_for_loops.asp">Python for loops</a></p></li>
-</ul>
-<section id="for-loops">
-<h2>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h2>
-<p>For looping over a range of numbers, we can use a simple <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and the <a class="reference external" href="https://www.w3schools.com/python/ref_func_range.asp">range</a> function.</p>
-<p>In the following cell, the <code class="docutils literal notranslate"><span class="pre">print(i)</span></code> command will be executed a couple of times for different values of <code class="docutils literal notranslate"><span class="pre">i</span></code>. We <strong>i</strong>terate over a range of values:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="morphological-image-processing">
+<h1>Morphological Image Processing<a class="headerlink" href="#morphological-image-processing" title="Permalink to this headline">#</a></h1>
+<p>Morphological operations transform images based on shape. They can be seen as non-linear spatial filters in which the kernel/footprint shape and size have a strong impact in the results. In this context, the kernel is also called structural element.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-3
-4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note that the above code that is indented will only be excuted for the first given number (0) and continue until the last number (5) but not including it.</p>
-<p>You can also loop over a range of numbers with a defined step, for example step 3:</p>
+<section id="strutcutal-element">
+<h2>Strutcutal element<a class="headerlink" href="#strutcutal-element" title="Permalink to this headline">#</a></h2>
+<p>The structural element (SE) is a probe that runs through the image, modifying each pixel depending on how well its shape matches the surroundings. This is best explained with some examples.</p>
+<p>Let’s create 3 different SE: a square and a disk. Scikit-image has built-in functions to generate those.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-3
-6
-9
-</pre></div>
-</div>
-</div>
-</div>
-<p>Iterating over arrays allows you to do something with all array elements:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Cat&quot;</span><span class="p">,</span> <span class="s2">&quot;Mouse&quot;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dog
-Cat
-Mouse
-</pre></div>
-</div>
-</div>
-</div>
-<p>You can iterate over two arrays in parallel, pair-wise like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># going through arrays pair-wise</span>
-<span class="n">measurement_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
-<span class="n">measurement_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># creates a disk of 1 with radius = 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;disk = </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">m_1</span><span class="p">,</span> <span class="n">m_2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">measurement_1</span><span class="p">,</span> <span class="n">measurement_2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paired measurements: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m_1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m_2</span><span class="p">))</span>
+<span class="n">square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># creates a square with edges = 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;square = </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Paired measurements: 1 and 4
-Paired measurements: 9 and 5
-Paired measurements: 7 and 5
-Paired measurements: 1 and 7
-Paired measurements: 2 and 4
-Paired measurements: 8 and 5
-Paired measurements: 9 and 4
-Paired measurements: 2 and 6
-Paired measurements: 1 and 6
-Paired measurements: 7 and 5
-Paired measurements: 8 and 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>disk = 
+ [[0 0 0 1 0 0 0]
+ [0 1 1 1 1 1 0]
+ [0 1 1 1 1 1 0]
+ [1 1 1 1 1 1 1]
+ [0 1 1 1 1 1 0]
+ [0 1 1 1 1 1 0]
+ [0 0 0 1 0 0 0]]
+square = 
+ [[1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]
+ [1 1 1 1 1]]
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you want to know the index of the element in the list as well, use the <a class="reference external" href="https://realpython.com/python-enumerate/">enumerate</a> function:</p>
+<p>Now let’s perform some morphological operations with them on an image.</p>
+</section>
+<section id="binary-morphology">
+<h2>Binary morphology<a class="headerlink" href="#binary-morphology" title="Permalink to this headline">#</a></h2>
+<p>The changes in shape are more pronounced in binary images. So, let’s start with a binary cells image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numbering and iterating through collections</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">animal</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s2">&quot;Dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Cat&quot;</span><span class="p">,</span> <span class="s2">&quot;Mouse&quot;</span><span class="p">]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The animal number &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; in the list is &quot;</span> <span class="o">+</span> <span class="n">animal</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s1">&#39;../data/mitosis_mod.tif&#39;</span>
+<span class="n">image_cells</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">image_cells_binary</span> <span class="o">=</span> <span class="n">image_cells</span> <span class="o">&gt;</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The animal number 0 in the list is Dog
-The animal number 1 in the list is Cat
-The animal number 2 in the list is Mouse
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183e8f0070&gt;
 </pre></div>
 </div>
+<img alt="../_images/03_Morphological_operations_10_1.png" src="../_images/03_Morphological_operations_10_1.png" />
+</div>
+</div>
+<section id="erosion-and-dilation">
+<h3>Erosion and Dilation<a class="headerlink" href="#erosion-and-dilation" title="Permalink to this headline">#</a></h3>
+<p>The erosion is a spatial minimum filter. This means that, for every pixel, it gets the surronding pixels that underlie the SE shape and returns the minimal value.</p>
+<p>In the binary case, this means that, if a pixel has any 0-valued neighbouring pixel around it that lies beneath the SE, it will recevie 0.</p>
+<p>Overall, this gives the impression that the white (positive value) structures are getting consumed/eroded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_eroded_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_eroded_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_eroded_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;erosion disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_eroded_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;erosion square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;erosion square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_14_1.png" src="../_images/03_Morphological_operations_14_1.png" />
+</div>
+</div>
+<p>In both cases, the elements got consumed. However, the disk was more effective at this for 2 reasons:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. The structures in the image are roundish, resembling more the disk SE;
+
+2. The disk SE is bigger than the square;
+</pre></div>
+</div>
+<p>Dilation is exactly the opposite, i.e., it is a spatial maximum filter and the overall impression is that structures are growing/dilating.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_dilated_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_dilated_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_dilated_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;dilation disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_dilated_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;dilation square&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;dilation square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_18_1.png" src="../_images/03_Morphological_operations_18_1.png" />
 </div>
 </div>
 </section>
-<section id="generating-lists-in-loops">
-<h2>Generating lists in loops<a class="headerlink" href="#generating-lists-in-loops" title="Permalink to this headline">#</a></h2>
-<p>One can generate lists using for loops. The conventional way of doing this involves multiple lines of code:</p>
+<section id="openning-and-closing">
+<h3>Openning and Closing<a class="headerlink" href="#openning-and-closing" title="Permalink to this headline">#</a></h3>
+<p>The morphological <strong>opening</strong> on an image is defined as an <strong>erosion followed by a dilation</strong>, while <strong>closing</strong> is a <strong>dilation followed by an erosion</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we start with an empty list</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_opening_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
 
-<span class="c1"># and add elements</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">binary_opening_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_opening_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;opening disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_opening_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;opening square&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;opening square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_22_1.png" src="../_images/03_Morphological_operations_22_1.png" />
+</div>
+</div>
+<p>Opening tends to disconnect/separate white (high intensity) structures that are weakly connected. Because it perfoems erosion first, it may also erase isolated small white structures.</p>
+<p>On the other hand, closing tends to connect strucutres that are in close proximity. Because it does dilation first, it may also close small holes (low intensity regions) inside white (high intensity) structures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_closing_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">disk</span><span class="p">)</span>
+
+<span class="n">binary_closing_square</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>One can also write that shorter. The underlying concept is called <a class="reference external" href="https://wiki.python.org/moin/Generators">generators</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_cells_binary</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_closing_disk</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;closing disk&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binary_closing_square</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;closing square&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;closing square&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_25_1.png" src="../_images/03_Morphological_operations_25_1.png" />
+</div>
+</div>
+<p>Opening and closing are usually prefered over plain erosion and dilation because they tend to better preserve structures size.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-1">
+<h1>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h1>
+<p>Below, we have applied dilation (with a big disk SE) to the grayscale cells image. Apply the other operations (erosion, opening and closing) and show the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">big_disk</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The conventional combination involving an if-statements looks like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we start with an empty list</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># and add elements</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="c1"># check if the number is odd</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dilated_image</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">dilation</span><span class="p">(</span><span class="n">image_cells</span><span class="p">,</span> <span class="n">big_disk</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dilated_image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 6]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183ee62a30&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<p>And the short version like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 6]
-</pre></div>
-</div>
+<img alt="../_images/03_Morphological_operations_30_1.png" src="../_images/03_Morphological_operations_30_1.png" />
 </div>
 </div>
 </section>
-<section id="while-loops">
-<h2>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h2>
-<p>Another way of looping is using the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. It works by checking a condition, similar to the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement. It will interrupt execution as soon as the condition is no longer true:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-2">
+<h1>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h1>
+<p>Subtract each result from Exercise 1 from the original image, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">1024</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subtracted_dilated</span> <span class="o">=</span> <span class="n">image_cells</span> <span class="o">-</span> <span class="n">dilated_image</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>and display the results as well as the original image again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">subtracted_dilated</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183eec3310&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_35_1.png" src="../_images/03_Morphological_operations_35_1.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-3">
+<h1>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">#</a></h1>
+<p>Apply the <code class="docutils literal notranslate"><span class="pre">white_tophat</span></code> function from scikit-image on the original image and display the result.</p>
+<p>Use the same SE (<code class="docutils literal notranslate"><span class="pre">big_disk</span></code>) from Exercise 2. Compare this result with the results from Exercise 2.</p>
+<p>What can you conclude?</p>
+<p>*Hint: the <code class="docutils literal notranslate"><span class="pre">big_disk</span></code> should be given as the <code class="docutils literal notranslate"><span class="pre">footprint</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">white_tophat</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">big_disk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2183ef2ee50&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_Morphological_operations_38_1.png" src="../_images/03_Morphological_operations_38_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>morphology.white_tophat<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Red">Signature:</span> morphology<span class=" -Color -Color-Bold -Color-Bold-Yellow">.</span>white_tophat<span class=" -Color -Color-Bold -Color-Bold-Yellow">(</span>image<span class=" -Color -Color-Bold -Color-Bold-Yellow">,</span> footprint<span class=" -Color -Color-Bold -Color-Bold-Yellow">=</span><span class=" -Color -Color-Bold -Color-Bold-Green">None</span><span class=" -Color -Color-Bold -Color-Bold-Yellow">,</span> out<span class=" -Color -Color-Bold -Color-Bold-Yellow">=</span><span class=" -Color -Color-Bold -Color-Bold-Green">None</span><span class=" -Color -Color-Bold -Color-Bold-Yellow">)</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">Docstring:</span>
+Return white top hat of an image.
 
-<span class="k">while</span> <span class="p">(</span><span class="n">number</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>512.0
-256.0
-128.0
-64.0
-32.0
-16.0
-8.0
-4.0
-2.0
-1.0
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="interrupting-loops">
-<h2>Interrupting loops<a class="headerlink" href="#interrupting-loops" title="Permalink to this headline">#</a></h2>
-<p>You can interrupt loops at specific points in your code using the <code class="docutils literal notranslate"><span class="pre">break</span></code> command:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">1024</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">break</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>512.0
-256.0
-128.0
-64.0
-32.0
-16.0
-8.0
-4.0
-2.0
-1.0
-0.5
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-3
-4
-5
-6
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="skipping-iterations-in-loops">
-<h2>Skipping iterations in loops<a class="headerlink" href="#skipping-iterations-in-loops" title="Permalink to this headline">#</a></h2>
-<p>If you want to skip iterations, you can use the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement. That often makes sense in combination with an <code class="docutils literal notranslate"><span class="pre">if</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">continue</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-7
-8
-9
+The white top hat of an image is defined as the image minus its
+morphological opening. This operation returns the bright spots of the image
+that are smaller than the footprint.
+
+Parameters
+----------
+image : ndarray
+    Image array.
+footprint : ndarray, optional
+    The neighborhood expressed as an array of 1&#39;s and 0&#39;s.
+    If None, use cross-shaped footprint (connectivity=1).
+out : ndarray, optional
+    The array to store the result of the morphology. If None
+    is passed, a new array will be allocated.
+
+Returns
+-------
+out : array, same shape and type as `image`
+    The result of the morphological white top hat.
+
+Other Parameters
+----------------
+selem : DEPRECATED
+    Deprecated in favor of `footprint`.
+
+    .. deprecated:: 0.19
+
+See Also
+--------
+
+:func:`black_tophat`
+    ..
+
+References
+----------
+.. [1] https://en.wikipedia.org/wiki/Top-hat_transform
+
+Examples
+--------
+&gt;&gt;&gt; # Subtract gray background from bright peak
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from skimage.morphology import square
+&gt;&gt;&gt; bright_on_gray = np.array([[2, 3, 3, 3, 2],
+...                            [3, 4, 5, 4, 3],
+...                            [3, 5, 9, 5, 3],
+...                            [3, 4, 5, 4, 3],
+...                            [2, 3, 3, 3, 2]], dtype=np.uint8)
+&gt;&gt;&gt; white_tophat(bright_on_gray, square(3))
+array([[0, 0, 0, 0, 0],
+       [0, 0, 1, 0, 0],
+       [0, 1, 5, 1, 0],
+       [0, 0, 1, 0, 0],
+       [0, 0, 0, 0, 0]], dtype=uint8)
+<span class=" -Color -Color-Bold -Color-Bold-Red">File:</span>      c:\miniconda\envs\dev-env\lib\site-packages\skimage\morphology\gray.py
+<span class=" -Color -Color-Bold -Color-Bold-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h2>
-<p>Assume you have a list of filenames and you want to do something with them, for example print them out. Program a for loop which prints out all file names which end with “tif”.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dataset1.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;dataset2.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;summary.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;readme.md&#39;</span><span class="p">,</span> <span class="s1">&#39;blobs.tif&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-2">
-<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h2>
-<p>Assume you have a list of circle radii. Make a table (dictionary) with two columns: radius and area.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radii</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1430,7 +1494,7 @@ The animal number 2 in the list is Mouse
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./day1a_Python_Introduction"
+            path: "./day2b_image_segmentation"
         },
         predefinedOutput: true
     }
@@ -1444,17 +1508,17 @@ The animal number 2 in the list is Mouse
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="07_Conditions.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01_Thresholding.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Conditions</p>
+            <p class="prev-next-title">Thresholding</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="09_custom_functions.html" title="next page">
+    <a class='right-next' id="next-link" href="04_Otsu_threshold.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functions</p>
+        <p class="prev-next-title">Otsu’s threshold method (optional)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

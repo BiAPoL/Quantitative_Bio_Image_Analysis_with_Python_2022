@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Image Filtering" href="../day2a_image_filtering/readme.html" />
+    <link rel="next" title="Image Filtering" href="../day2a_background_subtraction/readme.html" />
     <link rel="prev" title="3D Image Filters" href="../day1z_Image_Filters/10_Filters_in_3D_Isotropic_Data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -312,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../day2a_image_filtering/readme.html">
+    <a class="reference internal" href="../day2a_background_subtraction/readme.html">
      Image Filtering
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -322,8 +322,8 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="01_Background_subtraction.html">
-       Thresholding and noise
+      <a class="reference internal" href="../day2a_background_subtraction/01_Background_subtraction.html">
+       Removing image noise
       </a>
      </li>
     </ul>
@@ -339,18 +339,18 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="02_Thresholding.html">
+      <a class="reference internal" href="../day2b_image_segmentation/01_Thresholding.html">
        Thresholding
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="03_Morphological_operations.html">
+      <a class="reference internal" href="../day2b_image_segmentation/03_Morphological_operations.html">
        Morphological Image Processing
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="04_Instance_segmentation.html">
-       Instance Segmentation
+      <a class="reference internal" href="../day2b_image_segmentation/04_Otsu_threshold.html">
+       Otsu’s threshold method (optional)
       </a>
      </li>
     </ul>
@@ -455,16 +455,33 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="07_stardist2d_in_python.html">
+      <a class="reference internal" href="../day2e_deep_learning_segmentation/01_stardist2d_in_python.html">
        Stardist in Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2e_deep_learning_segmentation/02_MNIST_in_torch.html">
+       Building a simple neural-network with Pytorch
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05_Feature_extraction.html">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2f_feature_extraction/readme.html">
      Feature extraction
     </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2f_feature_extraction/01_Feature_extraction.html">
+       Feature extraction
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -472,8 +489,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../day3/Readme.html">
    Day 3: Biostatistics and data science
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -482,8 +499,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/readme.html">
      Working with tabular data
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-    <label for="toctree-checkbox-14">
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -529,8 +546,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day3b_Plotting/readme.html">
      Plotting Data with Seaborn
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-    <label for="toctree-checkbox-15">
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -561,8 +578,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day3c_statistics_and_tests/Readme.html">
      Statistics and tests
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-    <label for="toctree-checkbox-16">
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -598,8 +615,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day3e_dimensionality_reduction/Readme.html">
      Dimensionality reduction
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-    <label for="toctree-checkbox-17">
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -625,8 +642,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day3f_clustering/Readme.html">
      Clustering
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-    <label for="toctree-checkbox-18">
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -654,8 +671,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../day4/Readme.html">
    Day 4: Reproducible code and Napari plugins
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -664,8 +681,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day4b_writing_readable_code/readme.html">
      Writing readable code
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-    <label for="toctree-checkbox-20">
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -716,8 +733,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day4c_crafting_napari_plugins/readme.html">
      Make your own napari plugin
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-    <label for="toctree-checkbox-21">
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -745,8 +762,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../day5/Readme.html">
    Day 5: Surfaces and bring your own data
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -760,8 +777,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../day5a_points_and_surfaces/Readme.html">
      Working with points and meshes
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-    <label for="toctree-checkbox-23">
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -1002,7 +1019,7 @@ Last but not lease we will extract quantitative measurements from images.</p>
             <p class="prev-next-title">3D Image Filters</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../day2a_image_filtering/readme.html" title="next page">
+    <a class='right-next' id="next-link" href="../day2a_background_subtraction/readme.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Image Filtering</p>
