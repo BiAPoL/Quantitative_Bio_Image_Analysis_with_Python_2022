@@ -1,0 +1,2 @@
+These are the `DSB2018` train and test images with associated ground truth labels as used in [our paper](https://arxiv.org/abs/1806.03535).
+They are a subset of the `stage1_train` images from the Kaggle 2018 Data Science Bowl, which are [available in full](https://data.broadinstitute.org/bbbc/BBBC038/) from the [Broad Bioimage Benchmark Collection](https://data.broadinstitute.org/bbbc/).
