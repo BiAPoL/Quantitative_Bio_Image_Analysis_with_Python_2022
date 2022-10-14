@@ -12,6 +12,7 @@ from enum import Enum
 from napari.types import ImageData, LabelsData, LayerDataTuple
 
 # reusable functions
+
 def preprocess_image(image: ImageData, background_subtraction_radius: int = 15, particle_radius: int = 5) -> ImageData:
     """Apply background removal and denoising"""
     footprint = disk(background_subtraction_radius)
