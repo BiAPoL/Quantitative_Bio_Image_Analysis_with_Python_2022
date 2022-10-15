@@ -136,6 +136,7 @@ chapters:
 
 - file: day4/Readme
   sections:
+  - file: day4a_Best_practices_scientific_programming/readme
   - file: day4b_writing_readable_code/readme
     sections:
     - file: day4b_writing_readable_code/05_readable_code
