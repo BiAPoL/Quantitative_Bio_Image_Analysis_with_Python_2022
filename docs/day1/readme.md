@@ -1,5 +1,8 @@
 # Day 1: Introduction to Python and Bio-image Analysis
 
-Welcome to the Bio-Image Analysis Python ecosystem! In this chapter, we offer a broad overview of the bio-image analysis field using Python and napari. We start with some Python basics to get you confortable with Python syntax and teach you the main concepts necessary for image analysis. Then, we do the first step of any image analysis workflow: open and display images. For multi-dimensional data, we introduce you napari, a fast, interactive, multi-dimensional image viewer for Python.
+Welcome to our Quantiative Bio-Image Analysis using Python course! In the first session we get to know each other and do a little Python Quiz.
 
-After that, we start image processsing by teaching how image filters work and applying a few of them to reduce noise, background or enhance edges. 
+[Slides](https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day1/Introduction_Course.pdf).
+
+Afterwards, we will go through some Python basics and the main concepts of scientific bio-image analysis. In the afternoon, we do the first steps of typical bio-image analysis workflows: open and display images. For multi-dimensional data, we introduce you to napari, a fast, interactive, multi-dimensional image viewer for Python. By the end of the day we will demonstrate how image processing filters work and we will apply a few of them to reduce noise, background or enhance edges. 
+
