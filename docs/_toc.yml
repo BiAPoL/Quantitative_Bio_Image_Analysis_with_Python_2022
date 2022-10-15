@@ -67,6 +67,7 @@ chapters:
     sections:
     - file: day2c_instance_segmentation/09_connected_component_labeling
     - file: day2c_instance_segmentation/10_touching_objects_labeling
+    - file: day2c_instance_segmentation/11_voronoi_tesselation
     - file: day2c_instance_segmentation/11_voronoi_otsu_labeling
     - file: day2c_instance_segmentation/12_Segmentation_3D
     - file: day2c_instance_segmentation/14_segmentation_2d_membranes
