@@ -27,7 +27,7 @@ Alternatively, open a thread on [image.sc](https://image.sc), put a link to the 
 
 ## Acknowledgements
 
-We would like to thank all the people who shared teaching materials we are reusing here, in particular Anna Poetsch, [Biotec Dresden](https://tu-dresden.de/cmcb/biotec/forschungsgruppen/poetsch) and Benoit Lombardot, MPI-CBG Dresden.
+We would like to thank all the people who shared teaching materials we are reusing here, in particular Anna Poetsch ([Biotec Dresden](https://tu-dresden.de/cmcb/biotec/forschungsgruppen/poetsch)), Benoit Lombardot (MPI-CBG Dresden), Martin Weigert (EPFL Lausanne) and Alexander Krull (U Birmingham).
 We acknowledge support by the Deutsche Forschungsgemeinschaft under Germany’s Excellence Strategy—EXC2068–Cluster of Excellence Physics of Life of TU Dresden.
 
 
