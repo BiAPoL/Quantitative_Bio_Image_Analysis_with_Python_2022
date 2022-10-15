@@ -1,1 +1,4 @@
-# Day 2: Instance Segmentation
+# Instance Segmentation
+In this session we will explore different algorithms for instance segmentation. Classical methods are typically combinations of image filtering methods, threshold algorithms and labeling algorthms such as connected component analysis. 
+
+[Download slices](https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/raw/main/docs/day2c_instance_segmentation/Instance_segmentation.pdf)
