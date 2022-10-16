@@ -1039,6 +1039,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading file &#39;data/mitosis.tif&#39; from &#39;https://gitlab.com/scikit-image/data/-/raw/master/AS_09125_050116030001_D03f00d0.tif&#39; to &#39;C:\Users\johan\AppData\Local\scikit-image\scikit-image\Cache\0.19.3&#39;.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1053,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_correlation_matrix_3_0.png" src="../_images/03_correlation_matrix_3_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1eb6f00c430&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_correlation_matrix_3_1.png" src="../_images/03_correlation_matrix_3_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1067,7 +1075,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_correlation_matrix_5_0.png" src="../_images/03_correlation_matrix_5_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1eb73eba9d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/03_correlation_matrix_5_1.png" src="../_images/03_correlation_matrix_5_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1310,7 +1321,7 @@ title="Print to PDF"
 <p>It seems obvious that there is quite a large number of features that are strongly connected to each other - Seaborn offers the <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> function for this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1321,7 +1332,7 @@ title="Print to PDF"
 <p>Maybe we can make this even clearer by rearranging some of the columns/rows. We can use the seaborn <code class="docutils literal notranslate"><span class="pre">clustermap</span></code> feature for this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
