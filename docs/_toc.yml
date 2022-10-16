@@ -39,7 +39,7 @@ chapters:
   - file: day1x_Folder_Structures/readme
     sections:
     - file: day1x_Folder_Structures/05_Folder_structures
-    - file: day1x_Folder_Structures/05_Folder_structures2
+    - file: day1x_Folder_Structures/06_Folder_structures2
   - file: day1y_Napari_Introduction/readme
     sections:
     - file: day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction
