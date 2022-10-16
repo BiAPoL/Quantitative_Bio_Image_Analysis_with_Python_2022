@@ -87,7 +87,7 @@ chapters:
   - file: day2e_deep_learning_segmentation/readme
     sections:
     - file: day2e_deep_learning_segmentation/01_stardist2d_in_python
-    - file: day2e_deep_learning_segmentation/02_MNIST_in_torch
+    - file: day2e_deep_learning_segmentation/02_2D_unet_training
 
   - file: day2f_feature_extraction/readme
     sections:
