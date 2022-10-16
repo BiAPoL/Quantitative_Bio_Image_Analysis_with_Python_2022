@@ -1,3 +1,3 @@
-# Day 5a: Work on your own data
+# Work on your own data
 
-People bring their own images to be analyzed together.
+In this session we take a look at your data and setup a bio-image analysis and/or data science workflow together.
