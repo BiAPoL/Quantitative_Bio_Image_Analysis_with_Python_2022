@@ -39,7 +39,7 @@ chapters:
   - file: day1x_Folder_Structures/readme
     sections:
     - file: day1x_Folder_Structures/05_Folder_structures
-    - file: day1x_Folder_Structures/05_Folder_structures2
+    - file: day1x_Folder_Structures/06_Folder_structures2
   - file: day1y_Napari_Introduction/readme
     sections:
     - file: day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction
@@ -56,6 +56,7 @@ chapters:
   - file: day2a_background_subtraction/readme
     sections:
     - file: day2a_background_subtraction/01_Background_subtraction
+    - file: day2a_background_subtraction/01_Background_removal_II
 
   - file: day2b_image_segmentation/readme
     sections:
@@ -67,6 +68,7 @@ chapters:
     sections:
     - file: day2c_instance_segmentation/09_connected_component_labeling
     - file: day2c_instance_segmentation/10_touching_objects_labeling
+    - file: day2c_instance_segmentation/11_voronoi_tesselation
     - file: day2c_instance_segmentation/11_voronoi_otsu_labeling
     - file: day2c_instance_segmentation/12_Segmentation_3D
     - file: day2c_instance_segmentation/14_segmentation_2d_membranes
@@ -136,6 +138,7 @@ chapters:
 
 - file: day4/Readme
   sections:
+  - file: day4a_Best_practices_scientific_programming/readme
   - file: day4b_writing_readable_code/readme
     sections:
     - file: day4b_writing_readable_code/05_readable_code
@@ -149,15 +152,15 @@ chapters:
 
   - file: day4c_crafting_napari_plugins/readme
     sections:
-    - file: day4/01_Turning_a_function_into_a_napari_plugin
-    - file: day4/02_Adding_code_to_Github
-    - file: day4/03_Practical_Exchanging_code
-
+    - file: day4c_crafting_napari_plugins/01_creating_widgets_from_functions
+    - file: day4c_crafting_napari_plugins/02_creating_widgets_from_functions_part2
+    - file: day4c_crafting_napari_plugins/03_creating_widgets_from_qtpy
+    - file: day4c_crafting_napari_plugins/04_napari_cookiecutter
   
 - file: day5/Readme
   sections:
-  - file: day5/Analyze_data_together
   - file:  day5a_points_and_surfaces/Readme
     sections:
     - file: day5a_points_and_surfaces/01_creating_and_working_with_meshes
     - file: day5a_points_and_surfaces/02_advanced_surface_characteristics
+  - file: day5/Analyze_data_together
