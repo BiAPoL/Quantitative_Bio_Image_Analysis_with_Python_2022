@@ -1,0 +1,9 @@
+name: stardist_tensorflow
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - tensorflow
+  - pip:
+    - stardist
+
