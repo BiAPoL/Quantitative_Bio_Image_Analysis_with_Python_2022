@@ -1,0 +1,1833 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Stardist in Python: Training &#8212; Quantitative Bio-image Analysis with Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feature extraction" href="../day2f_feature_extraction/readme.html" />
+    <link rel="prev" title="Stardist in Python: Data" href="01_Stardist2d_in_python_getting_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/biapol_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Quantitative Bio-image Analysis with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Quantitative Bio-Image Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../day0/Readme.html">
+   Course preparation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day1/readme.html">
+   Day 1: Introduction to Python and Bio-image Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1a_Python_Introduction/readme.html">
+     Introduction to Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/01_our_first_juptyer_notebook.html">
+       Python code in Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/02_Math_in_python.html">
+       Basic math in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/03_Dont_try_this_at_home.html">
+       Pitfalls when working with Jupyter notebooks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/04_Basic_types.html">
+       Basic types in python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05_lists_tuples.html">
+       Lists and tuples
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05a_cropping_lists.html">
+       Cropping lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05b_sorting_lists.html">
+       Sorting lists
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/05c_masking.html">
+       Masking numpy arrays
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/06_Dictionaries_and_tables.html">
+       Dictionaries
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/07_Conditions.html">
+       Conditions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/08_loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1a_Python_Introduction/09_custom_functions.html">
+       Functions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day1b_Introduction_Bio-image_Analysis/readme.html">
+     Introduction to Bio-image Analysis
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1w_Working_with_Images/readme.html">
+     Opening and Displaying with Images in Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/01_Working_with_images.html">
+       Working with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/02_Matplotlib_subplots_introduction.html">
+       Subplots with matplotlib
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/03_Multi_channel_image_data.html">
+       Multi-channel image data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1w_Working_with_Images/04_Image_file_formats.html">
+       Image file formats
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1x_Folder_Structures/readme.html">
+     Folder Structures
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1x_Folder_Structures/05_Folder_structures.html">
+       Folder Structures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1x_Folder_Structures/06_Folder_structures2.html">
+       Folder Structures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1y_Napari_Introduction/readme.html">
+     napari from Jupyter notebooks
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/07_Napari_from_Jupyter_introduction.html">
+       Using Napari to visualize and interact with images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1y_Napari_Introduction/08_my_segmentation_workflow_trailer.html">
+       Segmentation Workflow Example with 3D Data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day1z_Image_Filters/readme.html">
+     Image Filters
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/09_Image_Filters.html">
+       Image Filters
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day1z_Image_Filters/10_Filters_in_3D_Isotropic_Data.html">
+       3D Image Filters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../day2/Readme.html">
+   Day 2: Image Filtering, Segmentation and Feature Extraction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2a_background_subtraction/readme.html">
+     Image Filtering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2a_background_subtraction/01_Background_subtraction.html">
+       Removing image noise
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2b_image_segmentation/readme.html">
+     Image segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2b_image_segmentation/01_Thresholding.html">
+       Thresholding
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2b_image_segmentation/03_Morphological_operations.html">
+       Morphological Image Processing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2b_image_segmentation/04_Otsu_threshold.html">
+       Otsu’s threshold method (optional)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2c_instance_segmentation/readme.html">
+     Instance Segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/09_connected_component_labeling.html">
+       Label images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/10_touching_objects_labeling.html">
+       Touching objects labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/11_voronoi_tesselation.html">
+       Voronoi tesselation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/11_voronoi_otsu_labeling.html">
+       Voronoi-Otsu-labeling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/12_Segmentation_3D.html">
+       3D Image Segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/14_segmentation_2d_membranes.html">
+       Seeded watershed for membrane-based cell segmentation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/15_remove_labels_on_image_edges.html">
+       Remove labels on image edges
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/16_open_close_labels.html">
+       Label image refinement
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/19_the_segmentation_game.html">
+       The Segmentation Game
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2c_instance_segmentation/20_Segmentation_quality_estimation.html">
+       Image segmentation quality measurements
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2d_machine_learning_apoc/readme.html">
+     Machine learning for object segmentation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/01_supervised_machine_learning.html">
+       Supervised machine learning
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/02_exercise_apoc.html">
+       Exercise: Interactive pixel and object classification
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/04_demo_object_segmenter.html">
+       Object segmentation on OpenCL-compatible GPUs
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2d_machine_learning_apoc/05_train_on_folders.html">
+       Training classifiers from folders of images
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="readme.html">
+     Deep Learning for image segmentation
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="01_Stardist2d_in_python_getting_data.html">
+       Stardist in Python: Data
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Stardist in Python: Training
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day2f_feature_extraction/readme.html">
+     Feature extraction
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day2f_feature_extraction/01_Feature_extraction.html">
+       Feature extraction
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day3/Readme.html">
+   Day 3: Biostatistics and data science
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/readme.html">
+     Working with tabular data
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+    <label for="toctree-checkbox-15">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/01_introduction_dataframes.html">
+       Introduction to working with DataFrames
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/02_basic_descriptive_statistics.html">
+       Basic descriptive statistics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/03_descriptive_statistics_label_images.html">
+       Descriptive statistics of labeled images
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/04_append_tables.html">
+       Appending tables
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/05_handling_NaNs.html">
+       Handling NaN values
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/06_tidy_data.html">
+       Tidy-Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3a_Tabular_Data_and_Descriptive_Statistics/07_split_apply_combine.html">
+       Split-Apply-Combine
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3b_Plotting/readme.html">
+     Plotting Data with Seaborn
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+    <label for="toctree-checkbox-16">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/01_Plotting_Data_with_Python.html">
+       Plotting Data with Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/02_Introduction_to_Seaborn.html">
+       Introduction to Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/03_Plotting_distributions.html">
+       Plotting Distributions with Seaborn
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3b_Plotting/04_Multivariate_views.html">
+       Multivariate views
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3c_statistics_and_tests/Readme.html">
+     Statistics and tests
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+    <label for="toctree-checkbox-17">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3c_statistics_and_tests/01_Bland_altman_analysis.html">
+       Method comparison and Bland-Altman Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3c_statistics_and_tests/02_correlation.html">
+       Correlation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3c_statistics_and_tests/03_correlation_matrix.html">
+       Correlation matrix
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3c_statistics_and_tests/04_multiple_testing.html">
+       Multiple testing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3c_statistics_and_tests/05_hypothesis_testing.html">
+       Nonparametric testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3e_dimensionality_reduction/Readme.html">
+     Dimensionality reduction
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+    <label for="toctree-checkbox-18">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3e_dimensionality_reduction/01_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3e_dimensionality_reduction/02_UMAP.html">
+       UMAP
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3e_dimensionality_reduction/03_PCA.html">
+       PCA and UMAP
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day3f_clustering/Readme.html">
+     Clustering
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+    <label for="toctree-checkbox-19">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3f_clustering/01_kmeans.html">
+       K-means clustering
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3f_clustering/02_hdbscan.html">
+       HDBSCAN
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day3f_clustering/03_interactive_dim_reduction_and_clustering.html">
+       Interactive dimensioanlity reduction and clustering
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day4/Readme.html">
+   Day 4: Best practices in scientific programming and developing Napari plugins
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day4a_Best_practices_scientific_programming/readme.html">
+     Best practices in scientific programming
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4b_writing_readable_code/readme.html">
+     Writing readable code
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+    <label for="toctree-checkbox-21">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/05_readable_code.html">
+       Writing good code
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/07_magic_numbers.html">
+       Prevent magic numbers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/08_divide_and_rule.html">
+       Divide and rule
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/09_custom_modules.html">
+       Custom modules
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/10_reading_exercise.html">
+       Reading exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/11_exercise_modules.html">
+       Modularization exercise
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/12_keep_it_short_and_simple.html">
+       Keep it short and simple
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4b_writing_readable_code/14_stackview.html">
+       Interactive functions in Jupyter Lab
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day4c_crafting_napari_plugins/readme.html">
+     Make your own napari plugin
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+    <label for="toctree-checkbox-22">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/01_creating_widgets_from_functions.html">
+       Creating Widgets from Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/02_creating_widgets_from_functions_part2.html">
+       Creating Widgets from Functions - Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/03_creating_widgets_from_qtpy.html">
+       Importing your fancy GUI to napari
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day4c_crafting_napari_plugins/04_napari_cookiecutter.html">
+       Creating a plugin from a template using the cookiecutter
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../day5/Readme.html">
+   Day 5: Surfaces and bring your own data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../day5a_points_and_surfaces/Readme.html">
+     Working with points and meshes
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+    <label for="toctree-checkbox-24">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day5a_points_and_surfaces/01_creating_and_working_with_meshes.html">
+       Working with surface data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../day5a_points_and_surfaces/02_advanced_surface_characteristics.html">
+       Advanced surface characteristics
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../day5/Analyze_data_together.html">
+     Work on your own data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/main?urlpath=tree/day2e_deep_learning_segmentation/02_Stardist2d_in_python_training.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/BiAPoL/Quantitative_Bio_Image_Analysis_with_Python_2022/issues/new?title=Issue%20on%20page%20%2Fday2e_deep_learning_segmentation/02_Stardist2d_in_python_training.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/day2e_deep_learning_segmentation/02_Stardist2d_in_python_training.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Stardist in Python: Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-augmentation">
+   Data Augmentation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threshold-optimization">
+   Threshold optimization
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-and-detection-performance">
+   Evaluation and Detection Performance
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receptive-field">
+     Receptive field
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Stardist in Python: Training</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Stardist in Python: Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-augmentation">
+   Data Augmentation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threshold-optimization">
+   Threshold optimization
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-and-detection-performance">
+   Evaluation and Detection Performance
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receptive-field">
+     Receptive field
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="stardist-in-python-training">
+<h1>Stardist in Python: Training<a class="headerlink" href="#stardist-in-python-training" title="Permalink to this headline">#</a></h1>
+<p>This notebook will demonstrate how to train your own stardist model based on the data you should have downloaded in the [previous notebook].(./01_Stardist2d_in_python_getting_data.ipynb)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.interpolation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span> <span class="nn">csbdeep.utils</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">normalize</span>
+
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
+
+<span class="kn">from</span> <span class="nn">stardist</span> <span class="kn">import</span> <span class="n">fill_label_holes</span><span class="p">,</span> <span class="n">random_label_cmap</span><span class="p">,</span> <span class="n">calculate_extents</span><span class="p">,</span> <span class="n">gputools_available</span>
+<span class="kn">from</span> <span class="nn">stardist.matching</span> <span class="kn">import</span> <span class="n">matching</span><span class="p">,</span> <span class="n">matching_dataset</span>
+<span class="kn">from</span> <span class="nn">stardist.models</span> <span class="kn">import</span> <span class="n">Config2D</span><span class="p">,</span> <span class="n">StarDist2D</span><span class="p">,</span> <span class="n">StarDistData2D</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">lbl_cmap</span> <span class="o">=</span> <span class="n">random_label_cmap</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1108461538.py (5): Support for setting an rcParam that expects a str value to a non-str value is deprecated since 3.5 and support will be removed two minor releases later.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h1>
+<div class="alert alert-block alert-info">
+Training data (for input `X` with associated label masks `Y`) can be provided via lists of numpy arrays, where each image can have a different size. Alternatively, a single numpy array can also be used if all images have the same size.  
+Input images can either be two-dimensional (single-channel) or three-dimensional (multi-channel) arrays, where the channel axis comes last. Label images need to be integer-valued.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;data/dsb2018/train/images/*.tif&#39;</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;data/dsb2018/train/masks/*.tif&#39;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="n">Path</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">imread</span><span class="p">,</span><span class="n">X</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">imread</span><span class="p">,</span><span class="n">Y</span><span class="p">))</span>
+<span class="n">n_channel</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Normalize images and fill small label holes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axis_norm</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># normalize channels independently</span>
+<span class="c1"># axis_norm = (0,1,2) # normalize channels jointly</span>
+<span class="k">if</span> <span class="n">n_channel</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Normalizing image channels </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;jointly&#39;</span> <span class="k">if</span> <span class="n">axis_norm</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">axis_norm</span> <span class="k">else</span> <span class="s1">&#39;independently&#39;</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">99.8</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="n">axis_norm</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">X</span><span class="p">)]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="n">fill_label_holes</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">Y</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████| 447/447 [00:00&lt;00:00, 452.66it/s]
+100%|██████████████████████████████████████████████████████████████████████| 447/447 [00:01&lt;00:00, 238.41it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Split into train and validation datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;not enough training data&quot;</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">n_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind</span><span class="p">))))</span>
+<span class="n">ind_train</span><span class="p">,</span> <span class="n">ind_val</span> <span class="o">=</span> <span class="n">ind</span><span class="p">[:</span><span class="o">-</span><span class="n">n_val</span><span class="p">],</span> <span class="n">ind</span><span class="p">[</span><span class="o">-</span><span class="n">n_val</span><span class="p">:]</span>
+<span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ind_val</span><span class="p">]</span>  <span class="p">,</span> <span class="p">[</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ind_val</span><span class="p">]</span>
+<span class="n">X_trn</span><span class="p">,</span> <span class="n">Y_trn</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ind_train</span><span class="p">],</span> <span class="p">[</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ind_train</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of images: </span><span class="si">%3d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- training:       </span><span class="si">%3d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_trn</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- validation:     </span><span class="si">%3d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_val</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of images: 447
+- training:       380
+- validation:      67
+</pre></div>
+</div>
+</div>
+</div>
+<p>Training data consists of pairs of input image and label instances.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_img_label</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">lbl</span><span class="p">,</span> <span class="n">img_title</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">lbl_title</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ai</span><span class="p">,</span><span class="n">al</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width_ratios</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ai</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">img_title</span><span class="p">)</span>    
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ai</span><span class="p">)</span>
+    <span class="n">al</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lbl</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">lbl_cmap</span><span class="p">)</span>
+    <span class="n">al</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">lbl_title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">img</span><span class="p">,</span> <span class="n">lbl</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="k">if</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">ndim</span><span class="o">==</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span> <span class="k">else</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_img_label</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">lbl</span><span class="p">)</span>
+<span class="kc">None</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Stardist2d_in_python_training_11_0.png" src="../_images/02_Stardist2d_in_python_training_11_0.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h1>
+<p>A <code class="docutils literal notranslate"><span class="pre">StarDist2D</span></code> model is specified via a <code class="docutils literal notranslate"><span class="pre">Config2D</span></code> object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Config2D</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Configuration for a :class:`StarDist2D` model.
+
+    Parameters
+    ----------
+    axes : str or None
+        Axes of the input images.
+    n_rays : int
+        Number of radial directions for the star-convex polygon.
+        Recommended to use a power of 2 (default: 32).
+    n_channel_in : int
+        Number of channels of given input image (default: 1).
+    grid : (int,int)
+        Subsampling factors (must be powers of 2) for each of the axes.
+        Model will predict on a subsampled grid for increased efficiency and larger field of view.
+    n_classes : None or int
+        Number of object classes to use for multi-class predection (use None to disable)
+    backbone : str
+        Name of the neural network architecture to be used as backbone.
+    kwargs : dict
+        Overwrite (or add) configuration attributes (see below).
+
+
+    Attributes
+    ----------
+    unet_n_depth : int
+        Number of U-Net resolution levels (down/up-sampling layers).
+    unet_kernel_size : (int,int)
+        Convolution kernel size for all (U-Net) convolution layers.
+    unet_n_filter_base : int
+        Number of convolution kernels (feature channels) for first U-Net layer.
+        Doubled after each down-sampling layer.
+    unet_pool : (int,int)
+        Maxpooling size for all (U-Net) convolution layers.
+    net_conv_after_unet : int
+        Number of filters of the extra convolution layer after U-Net (0 to disable).
+    unet_* : *
+        Additional parameters for U-net backbone.
+    train_shape_completion : bool
+        Train model to predict complete shapes for partially visible objects at image boundary.
+    train_completion_crop : int
+        If &#39;train_shape_completion&#39; is set to True, specify number of pixels to crop at boundary of training patches.
+        Should be chosen based on (largest) object sizes.
+    train_patch_size : (int,int)
+        Size of patches to be cropped from provided training images.
+    train_background_reg : float
+        Regularizer to encourage distance predictions on background regions to be 0.
+    train_foreground_only : float
+        Fraction (0..1) of patches that will only be sampled from regions that contain foreground pixels.
+    train_sample_cache : bool
+        Activate caching of valid patch regions for all training images (disable to save memory for large datasets)
+    train_dist_loss : str
+        Training loss for star-convex polygon distances (&#39;mse&#39; or &#39;mae&#39;).
+    train_loss_weights : tuple of float
+        Weights for losses relating to (probability, distance)
+    train_epochs : int
+        Number of training epochs.
+    train_steps_per_epoch : int
+        Number of parameter update steps per epoch.
+    train_learning_rate : float
+        Learning rate for training.
+    train_batch_size : int
+        Batch size for training.
+    train_n_val_patches : int
+        Number of patches to be extracted from validation images (``None`` = one patch per image).
+    train_tensorboard : bool
+        Enable TensorBoard for monitoring training progress.
+    train_reduce_lr : dict
+        Parameter :class:`dict` of ReduceLROnPlateau_ callback; set to ``None`` to disable.
+    use_gpu : bool
+        Indicate that the data generator should use OpenCL to do computations on the GPU.
+
+        .. _ReduceLROnPlateau: https://keras.io/api/callbacks/reduce_lr_on_plateau/
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before actually doing the training, we need to set some parameters. Predominantly these parameters are</p>
+<ul class="simple">
+<li><p>Number of rays: See <a class="reference internal" href="01_Stardist2d_in_python_getting_data.html"><span class="doc std std-doc">previous notebook</span></a></p></li>
+<li><p>Use the graphics card for training: This is disabled by default and will not work on PCs without an NVidia graphics card. It may be possible to enable this feature on your PC by downloading <a class="reference external" href="https://anaconda.org/conda-forge/cudatoolkit">cudatoolkit</a> - no guarantuee given, though.</p></li>
+<li><p>grid: The size of the image may be too large for your memory to handle during training - thus it is common to split the image into tiles and process these tiles separately.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 32 is a good default choice (see 1_data.ipynb)</span>
+<span class="n">n_rays</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="c1"># Use OpenCL-based computations for data generator during training (requires &#39;gputools&#39;)</span>
+<span class="n">use_gpu</span> <span class="o">=</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">gputools_available</span><span class="p">()</span>
+
+<span class="c1"># Predict on subsampled grid for increased efficiency and larger field of view</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">conf</span> <span class="o">=</span> <span class="n">Config2D</span> <span class="p">(</span>
+    <span class="n">n_rays</span>       <span class="o">=</span> <span class="n">n_rays</span><span class="p">,</span>
+    <span class="n">grid</span>         <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+    <span class="n">use_gpu</span>      <span class="o">=</span> <span class="n">use_gpu</span><span class="p">,</span>
+    <span class="n">n_channel_in</span> <span class="o">=</span> <span class="n">n_channel</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+<span class="nb">vars</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config2D(n_dim=2, axes=&#39;YXC&#39;, n_channel_in=1, n_channel_out=33, train_checkpoint=&#39;weights_best.h5&#39;, train_checkpoint_last=&#39;weights_last.h5&#39;, train_checkpoint_epoch=&#39;weights_now.h5&#39;, n_rays=32, grid=(2, 2), backbone=&#39;unet&#39;, n_classes=None, unet_n_depth=3, unet_kernel_size=(3, 3), unet_n_filter_base=32, unet_n_conv_per_depth=2, unet_pool=(2, 2), unet_activation=&#39;relu&#39;, unet_last_activation=&#39;relu&#39;, unet_batch_norm=False, unet_dropout=0.0, unet_prefix=&#39;&#39;, net_conv_after_unet=128, net_input_shape=(None, None, 1), net_mask_shape=(None, None, 1), train_shape_completion=False, train_completion_crop=32, train_patch_size=(256, 256), train_background_reg=0.0001, train_foreground_only=0.9, train_sample_cache=True, train_dist_loss=&#39;mae&#39;, train_loss_weights=(1, 0.2), train_class_weights=(1, 1), train_epochs=400, train_steps_per_epoch=100, train_learning_rate=0.0003, train_batch_size=4, train_n_val_patches=None, train_tensorboard=True, train_reduce_lr={&#39;factor&#39;: 0.5, &#39;patience&#39;: 40, &#39;min_delta&#39;: 0}, use_gpu=False)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_dim&#39;: 2,
+ &#39;axes&#39;: &#39;YXC&#39;,
+ &#39;n_channel_in&#39;: 1,
+ &#39;n_channel_out&#39;: 33,
+ &#39;train_checkpoint&#39;: &#39;weights_best.h5&#39;,
+ &#39;train_checkpoint_last&#39;: &#39;weights_last.h5&#39;,
+ &#39;train_checkpoint_epoch&#39;: &#39;weights_now.h5&#39;,
+ &#39;n_rays&#39;: 32,
+ &#39;grid&#39;: (2, 2),
+ &#39;backbone&#39;: &#39;unet&#39;,
+ &#39;n_classes&#39;: None,
+ &#39;unet_n_depth&#39;: 3,
+ &#39;unet_kernel_size&#39;: (3, 3),
+ &#39;unet_n_filter_base&#39;: 32,
+ &#39;unet_n_conv_per_depth&#39;: 2,
+ &#39;unet_pool&#39;: (2, 2),
+ &#39;unet_activation&#39;: &#39;relu&#39;,
+ &#39;unet_last_activation&#39;: &#39;relu&#39;,
+ &#39;unet_batch_norm&#39;: False,
+ &#39;unet_dropout&#39;: 0.0,
+ &#39;unet_prefix&#39;: &#39;&#39;,
+ &#39;net_conv_after_unet&#39;: 128,
+ &#39;net_input_shape&#39;: (None, None, 1),
+ &#39;net_mask_shape&#39;: (None, None, 1),
+ &#39;train_shape_completion&#39;: False,
+ &#39;train_completion_crop&#39;: 32,
+ &#39;train_patch_size&#39;: (256, 256),
+ &#39;train_background_reg&#39;: 0.0001,
+ &#39;train_foreground_only&#39;: 0.9,
+ &#39;train_sample_cache&#39;: True,
+ &#39;train_dist_loss&#39;: &#39;mae&#39;,
+ &#39;train_loss_weights&#39;: (1, 0.2),
+ &#39;train_class_weights&#39;: (1, 1),
+ &#39;train_epochs&#39;: 400,
+ &#39;train_steps_per_epoch&#39;: 100,
+ &#39;train_learning_rate&#39;: 0.0003,
+ &#39;train_batch_size&#39;: 4,
+ &#39;train_n_val_patches&#39;: None,
+ &#39;train_tensorboard&#39;: True,
+ &#39;train_reduce_lr&#39;: {&#39;factor&#39;: 0.5, &#39;patience&#39;: 40, &#39;min_delta&#39;: 0},
+ &#39;use_gpu&#39;: False}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">use_gpu</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">csbdeep.utils.tf</span> <span class="kn">import</span> <span class="n">limit_gpu_memory</span>
+    <span class="c1"># adjust as necessary: limit GPU memory to be used by TensorFlow to leave some to OpenCL-based computations</span>
+    <span class="n">limit_gpu_memory</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="c1"># alternatively, try this:</span>
+    <span class="c1"># limit_gpu_memory(None, allow_growth=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> The trained <code class="docutils literal notranslate"><span class="pre">StarDist2D</span></code> model will <em>not</em> predict completed shapes for partially visible objects at the image boundary if <code class="docutils literal notranslate"><span class="pre">train_shape_completion=False</span></code> (which is the default option).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">StarDist2D</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stardist&#39;</span><span class="p">,</span> <span class="n">basedir</span><span class="o">=</span><span class="s1">&#39;models&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading thresholds from &#39;thresholds.json&#39;.
+Using default values: prob_thresh=0.24019, nms_thresh=0.3.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check if the neural network has a large enough field of view to see up to the boundary of most objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median_size</span> <span class="o">=</span> <span class="n">calculate_extents</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">)</span>
+<span class="n">fov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_axes_tile_overlap</span><span class="p">(</span><span class="s1">&#39;YX&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;median object size:      </span><span class="si">{</span><span class="n">median_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;network field of view :  </span><span class="si">{</span><span class="n">fov</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">median_size</span> <span class="o">&gt;</span> <span class="n">fov</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: median object size larger than field of view of the neural network.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 182ms/step
+1/1 [==============================] - 0s 61ms/step
+median object size:      [17.5 18. ]
+network field of view :  [94 94]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-augmentation">
+<h1>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this headline">#</a></h1>
+<p>You can define a function/callable that applies augmentation to each batch of the data generator.<br />
+We here use an <code class="docutils literal notranslate"><span class="pre">augmenter</span></code> that applies random rotations, flips, and intensity changes, which are typically sensible for (2D) microscopy images (but you can disable augmentation by setting <code class="docutils literal notranslate"><span class="pre">augmenter</span> <span class="pre">=</span> <span class="pre">None</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_fliprot</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span> 
+    <span class="k">assert</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;=</span> <span class="n">mask</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+    <span class="n">perm</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span><span class="p">)))</span> 
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span><span class="p">,</span> <span class="n">mask</span> 
+
+<span class="k">def</span> <span class="nf">random_intensity_change</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+
+<span class="k">def</span> <span class="nf">augmenter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Augmentation of a single input/label image pair.</span>
+<span class="sd">    x is an input image</span>
+<span class="sd">    y is the corresponding ground-truth label image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_fliprot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random_intensity_change</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1"># add some gaussian noise</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot some augmented examples</span>
+<span class="n">img</span><span class="p">,</span> <span class="n">lbl</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plot_img_label</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">lbl</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">img_aug</span><span class="p">,</span> <span class="n">lbl_aug</span> <span class="o">=</span> <span class="n">augmenter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">lbl</span><span class="p">)</span>
+    <span class="n">plot_img_label</span><span class="p">(</span><span class="n">img_aug</span><span class="p">,</span> <span class="n">lbl_aug</span><span class="p">,</span> <span class="n">img_title</span><span class="o">=</span><span class="s2">&quot;image augmented&quot;</span><span class="p">,</span> <span class="n">lbl_title</span><span class="o">=</span><span class="s2">&quot;label augmented&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Stardist2d_in_python_training_24_0.png" src="../_images/02_Stardist2d_in_python_training_24_0.png" />
+<img alt="../_images/02_Stardist2d_in_python_training_24_1.png" src="../_images/02_Stardist2d_in_python_training_24_1.png" />
+<img alt="../_images/02_Stardist2d_in_python_training_24_2.png" src="../_images/02_Stardist2d_in_python_training_24_2.png" />
+<img alt="../_images/02_Stardist2d_in_python_training_24_3.png" src="../_images/02_Stardist2d_in_python_training_24_3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h1>
+<p>We recommend to monitor the progress during training with <a class="reference external" href="https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard">TensorBoard</a>. You can start it in the shell from the current working directory like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ tensorboard --logdir=.
+</pre></div>
+</div>
+<p>Then connect to <a class="reference external" href="http://localhost:6006/">http://localhost:6006/</a> with your browser.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quick_demo</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">quick_demo</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span>
+        <span class="s2">&quot;NOTE: This is only for a quick demonstration!</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;      Please set the variable &#39;quick_demo = False&#39; for proper (long) training.&quot;</span><span class="p">,</span>
+        <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_trn</span><span class="p">,</span> <span class="n">Y_trn</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span><span class="n">Y_val</span><span class="p">),</span> <span class="n">augmenter</span><span class="o">=</span><span class="n">augmenter</span><span class="p">,</span>
+                <span class="n">epochs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;====&gt; Stopping training and loading previously trained demo model from disk.&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">StarDist2D</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;2D_demo&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_trn</span><span class="p">,</span> <span class="n">Y_trn</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span><span class="n">Y_val</span><span class="p">),</span> <span class="n">augmenter</span><span class="o">=</span><span class="n">augmenter</span><span class="p">)</span>
+<span class="kc">None</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NOTE: This is only for a quick demonstration!
+      Please set the variable &#39;quick_demo = False&#39; for proper (long) training.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/2
+3/3 [==============================] - 0s 45ms/steploss: 1.7712 - prob_loss: 0.3109 - dist_loss: 7.3018 - prob_kld: 0.2339 - dist_relevant_mae: 7.3011 - dist_relevant_mse: 111.6556 - dist_dist_iou_metric: 0.
+10/10 [==============================] - 10s 1s/step - loss: 1.7712 - prob_loss: 0.3109 - dist_loss: 7.3018 - prob_kld: 0.2339 - dist_relevant_mae: 7.3011 - dist_relevant_mse: 111.6556 - dist_dist_iou_metric: 0.3070 - val_loss: 1.8127 - val_prob_loss: 0.2679 - val_dist_loss: 7.7241 - val_prob_kld: 0.1960 - val_dist_relevant_mae: 7.7235 - val_dist_relevant_mse: 135.9931 - val_dist_dist_iou_metric: 0.2631 - lr: 3.0000e-04
+Epoch 2/2
+3/3 [==============================] - 0s 40ms/steploss: 1.9356 - prob_loss: 0.3372 - dist_loss: 7.9920 - prob_kld: 0.2581 - dist_relevant_mae: 7.9912 - dist_relevant_mse: 129.1611 - dist_dist_iou_metric: 0.
+10/10 [==============================] - 10s 1s/step - loss: 1.9356 - prob_loss: 0.3372 - dist_loss: 7.9920 - prob_kld: 0.2581 - dist_relevant_mae: 7.9912 - dist_relevant_mse: 129.1611 - dist_dist_iou_metric: 0.3146 - val_loss: 1.8624 - val_prob_loss: 0.3237 - val_dist_loss: 7.6934 - val_prob_kld: 0.2518 - val_dist_relevant_mae: 7.6928 - val_dist_relevant_mse: 135.1480 - val_dist_dist_iou_metric: 0.2563 - lr: 3.0000e-04
+
+Loading network weights from &#39;weights_best.h5&#39;.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>====&gt; Stopping training and loading previously trained demo model from disk.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found model &#39;2D_demo&#39; for &#39;StarDist2D&#39;.
+Loading network weights from &#39;weights_best.h5&#39;.
+Loading thresholds from &#39;thresholds.json&#39;.
+Using default values: prob_thresh=0.486166, nms_thresh=0.5.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="threshold-optimization">
+<h1>Threshold optimization<a class="headerlink" href="#threshold-optimization" title="Permalink to this headline">#</a></h1>
+<p>While the default values for the probability and non-maximum suppression thresholds already yield good results in many cases, we still recommend to adapt the thresholds to your data. The optimized threshold values are saved to disk and will be automatically loaded with the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">quick_demo</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">optimize_thresholds</span><span class="p">(</span><span class="n">X_val</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">Y_val</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">optimize_thresholds</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/1 [==============================] - 0s 195ms/step
+1/1 [==============================] - 0s 83ms/step
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NMS threshold = 0.3:  75%|███████████████████████████         | 15/20 [00:01&lt;00:00, 10.23it/s, 0.511 -&gt; 0.700]
+NMS threshold = 0.4:  75%|███████████████████████████         | 15/20 [00:01&lt;00:00,  9.82it/s, 0.511 -&gt; 0.688]
+NMS threshold = 0.5:  75%|███████████████████████████         | 15/20 [00:01&lt;00:00, 10.23it/s, 0.511 -&gt; 0.688]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using optimized values: prob_thresh=0.508553, nms_thresh=0.3.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation-and-detection-performance">
+<h1>Evaluation and Detection Performance<a class="headerlink" href="#evaluation-and-detection-performance" title="Permalink to this headline">#</a></h1>
+<p>Besides the losses and metrics during training, we can also quantitatively evaluate the actual detection/segmentation performance on the validation data by considering objects in the ground truth to be correctly matched if there are predicted objects with overlap (here <a class="reference external" href="https://en.wikipedia.org/wiki/Jaccard_index">intersection over union (IoU)</a>) beyond a chosen IoU threshold <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<p>The corresponding matching statistics (average overlap, accuracy, recall, precision, etc.) are typically of greater practical relevance than the losses/metrics computed during training (but harder to formulate as a loss function).
+The value of <span class="math notranslate nohighlight">\(\tau\)</span> can be between 0 (even slightly overlapping objects count as correctly predicted) and 1 (only pixel-perfectly overlapping objects count) and which <span class="math notranslate nohighlight">\(\tau\)</span> to use depends on the needed segmentation precision/application.</p>
+<p>Please see <code class="docutils literal notranslate"><span class="pre">help(matching)</span></code> for definitions of the abbreviations used in the evaluation below and see the Wikipedia page on <a class="reference external" href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity">Sensitivity and specificity</a> for further details.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help(matching)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First predict the labels for all validation images:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_val_pred</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">predict_instances</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n_tiles</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">_guess_n_tiles</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">show_tile_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+              <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">X_val</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot a GT/prediction example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_img_label</span><span class="p">(</span><span class="n">X_val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Y_val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lbl_title</span><span class="o">=</span><span class="s2">&quot;label GT&quot;</span><span class="p">)</span>
+<span class="n">plot_img_label</span><span class="p">(</span><span class="n">X_val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Y_val_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lbl_title</span><span class="o">=</span><span class="s2">&quot;label Pred&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Stardist2d_in_python_training_37_0.png" src="../_images/02_Stardist2d_in_python_training_37_0.png" />
+<img alt="../_images/02_Stardist2d_in_python_training_37_1.png" src="../_images/02_Stardist2d_in_python_training_37_1.png" />
+</div>
+</div>
+<p>Choose several IoU thresholds <span class="math notranslate nohighlight">\(\tau\)</span> that might be of interest and for each compute matching statistics for the validation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span><span class="n">Y_val</span><span class="p">,</span> <span class="n">Y_val_pred</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">taus</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████| 9/9 [00:02&lt;00:00,  3.82it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Example: Print all available matching statistics for <span class="math notranslate nohighlight">\(\tau=0.5\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="p">[</span><span class="n">taus</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatasetMatching(criterion=&#39;iou&#39;, thresh=0.5, fp=108, tp=2239, fn=304, precision=0.953983809118023, recall=0.8804561541486433, accuracy=0.8445869483213881, f1=0.9157464212678936, n_true=2543, n_pred=2347, mean_true_score=0.7459801213740365, mean_matched_score=0.8472654973890911, panoptic_quality=0.775880347097822, by_image=False)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the matching statistics and the number of true/false positives/negatives as a function of the IoU threshold <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_true_score&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_matched_score&#39;</span><span class="p">,</span> <span class="s1">&#39;panoptic_quality&#39;</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;IoU threshold $\tau$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Metric value&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fp&#39;</span><span class="p">,</span> <span class="s1">&#39;tp&#39;</span><span class="p">,</span> <span class="s1">&#39;fn&#39;</span><span class="p">):</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;IoU threshold $\tau$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number #&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Stardist2d_in_python_training_43_0.png" src="../_images/02_Stardist2d_in_python_training_43_0.png" />
+</div>
+</div>
+<section id="receptive-field">
+<h2>Receptive field<a class="headerlink" href="#receptive-field" title="Permalink to this headline">#</a></h2>
+<p>The receptive field of a convolutional network determines, how large of an area in the input image the deepest layers in the network (highest number of feature maps, lowest number of image size) can see. We can demonstrate this by simply upscaling an input image and check whether stardist is still able to see it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">X_val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sample_upscaled</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">rescale</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[:</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">sample_upscaled_GT</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">rescale</span><span class="p">(</span><span class="n">Y_val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)[:</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the upscaled data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sample_upscaled</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Y_val</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sample_upscaled_GT</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Upscaled x2&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ground truth&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Upscaled x2&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Stardist2d_in_python_training_47_0.png" src="../_images/02_Stardist2d_in_python_training_47_0.png" />
+</div>
+</div>
+</section>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h2>
+<p>Run the prediction on both images (<code class="docutils literal notranslate"><span class="pre">sample</span></code> and <code class="docutils literal notranslate"><span class="pre">sample_upscaled</span></code>) and compare the predictions - what do you observe? <em>Hint</em>: Run the prediction on some data with <code class="docutils literal notranslate"><span class="pre">model.predict_instances()</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./day2e_deep_learning_segmentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01_Stardist2d_in_python_getting_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Stardist in Python: Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../day2f_feature_extraction/readme.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Feature extraction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcelo Zoccoler, Johannes Müller, Till Korten, Robert Haase, DFG Cluster of Excellence "Physics of Life", TU Dresden<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
