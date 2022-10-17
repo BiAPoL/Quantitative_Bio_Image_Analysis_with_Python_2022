@@ -56,6 +56,7 @@ chapters:
   - file: day2a_background_subtraction/readme
     sections:
     - file: day2a_background_subtraction/01_Background_subtraction
+    - file: day2a_background_subtraction/01_Background_removal_II
 
   - file: day2b_image_segmentation/readme
     sections:
