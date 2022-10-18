@@ -60,17 +60,17 @@ Then, we will just do instruction number 1 to install this default napari plugin
 cd napari-foobar    # replace 'napari-foobar' by your plugin name if you gave it a different name
 pip install -e .   # install your plugin locally
 ```
-Now, open napari from the command line and open an imagei it.
+Now, open napari from the command line and open an image in it.
 
-If we check the "Plugins" menu, we should see a new wntry with our plugin there and three options.
+If we check the "Plugins" menu, we should see a new entry with our plugin there and three options.
 
 ![](napari_plugin_menu.png)
 
-Click on the "Example Magic Widget" option. A wdiget should be docked on the right side of the viewer:
+Click on the "Example Magic Widget" option. A widget should be docked on the right side of the viewer:
 
 ![](napari_plugin_menu2.png)
 
-Click on the "Run" button and then take a look at the command line. You should see a text like "you have selected blobs". This is the default behavior of this template plugin: it print the selected layer name.
+Click on the "Run" button and then take a look at the command line. You should see a text like "you have selected blobs". This is the default behavior of this template plugin: it prints the selected layer name.
 
 ## Updating the template with your functions
 
@@ -82,13 +82,13 @@ def example_function_widget(img_layer: "napari.layers.Image"):
     print(f"you have selected {img_layer}")
 ```
 
-Replace this function by the `segment_image2` annotated function from before. Remember to import napari custom types at the beginning of the file. Add this line close to other imports at the top of the file: `from napari.types import ImageData, LayerDataTuple`. Save this file (File menu -> Save Python File).
+Replace this function by the `segment_image2` annotated function from before. Remember to import napari custom types at the beginning of the file: add `from napari.types import ImageData, LayerDataTuple` close to other imports at the top of the file. Save this file (File menu -> Save Python File).
 
-We now have to update the `napari.yaml` file to change the entried in the plugins menu. Thus, open the `napari.yaml` file. You should see a file like this:
+We now have to update the `napari.yaml` file to change the entries in the plugins menu. Thus, open the `napari.yaml` file. You should see a file like this:
 
 ![](napari_yaml_file1.png)
 
-Replace the fields indicated in red by your function name. The first one must be exaclty the function name, while the last one is the name that will show up in the Plugins menu. Save the yaml file (File menu -> Save YAML File)
+Replace the fields indicated in red by your function name. The first one must be exaclty the function name (in this case: `segment_image2`), while the last one is the name that will show up in the Plugins menu. Save the yaml file (File menu -> Save YAML File).
 
 Done! Now open napari again. You should see that one entry of the menu got updated with the name you provided. If you click on it, your plugin should appear on the right side. Try it out!
 
