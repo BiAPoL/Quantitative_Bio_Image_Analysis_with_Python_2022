@@ -2,14 +2,15 @@
 
 The [napari-clusters-plotter](https://github.com/BiAPoL/napari-clusters-plotter) offers tools to perform various dimensioality reduction algorithms and clustering methods interactively in napari.
 
+You can find the necessary data for this (interactive) exercise in the data folder ("../../data/CalibZAPWfixed_000154_max.tif"). You first need to go through the following steps to run the dimensionality reduction/clustering:
+
+1. Filtering: Remove the noise from the image with a filter of your choice
+2. Background subtraction: Remove the background from your image with a filter of your choice
+3. Segmentation: Use Voronoi-Otsu thresholding to generate a segmentation of your data
+
 ## Usage
 
 ### Starting point
-For clustering objects according to their properties, the starting point is a [grey-value image](example_data/blobs.tif) and a label image
-representing a segmentation of objects. For segmenting objects, you can for example use the
-[Voronoi-Otsu-labelling approach](https://github.com/haesleinhuepf/napari-segment-blobs-and-things-with-membranes#voronoi-otsu-labelling)
-in the napari plugin [napari-segment-blobs-and-things-with-membranes](https://www.napari-hub.org/plugins/napari-segment-blobs-and-things-with-membranes).
-
 ![](https://github.com/BiAPoL/napari-clusters-plotter/raw/main/images/starting_point.png)
 
 ### Measurements
