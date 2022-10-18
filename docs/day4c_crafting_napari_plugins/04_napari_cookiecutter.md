@@ -82,7 +82,25 @@ def example_function_widget(img_layer: "napari.layers.Image"):
     print(f"you have selected {img_layer}")
 ```
 
-Replace this function by the `segment_image2` annotated function from before. Remember to import napari custom types at the beginning of the file: add `from napari.types import ImageData, LayerDataTuple` close to other imports at the top of the file. Save this file (File menu -> Save Python File).
+Replace this function by the `segment_image2` annotated function, shown here again:
+
+```Python
+def segment_image2(image: ImageData) -> LayerDataTuple:
+    """Apply thresholding and connected component analysis"""
+    from skimage.filters import threshold_otsu
+    from skimage.measure import label
+    
+    binary = image > threshold_otsu(image)
+    label_image = label(binary)
+    
+    output_tuple = (label_image, # first parameter of the tuple: data
+                    {'name': 'Output Label Image', 'opacity': 0.3}, # second parameter of the tuple: layer properties
+                    'labels') # third parameter of the tuple: layer type
+    
+    return output_tuple
+```
+
+Remember to import napari custom types at the beginning of the file: add `from napari.types import ImageData, LayerDataTuple` close to other imports at the top of the file. Save this file (File menu -> Save Python File).
 
 We now have to update the `napari.yaml` file to change the entries in the plugins menu. Thus, open the `napari.yaml` file. You should see a file like this:
 
