@@ -62,7 +62,7 @@ pip install -e .   # install your plugin locally
 ```
 Now, open napari from the command line and open an image in it.
 
-If we check the "Plugins" menu, we should see a new entry with our plugin there and three options.
+If we check the "Plugins" menu, we should see a new entry with your plugin there and three options.
 
 ![](napari_plugin_menu.png)
 
@@ -96,58 +96,22 @@ Done! Now open napari again. You should see that one entry of the menu got updat
 
 ## Adding your local repository to Github
 
-We will use [Github Desktop](https://desktop.github.com/) to publish our local repository into the Github page. It has a great user interface and integration. So first [download](https://desktop.github.com/) and install Github Desktop. It should be a straight-forward [installation procedure](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop). If this is your first time using it, you will need to authenticate your account as explained [here](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github).
+We will use [Github Desktop](https://desktop.github.com/) to publish your local repository into the Github page. 
 
-Now open it and let's add your local repository by clicking on 'File -> Add local repository...'.
+Let's add your local repository by clicking on 'File -> Add local repository...'.
 
-![](images/github_desktop1.png)
+![](Github_Desktop_new_repo.png)
 
-After that, you have to specify your local plugin address. It should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Your_user_name' for Windows). It has the plugin name and the following contents:
+After that, you have to specify your local plugin repository path. It should be a directory located where you were when you typed cookiecutter commands (typically 'C:/Users/Your_user_name' for Windows) and it should have the plugin name.
 
-<img alt="directory_items" id="directory_items" src="images/directory_items.png" />
+Find it and click on 'Add repository'. You will see that it now appears as the current repository. If you see changes, like in the image below, give them a brief description in the highlighted red box below and click on the button "Commit to main".
 
-Find it and click on 'Add repository'. You will see that it now appears as the current repository and you will add it to Github.com by clicking on 'Publish repository'.
+![](Github_Desktop_new_repo2.png)
 
-![](images/github_desktop1b.png)
+Lastly, click on 'Publish repository'. A new window should pop-up.
 
-Then a small window should pop-up. Specify the name of your repository (same name of your plugin, cookiecutter question 4) and click on 'Publish Repository'.
+![](Github_Desktop_new_repo3.png)
 
-![](images/github_desktop1c.png)
+There you can provide a brief description to the repository if you like (you can do that later) and choose if your repository will be private or public. For this exercise, please choose public.
 
-Now, if you log in into your Github account through the browser and look at your repositories, you should see your new repository there, like this:
-
-![](images/github_repo_page.png)
-     
-Notice how the contents are the same as [the ones in your local folder](#directory_items). Your template is online!
-
-## Updating Github repository
-
-You have your updates locally in your separate branch. Let's push them into your Github repository. If you open Github Desktop again now, you should see all the changes we made listed in the left of the screen. Write a description to these changes (step 1.), click on 'commit to 'branch name'' (step 2.), and then publish your new branch (step 3.):
-
-![](images/flood_plugin_commit.png)
-
-After that, click on the 'Create Pull Request' button, and you will be prompted to a browser tab with your github online repository. There, click on 'Create Pull Request'. 
-
-![](images/flood_plugin_PR.png)
-
-After the page updates itself, click on 'Merge Pull Request' and confirm it if required.
-
-![](images/flood_plugin_merge.png)
-
-At the end, you should see the image below, which means your online repository is now updated with your new code!
-
-![merge_done](https://user-images.githubusercontent.com/26173597/145111544-dea73c05-a8a5-47bb-85c4-d9431ca0de0e.png)
-
-### Versioning
-
-Let's report the package's version. We will update two files for that:
-   1. Go to your project repository and open the `setup.cfg` file. On this file, at around the third line, you should find something like `version == 0.0.1`. If you are releasing a newer version, replace `0.0.1` by your new version number. To know more about versioning standards, check [this post](https://py-pkgs.org/07-releasing-versioning.html#version-numbering). 
-   2. Open the `__inti__.py` located in the same folder where your plugin code resides - which in this example is flood-napari/src/flood_napari - update the version inside this file as well and save it. If you prefer, there are ways to [automate version bumping](https://py-pkgs.org/07-releasing-versioning.html#automatic-version-bumping).
-
-Now, remember to [update your Github repository](#updating-github-repository) again (commit changes, push/publish branch, create Pull request, merge).
-
-The last step of versioning is to provide a version tag. On the Github repository's main page, at the right side, on Releases, click on "Create a new release" and the following page should load.
-
-![](images/github_release.png)
-
-Fill the fields highlighted by green boxes and click on "Publish Release". 
+Done! You can check in your Github page that you have a new repository with your first napari plugin! 🎉 🚀 
