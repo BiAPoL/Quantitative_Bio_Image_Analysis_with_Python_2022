@@ -1096,19 +1096,11 @@ title="Print to PDF"
 <h1>Nonparametric testing<a class="headerlink" href="#nonparametric-testing" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">import</span> <span class="nn">statistics</span>
-<span class="kn">import</span> <span class="nn">os</span> 
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">statsmodels.stats.multicomp</span> <span class="kn">import</span> <span class="n">pairwise_tukeyhsd</span>
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randn</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1110,7 @@ title="Print to PDF"
 <p>To compare parametric and non-parametric testing, lets go back to the example counting white blood cells.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/BiAPoL/Bio-image_Analysis_with_Python/main/biostatistics/data/leukocyte_counts.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../data/leukocyte_counts.csv&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
@@ -1357,9 +1349,9 @@ title="Print to PDF"
 ===========================================================
  group1  group2  meandiff p-adj    lower     upper   reject
 -----------------------------------------------------------
-    CLL COVID19 -475.5107  0.001 -751.2353  -199.786   True
-    CLL healthy -545.0705  0.001 -820.7951 -269.3458   True
-COVID19 healthy  -69.5598 0.8042 -345.2845  206.1648  False
+    CLL COVID19 -475.5107 0.0002 -751.2208 -199.8005   True
+    CLL healthy -545.0705    0.0 -820.7807 -269.3603   True
+COVID19 healthy  -69.5598 0.8233   -345.27  206.1504  False
 -----------------------------------------------------------
 </pre></div>
 </div>
