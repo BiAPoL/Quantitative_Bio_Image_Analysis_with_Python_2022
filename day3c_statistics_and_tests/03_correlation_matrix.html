@@ -648,7 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../day3e_dimensionality_reduction/03_PCA.html">
-       PCA and UMAP
+       PCA (Principle Component analysis)
       </a>
      </li>
     </ul>
@@ -1044,11 +1044,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading file &#39;data/mitosis.tif&#39; from &#39;https://gitlab.com/scikit-image/data/-/raw/master/AS_09125_050116030001_D03f00d0.tif&#39; to &#39;C:\Users\johan\AppData\Local\scikit-image\scikit-image\Cache\0.19.3&#39;.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,7 +1053,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1eb6f00c430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2481148dbe0&gt;
 </pre></div>
 </div>
 <img alt="../_images/03_correlation_matrix_3_1.png" src="../_images/03_correlation_matrix_3_1.png" />
@@ -1080,7 +1075,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1eb73eba9d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2481636d910&gt;
 </pre></div>
 </div>
 <img alt="../_images/03_correlation_matrix_5_1.png" src="../_images/03_correlation_matrix_5_1.png" />
@@ -1337,7 +1332,7 @@ title="Print to PDF"
 <p>Maybe we can make this even clearer by rearranging some of the columns/rows. We can use the seaborn <code class="docutils literal notranslate"><span class="pre">clustermap</span></code> feature for this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;twilight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

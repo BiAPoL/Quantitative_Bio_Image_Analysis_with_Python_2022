@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>PCA and UMAP &#8212; Quantitative Bio-image Analysis with Python</title>
+    <title>PCA (Principle Component analysis) &#8212; Quantitative Bio-image Analysis with Python</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -648,7 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       PCA and UMAP
+       PCA (Principle Component analysis)
       </a>
      </li>
     </ul>
@@ -1024,11 +1024,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principle-component-analysis">
-   Principle Component analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-scaling">
    Data scaling
   </a>
@@ -1047,7 +1042,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>PCA and UMAP</h1>
+                <h1>PCA (Principle Component analysis)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1057,11 +1052,6 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principle-component-analysis">
-   Principle Component analysis
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-scaling">
    Data scaling
@@ -1082,10 +1072,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pca-and-umap">
-<h1>PCA and UMAP<a class="headerlink" href="#pca-and-umap" title="Permalink to this headline">#</a></h1>
-<section id="principle-component-analysis">
-<h2>Principle Component analysis<a class="headerlink" href="#principle-component-analysis" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="pca-principle-component-analysis">
+<h1>PCA (Principle Component analysis)<a class="headerlink" href="#pca-principle-component-analysis" title="Permalink to this headline">#</a></h1>
 <p>Notebook adapted from Anna Poetsch (<a class="reference external" href="https://github.com/BiAPoL/Bio-image_Analysis_with_Python/tree/main/10_correlation_dim_reduction">source</a>) under <a class="reference external" href="https://github.com/BiAPoL/Bio-image_Analysis_with_Python/blob/main/LICENSE-CC-BY">CC-BY-4.0</a></p>
 <p>Source material:<br />
 Tutorial: <a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">https://umap-learn.readthedocs.io/en/latest/</a><br />
@@ -1218,7 +1206,6 @@ penguins.species_short.value_counts()</p>
 <img alt="../_images/03_PCA_10_1.png" src="../_images/03_PCA_10_1.png" />
 </div>
 </div>
-</section>
 <section id="data-scaling">
 <h2>Data scaling<a class="headerlink" href="#data-scaling" title="Permalink to this headline">#</a></h2>
 <p>change data format to values:</p>
@@ -1300,14 +1287,24 @@ penguins.species_short.value_counts()</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">pen_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scaled_penguin_data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">scaled_penguin_data</span><span class="p">)</span>
-
-<span class="c1"># Percentage of variance explained for each components</span>
-<span class="nb">print</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show the percentage of variance explained for each components:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="s2">&quot;explained variance ratio: </span><span class="si">%s</span><span class="s2">&quot;</span>
     <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
 <span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">pen_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
     <span class="n">pen_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">penguins</span><span class="o">.</span><span class="n">species_short</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;Adelie&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Gentoo&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})])</span>
@@ -1319,7 +1316,7 @@ penguins.species_short.value_counts()</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>explained variance ratio: [0.68641678 0.19448404 0.09215558 0.02694359]
 </pre></div>
 </div>
-<img alt="../_images/03_PCA_19_1.png" src="../_images/03_PCA_19_1.png" />
+<img alt="../_images/03_PCA_22_1.png" src="../_images/03_PCA_22_1.png" />
 </div>
 </div>
 <p>The separation of species with PCA did work, but not very well.</p>
