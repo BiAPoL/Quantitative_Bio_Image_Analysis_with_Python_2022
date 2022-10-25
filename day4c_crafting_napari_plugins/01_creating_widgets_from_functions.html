@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Creating Widgets from Functions - Part 2" href="02_creating_widgets_from_functions_part2.html" />
+    <link rel="next" title="Creating a plugin from a template using the cookiecutter" href="04_napari_cookiecutter.html" />
     <link rel="prev" title="Make your own napari plugin" href="readme.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -765,11 +765,6 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="02_creating_widgets_from_functions_part2.html">
-       Creating Widgets from Functions - Part 2
-      </a>
-     </li>
-     <li class="toctree-l3">
       <a class="reference internal" href="04_napari_cookiecutter.html">
        Creating a plugin from a template using the cookiecutter
       </a>
@@ -1034,8 +1029,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -1068,8 +1068,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
   </a>
  </li>
 </ul>
@@ -1271,10 +1276,10 @@ preprocess_image<span class=" -Color -Color-Bold -Color-Bold-Yellow">(</span>
 </div>
 <p>We got the same result. This is awesome! We can now call the <strong>same function</strong> either from code or from a napari widget!</p>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h2>
 <p>Consider the function below. Annotate the function to make it receive a <code class="docutils literal notranslate"><span class="pre">ImageData</span></code> type as input and to return a <code class="docutils literal notranslate"><span class="pre">LabelsData</span></code> type as output.</p>
-<p>Then, create a widget from this annotated function with magicgui and add it to napari. Finally, run it wither via code or from napari.</p>
+<p>Then, create a widget from this annotated function with magicgui and add it to napari. Finally, run it via code or from napari.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LabelsData</span>
@@ -1296,6 +1301,12 @@ preprocess_image<span class=" -Color -Color-Bold -Color-Bold-Yellow">(</span>
 </div>
 </div>
 </div>
+</section>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h2>
+<p>Create your own image processing function that receives an image and a boolean variable (maybe other parameters if you like), and returns a different processed image depending if the boolean variable is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Add annotations to its arguments. Call it from code and send the output to napari.</p>
+<p>Then, generate a widget with magicgui and add the widget to napari. Run the widget from napari. Compare your results.</p>
 </section>
 </section>
 
@@ -1333,10 +1344,10 @@ preprocess_image<span class=" -Color -Color-Bold -Color-Bold-Yellow">(</span>
             <p class="prev-next-title">Make your own napari plugin</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_creating_widgets_from_functions_part2.html" title="next page">
+    <a class='right-next' id="next-link" href="04_napari_cookiecutter.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Creating Widgets from Functions - Part 2</p>
+        <p class="prev-next-title">Creating a plugin from a template using the cookiecutter</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

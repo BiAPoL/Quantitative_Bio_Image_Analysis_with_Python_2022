@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Day 5: Surfaces and bring your own data" href="../day5/Readme.html" />
-    <link rel="prev" title="Creating Widgets from Functions - Part 2" href="02_creating_widgets_from_functions_part2.html" />
+    <link rel="prev" title="Creating Widgets from Functions" href="01_creating_widgets_from_functions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -764,11 +764,6 @@ const thebe_selector_output = ".output, .cell_output"
        Creating Widgets from Functions
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="02_creating_widgets_from_functions_part2.html">
-       Creating Widgets from Functions - Part 2
-      </a>
-     </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
        Creating a plugin from a template using the cookiecutter
@@ -1069,8 +1064,9 @@ title="Print to PDF"
 <h2>Creating a template<a class="headerlink" href="#creating-a-template" title="Permalink to this headline">#</a></h2>
 <p>The easiest way to make a napari plugin is by using the <a class="reference external" href="https://github.com/napari/cookiecutter-napari-plugin#cookiecutter-napari-plugin">napari-cookiecutter</a>. Let’s install it.</p>
 <p>Well, first things first: create a new conda environment with napari and jupyter lab. (“Another one?” 😩) Yes, better safe than sorry 😉. Don’t forget to activate it.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create -n napari-plugin-env python=3.9 napari jupyterlab -c conda-forge
-conda activate napari-plugin-env
+<p>If don’t have <code class="docutils literal notranslate"><span class="pre">mamba</span></code> installed, replace <code class="docutils literal notranslate"><span class="pre">mamba</span></code> by <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mamba create -n napari-plugin-env python=3.9 napari jupyterlab -c conda-forge
+mamba activate napari-plugin-env
 </pre></div>
 </div>
 <p>Then, let’s install and run the cookiecutter as indicated in the <a class="reference external" href="%5Bhttps://github.com/napari/cookiecutter-napari-plugin%5D(https://github.com/napari/cookiecutter-napari-plugin#cookiecutter-napari-plugin)">napari cookiecutter repository</a>:</p>
@@ -1085,7 +1081,7 @@ conda activate napari-plugin-env
 <li><p><code class="docutils literal notranslate"><span class="pre">full_name</span> <span class="pre">[Napari</span> <span class="pre">Developer]:</span></code> <em><strong>type your name</strong></em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">email</span> <span class="pre">[yourname&#64;example.com]:</span></code> <strong>type your email</strong> <em>or skip</em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">github_username_or_organization</span> <span class="pre">[githubuser]:</span></code> <strong>type your github username</strong> <em>or skip</em></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span> <span class="pre">[napari-foobar]:</span></code> <strong>type your plugin name</strong> <em>or skip</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span> <span class="pre">[napari-foobar]:</span></code> <strong>type your plugin name</strong> <em>or skip (do not use underlines or spaces here)</em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">github_repository_url:</span></code><br />
 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">https://github.com/your_github_username/your_plugin_name</span></code><br />
 <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">provide</span> <span class="pre">later</span></code><br />
@@ -1134,22 +1130,18 @@ Close napari and open jupyter lab. Navigate to the “napari-foobar” -&gt; “
 </pre></div>
 </div>
 <p>Replace this function by the <code class="docutils literal notranslate"><span class="pre">segment_image2</span></code> annotated function, shown here again:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">segment_image2</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">segment_image2</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelsData</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Apply thresholding and connected component analysis&quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_otsu</span>
+    <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_otsu</span><span class="p">,</span> <span class="n">gaussian</span>
     <span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
     
-    <span class="n">binary</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&gt;</span> <span class="n">threshold_otsu</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="n">label_image</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
-    
-    <span class="n">output_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">label_image</span><span class="p">,</span> <span class="c1"># first parameter of the tuple: data</span>
-                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Output Label Image&#39;</span><span class="p">,</span> <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">},</span> <span class="c1"># second parameter of the tuple: layer properties</span>
-                    <span class="s1">&#39;labels&#39;</span><span class="p">)</span> <span class="c1"># third parameter of the tuple: layer type</span>
-    
-    <span class="k">return</span> <span class="n">output_tuple</span>
+    <span class="n">image_blur</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&gt;</span> <span class="n">threshold_otsu</span><span class="p">(</span><span class="n">image_blur</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">labels</span>
 </pre></div>
 </div>
-<p>Remember to import napari custom types at the beginning of the file: add <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">napari.types</span> <span class="pre">import</span> <span class="pre">ImageData,</span> <span class="pre">LayerDataTuple</span></code> close to other imports at the top of the file. Save this file (File menu -&gt; Save Python File).</p>
+<p>Remember to import napari custom types at the beginning of the file: add <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">napari.types</span> <span class="pre">import</span> <span class="pre">ImageData,</span> <span class="pre">LabelsData</span></code> close to other imports at the top of the file. Save this file (File menu -&gt; Save Python File).</p>
 <p>We now have to update the <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> file to change the entries in the plugins menu. Thus, open the <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> file. You should see a file like this:</p>
 <p><img alt="" src="../_images/napari_yaml_file1.png" /></p>
 <p>Replace the fields indicated in red by your function name. The first one must be exaclty the function name (in this case: <code class="docutils literal notranslate"><span class="pre">segment_image2</span></code>), while the last one is the name that will show up in the Plugins menu. Save the yaml file (File menu -&gt; Save YAML File).</p>
@@ -1168,6 +1160,7 @@ Close napari and open jupyter lab. Navigate to the “napari-foobar” -&gt; “
 <p><img alt="" src="../_images/Github_Desktop_new_repo3.png" /></p>
 <p>There you can provide a brief description to the repository if you like (you can do that later) and choose if your repository will be private or public. For this exercise, please choose public.</p>
 <p>Done! You can check in your Github page that you have a new repository with your first napari plugin! 🎉 🚀</p>
+<p>Don’t forget to update documentation so others can install your plugin. For example, try to install it yourself in a different conda environment and update the instructions in the “<a class="reference external" href="http://Readme.md">Readme.md</a>” file.</p>
 </section>
 </section>
 
@@ -1198,11 +1191,11 @@ Close napari and open jupyter lab. Navigate to the “napari-foobar” -&gt; “
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02_creating_widgets_from_functions_part2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01_creating_widgets_from_functions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Creating Widgets from Functions - Part 2</p>
+            <p class="prev-next-title">Creating Widgets from Functions</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../day5/Readme.html" title="next page">
