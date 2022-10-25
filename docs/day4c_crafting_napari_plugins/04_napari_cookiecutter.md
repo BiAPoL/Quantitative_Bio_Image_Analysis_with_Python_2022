@@ -7,8 +7,10 @@ https://github.com/napari/cookiecutter-napari-plugin#cookiecutter-napari-plugin)
 
 Well, first things first: create a new conda environment with napari and jupyter lab. ("Another one?" 😩) Yes, better safe than sorry 😉. Don't forget to activate it.
 
-    conda create -n napari-plugin-env python=3.9 napari jupyterlab -c conda-forge
-    conda activate napari-plugin-env
+If don't have `mamba` installed, replace `mamba` by `conda`.
+
+    mamba create -n napari-plugin-env python=3.9 napari jupyterlab -c conda-forge
+    mamba activate napari-plugin-env
 
 Then, let's install and run the cookiecutter as indicated in the [napari cookiecutter repository]([https://github.com/napari/cookiecutter-napari-plugin](https://github.com/napari/cookiecutter-napari-plugin#cookiecutter-napari-plugin)):
 
@@ -25,7 +27,7 @@ The cookiecutter will then start asking you questions about your project. You ca
   1. `full_name [Napari Developer]:` ***type your name***
   2. `email [yourname@example.com]:` **type your email** *or skip*
   3. `github_username_or_organization [githubuser]:` **type your github username** *or skip*
-  4. `plugin_name [napari-foobar]:` **type your plugin name** *or skip*
+  4. `plugin_name [napari-foobar]:` **type your plugin name** *or skip (do not use underlines or spaces here)*
   5. `Select github_repository_url:`  
      `1 - https://github.com/your_github_username/your_plugin_name`  
      `2 - provide later`  
@@ -85,22 +87,18 @@ def example_function_widget(img_layer: "napari.layers.Image"):
 Replace this function by the `segment_image2` annotated function, shown here again:
 
 ```Python
-def segment_image2(image: ImageData) -> LayerDataTuple:
+def segment_image2(image: ImageData, sigma: float = 1.0) -> LabelsData:
     """Apply thresholding and connected component analysis"""
-    from skimage.filters import threshold_otsu
+    from skimage.filters import threshold_otsu, gaussian
     from skimage.measure import label
     
-    binary = image > threshold_otsu(image)
-    label_image = label(binary)
-    
-    output_tuple = (label_image, # first parameter of the tuple: data
-                    {'name': 'Output Label Image', 'opacity': 0.3}, # second parameter of the tuple: layer properties
-                    'labels') # third parameter of the tuple: layer type
-    
-    return output_tuple
+    image_blur = gaussian(image, sigma = sigma)
+    binary = image > threshold_otsu(image_blur)
+    labels = label(binary)
+    return labels
 ```
 
-Remember to import napari custom types at the beginning of the file: add `from napari.types import ImageData, LayerDataTuple` close to other imports at the top of the file. Save this file (File menu -> Save Python File).
+Remember to import napari custom types at the beginning of the file: add `from napari.types import ImageData, LabelsData` close to other imports at the top of the file. Save this file (File menu -> Save Python File).
 
 We now have to update the `napari.yaml` file to change the entries in the plugins menu. Thus, open the `napari.yaml` file. You should see a file like this:
 
@@ -133,3 +131,5 @@ Lastly, click on 'Publish repository'. A new window should pop-up.
 There you can provide a brief description to the repository if you like (you can do that later) and choose if your repository will be private or public. For this exercise, please choose public.
 
 Done! You can check in your Github page that you have a new repository with your first napari plugin! 🎉 🚀 
+
+Don't forget to update documentation so others can install your plugin. For example, try to install it yourself in a different conda environment and update the instructions in the "Readme.md" file.
